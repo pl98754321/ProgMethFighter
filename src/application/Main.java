@@ -8,11 +8,18 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 
 
 public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException  {
+			Rectangle rec = new Rectangle();
+			rec.setX(50);
+			rec.setY(50);
+			rec.setHeight(50);
+			rec.setWidth(50);
+		    
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("TryFXML.fxml"));
 			Parent root = loader.load();
 			final MyController myController = loader.getController();

@@ -15,24 +15,23 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws IOException  {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("TryFXML.fxml"));
 			Parent root = loader.load();
-			MyController MyController = loader.getController();
+			final MyController myController = loader.getController();
 			Scene scene = new Scene(root);
 			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-				@Override
 				public void handle(KeyEvent event) {
 					// TODO Auto-generated method stub
 					switch(event.getCode()) {
 						case W:
-							MyController.moveUp();
+							myController.moveUp();
 							break;
 						case S:
-							MyController.moveDown();
+							myController.moveDown();
 							break;
 						case A:
-							MyController.moveLeft();
+							myController.moveLeft();
 							break;
 						case D:
-							MyController.moveRight();	
+							myController.moveRight();	
 							break;
 						default:
 							break;

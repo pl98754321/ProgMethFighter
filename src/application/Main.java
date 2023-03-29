@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 
 public class Main extends Application {
 	@Override
-// asdasdasds
 	public void start(Stage primaryStage) throws IOException  {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("TryFXML.fxml"));
 			Parent root = loader.load();

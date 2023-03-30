@@ -16,7 +16,7 @@ public class MyController{
 	private Button getCurrentPos;
 	@FXML
 	private Button makeTarget;
-	Rectangle target =new Rectangle();
+
 	
 	public void moveUp() {
 		player.setY(Math.max(-275,player.getY()-10));

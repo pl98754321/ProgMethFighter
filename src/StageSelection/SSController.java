@@ -42,7 +42,7 @@ public class SSController{
 	}
 	public void toGamePlay() {
 		System.out.println("Game start");
-		System.out.println(SelectedStage);
+		System.out.println("Select : Stage "+SelectedStage);
 		
 	}
 }

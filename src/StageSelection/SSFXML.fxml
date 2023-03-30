@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="ssScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StageSelection.SSController">
+   <children>
+      <Rectangle fx:id="left" arcHeight="5.0" arcWidth="5.0" fill="BLUE" height="300.0" layoutX="-150.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <Rectangle fx:id="right" arcHeight="5.0" arcWidth="5.0" fill="#0000ff9c" height="300.0" layoutX="450.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <Rectangle fx:id="center" arcHeight="5.0" arcWidth="5.0" fill="RED" height="300.0" layoutX="150.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="300.0" />
+      <Ellipse fill="WHITE" layoutX="286.0" radiusX="400.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" />
+      <Ellipse fill="WHITE" layoutX="286.0" layoutY="400.0" radiusX="400.0" radiusY="80.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button fx:id="slideleft" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#slide" text="&lt;-" />
+      <Button fx:id="slideright" layoutX="534.0" layoutY="188.0" mnemonicParsing="false" onAction="#slide" text="-&gt;" />
+      <Text fx:id="numStage" fontSmoothingType="LCD" layoutX="211.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NameStage 1">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button fx:id="confirmStage" layoutX="274.0" layoutY="338.0" mnemonicParsing="false" onAction="#toGamePlay" text="Confirm" />
+      <Text layoutX="216.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Stage">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

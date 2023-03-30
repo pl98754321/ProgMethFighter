@@ -6,15 +6,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
 
-public class FXHelloWorld extends Application {
+public class FirstPage extends Application {
 // Override the start method in the Application class
 	public void start(Stage primaryStage) {
 // Create a scene and place a button in the scene
-		Button btn = new Button("Hello world");
+		Button btn = new Button("Start Game");
 		StackPane root = new StackPane();
 		root.getChildren().add(btn);
-		Scene scene = new Scene(root, 300, 250);
-		primaryStage.setTitle("MyJavaFX"); // Set the stage title
+		Scene scene = new Scene(root, 800, 600);
+		
+		
+		primaryStage.setTitle("ProgMeth Fighter"); // Set the stage title
 		primaryStage.setScene(scene); // Place the scene
 		primaryStage.show();
 	}

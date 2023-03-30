@@ -11,7 +11,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.Rectangle;
 
 
-public class Main extends Application {
+public class GamePlay extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException  {
 			Rectangle rec = new Rectangle();
@@ -20,10 +20,10 @@ public class Main extends Application {
 			rec.setHeight(50);
 			rec.setWidth(50);
 		    
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("TryFXML.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("GPFXML.fxml"));
 			Parent root = loader.load();
-			final MyController myController = loader.getController();
-			Scene scene = new Scene(root);
+			final GPController myController = loader.getController();
+			Scene scene = new Scene(root,800,600);
 			scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 				public void handle(KeyEvent event) {
 					// TODO Auto-generated method stub
@@ -46,6 +46,7 @@ public class Main extends Application {
 					}
 				
 			});
+			primaryStage.setTitle("ProgMeth Fighter");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 	

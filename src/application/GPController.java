@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 
 
-public class MyController{
+public class GPController{
 	@FXML
 	private Rectangle player;
 	@FXML
@@ -28,7 +28,7 @@ public class MyController{
 		player.setX(Math.max(-275,player.getX()-10));
 	}
 	public void moveRight() {
-		player.setX(Math.min(275,player.getX()+10));
+		player.setX(Math.min(475,player.getX()+10));
 	
 	}
 	public void getCurrentPos(ActionEvent e){

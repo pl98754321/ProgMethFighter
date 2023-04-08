@@ -25,4 +25,5 @@ public class MonsterA extends BaseEntity implements KnockBackAble {
 
 	}
 
+
 }

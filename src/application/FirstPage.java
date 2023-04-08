@@ -14,9 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 
 public class FirstPage extends Application {
-// Override the start method in the Application class
 	public void start(final Stage primaryStage) throws IOException {
-// Create a scene and place a button in the scene
 		Button btn = new Button("Start Game");
 		StackPane root = new StackPane();
 		root.getChildren().add(btn);
@@ -24,12 +22,10 @@ public class FirstPage extends Application {
 		
 		FXMLLoader loader = new FXMLLoader(Thread.currentThread().getContextClassLoader().getResource("SSFXML.fxml"));
 		Parent root2 = loader.load();
-//		final GPController myController = loader.getController();
 		Scene scene2 = new Scene(root2,800,600);
 		final SSController myController = loader.getController();
 		scene2.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
-				// TODO Auto-generated method stub
 				switch(event.getCode()) {
 					case A:
 						myController.slide();

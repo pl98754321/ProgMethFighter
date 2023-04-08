@@ -1,2 +1,2 @@
 # ProgMethFighter
-วุ้ววววววววววววววววว
+เริ่มรันที่ ProgMethFighter/src/application/FirstPage.java

@@ -1,5 +1,5 @@
 package Entity;
 
 public interface KnockBackAble {
-	public void KnockBackAble();
+	public void KnockBack();
 }

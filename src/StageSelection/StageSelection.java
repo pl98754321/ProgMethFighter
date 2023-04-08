@@ -40,7 +40,7 @@ public class StageSelection extends Application {
 			
 		});
 		
-		
+		primaryStage.setResizable(false);
 		primaryStage.setTitle("ProgMeth Fighter");
 		primaryStage.setScene(scene);
 		primaryStage.show();

@@ -25,7 +25,7 @@ public class SSController{
 	private int SelectedStage = 1;
 	
 	public void slide() {
-		if(center.getFill()==Color.RED) {
+		if(SelectedStage == 1 ) {
 			center.setFill(Color.BLUE);
 			right.setFill(Color.RED);
 			left.setFill(Color.RED);

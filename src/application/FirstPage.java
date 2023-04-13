@@ -6,20 +6,39 @@ import StageSelection.SSController;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 
 public class FirstPage extends Application {
 	public void start(final Stage primaryStage) throws IOException {
-		Button btn = new Button("Start Game");
-		StackPane root = new StackPane();
-		root.getChildren().add(btn);
-		Scene scene = new Scene(root, 800, 600);
+		GridPane root = new GridPane();
+		root.setAlignment(Pos.CENTER);
+		root.setHgap(15);
+		root.setVgap(15);
+		final Button start = new Button("------START------");
 		
+		start.setOnMouseEntered(e -> {
+			start.setPrefWidth(start.getWidth()*5/3);
+			start.setPrefHeight(start.getHeight()*5/3);
+		});
+		start.setOnMouseExited(e -> {
+			start.setPrefWidth(start.getWidth()*3/5);
+			start.setPrefHeight(start.getHeight()*3/5);
+		});
+		Button history = new Button("HALL OF FRAME");
+		history.setOnAction(e -> {
+			System.out.println("log history");
+		});
+
+		root.add(start,0,0);
+		root.add(history,0,1);
+		Scene scene =new Scene(root,800,600);
 		FXMLLoader loader = new FXMLLoader(Thread.currentThread().getContextClassLoader().getResource("SSFXML.fxml"));
 		Parent root2 = loader.load();
 		Scene scene2 = new Scene(root2,800,600);
@@ -28,10 +47,10 @@ public class FirstPage extends Application {
 			public void handle(KeyEvent event) {
 				switch(event.getCode()) {
 					case A:
-						myController.slide();
+						myController.slideleft();
 						break;
 					case D:
-						myController.slide();	
+						myController.slideright();	
 						break;
 					case S:
 						myController.toGamePlay();	
@@ -43,10 +62,11 @@ public class FirstPage extends Application {
 			
 		});
 		
-		btn.setOnAction(e -> primaryStage.setScene(scene2));
 		
+		start.setOnAction(e -> primaryStage.setScene(scene2));
 		primaryStage.setTitle("ProgMeth Fighter"); // Set the stage title
 		primaryStage.setScene(scene); // Place the scene
+		primaryStage.setResizable(false);
 		primaryStage.show();
 	}
 

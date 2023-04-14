@@ -33,7 +33,7 @@ public class FirstPage extends Application {
 		});
 		Button history = new Button("HALL OF FRAME");
 		history.setOnAction(e -> {
-			System.out.println("log history");
+			System.out.println("switch to history page");
 		});
 
 		root.add(start,0,0);

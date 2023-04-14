@@ -5,7 +5,6 @@ import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Scene;
 import javafx.scene.canvas.*;
-import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.animation.*;
 import javafx.util.Duration;
@@ -17,22 +16,28 @@ public class GamePlay extends Application{
 	private Player player;
 	private Map<KeyCode, Boolean> keys = new HashMap<>();
 	
+	
+	public static void shedule(long time, Runnable r){
+		new Thread(() -> {
+			try {
+				Thread.sleep(time);
+				r.run();
+			} catch (InterruptedException ex){
+				ex.printStackTrace();
+			}
+		}).start();
+	}
 	@Override
 	public void start(Stage stage){
 		
 		
 		StackPane pane = new StackPane();
 		Canvas canvas = new Canvas(800, 600);
-		Button checkpos = new Button("position");
-		checkpos.setOnMouseClicked(e -> {
-			System.out.println(player.getX()+","+player.getY());
-		});
 		canvas.setFocusTraversable(true);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		pane.getChildren().add(canvas);
-		pane.getChildren().add(checkpos);
 		
-		this.player = new Player(100,50, 50);
+		this.player = new Player(100,350, 250);
 		
 		Timeline loop = new Timeline(new KeyFrame(Duration.millis(1000.0/40), e -> update(gc)));
 		loop.setCycleCount(Animation.INDEFINITE);
@@ -40,7 +45,7 @@ public class GamePlay extends Application{
 
 		canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
-
+		canvas.setOnMouseClicked(e -> this.player.shoot(e.getX(), e.getY()));
 		
 		Scene scene = new Scene(pane, 800, 600);
 		stage.setResizable(false);
@@ -73,7 +78,16 @@ public class GamePlay extends Application{
 		if (this.keys.getOrDefault(KeyCode.D, false)){
 			this.player.move(player.SPEED, 0);
 		}
+		//HP 
+		gc.setFill(Color.FORESTGREEN);
+		gc.fillRect(30, 20, this.player.getHp()*250/100, 30);
+		gc.setStroke(Color.BLACK);
+		gc.strokeRect(30, 20, 250, 30);
 		
+		gc.setFill(Color.LIGHTBLUE);
+		gc.fillRect(30, 50, this.player.getCurrentExp()*200/100, 10);
+		gc.setStroke(Color.BLACK);
+		gc.strokeRect(30, 50, 200, 10);
 		
 	}
 }

@@ -5,6 +5,7 @@ import javafx.stage.Stage;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Scene;
 import javafx.scene.canvas.*;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.animation.*;
 import javafx.util.Duration;
@@ -22,9 +23,14 @@ public class GamePlay extends Application{
 		
 		StackPane pane = new StackPane();
 		Canvas canvas = new Canvas(800, 600);
+		Button checkpos = new Button("position");
+		checkpos.setOnMouseClicked(e -> {
+			System.out.println(player.getX()+","+player.getY());
+		});
 		canvas.setFocusTraversable(true);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		pane.getChildren().add(canvas);
+		pane.getChildren().add(checkpos);
 		
 		this.player = new Player(100,50, 50);
 		

@@ -47,7 +47,12 @@ public abstract class BaseEntity {
 		}
 	}
 	public void move(int vx, int vy){
-		this.setX(this.getX()+vx);
-		this.setY(this.getY()+vy);
+		int nextX=this.getX()+vx;
+		int nextY=this.getY()+vy;
+		if(nextX>=0 && nextX<=750 && nextY>=0 &&nextY<=550) {
+			this.setX(nextX);
+			this.setY(nextY);
+		}
+
 	}
 }

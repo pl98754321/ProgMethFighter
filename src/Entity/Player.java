@@ -1,34 +1,21 @@
 package Entity;
 
-import java.util.ArrayList;
-
-import Skill.Skill;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
-	private int Lv;
-	private ArrayList<Skill>skill;
-
+	private int hp = 100;
+	public static final int SPEED=3;
 	
-	public Player(int Hp,int speed,ArrayList<Integer> position,ArrayList<Skill>skill) {
-		super(Hp,speed,position);
-		this.setLv(1);
-		skill =new ArrayList<Skill>();
+	public Player(int Hp,int x, int y){
+		super(Hp,x,y);
 	}
 	
-	public int getLv() {
-		return this.Lv;
+	public int getHp(){
+		return this.hp;
 	}
-	public void setLv(int lv) {
-		this.Lv = Math.max(1, lv);
+	public void render(GraphicsContext gc){
+		gc.setFill(Color.RED);
+		gc.fillOval(this.getX(), this.getY(), 50, 50);
 	}
-	public ArrayList<Skill> getSkill() {
-		return skill;
-	}
-	public void setSkill(ArrayList<Skill> skill) {
-		this.skill = skill;
-	}
-	public void addSkill(Skill skill) {
-		this.getSkill().add(skill);
-	}
-	
 }

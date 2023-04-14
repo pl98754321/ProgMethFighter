@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public abstract class BaseEntity {
 	private int Hp;
 	private int speed;
-	private ArrayList<Integer> position;
+	private int x,y;
 	
-	public BaseEntity(int Hp,int speed,ArrayList<Integer> position) {
+	public BaseEntity(int Hp,int x,int y) {
 		this.setHp(Hp);
-		this.setSpeed(speed);
-		this.setPosition(position);
+		this.setX(x);
+		this.setY(y);
 	}
 	
 	public int getSpeed() {
@@ -21,16 +21,33 @@ public abstract class BaseEntity {
 		this.speed = speed;
 	}
 
+	public int getX() {
+		return this.x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return this.y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 	public int getHp() {
 		return this.Hp;
 	}
 	public void setHp(int hp) {
 		this.Hp = Math.max(0, hp);
+		if(this.Hp==0) {
+			System.out.println("you not win");
+		}
 	}
-	public ArrayList<Integer> getPosition() {
-		return position;
-	}
-	public void setPosition(ArrayList<Integer> position) {
-		this.position = position;
+	public void move(int vx, int vy){
+		this.setX(this.getX()+vx);
+		this.setY(this.getY()+vy);
 	}
 }

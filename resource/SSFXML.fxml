@@ -21,10 +21,14 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button fx:id="confirmStage" layoutX="370.0" layoutY="463.0" mnemonicParsing="false" onAction="#toGamePlay" text="Confirm" />
       <Text layoutX="315.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Stage">
          <font>
             <Font size="31.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="333.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="confirm (S)">
+         <font>
+            <Font size="28.0" />
          </font>
       </Text>
    </children>

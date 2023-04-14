@@ -23,7 +23,6 @@ public class GamePlay extends Application{
 				Thread.sleep(time);
 				r.run();
 			} catch (InterruptedException ex){
-				ex.printStackTrace();
 			}
 		}).start();
 	}
@@ -31,11 +30,11 @@ public class GamePlay extends Application{
 	public void start(Stage stage){
 		
 		
-		StackPane pane = new StackPane();
+		StackPane root3 = new StackPane();
 		Canvas canvas = new Canvas(800, 600);
 		canvas.setFocusTraversable(true);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
-		pane.getChildren().add(canvas);
+		root3.getChildren().add(canvas);
 		
 		this.player = new Player(100,350, 250);
 		
@@ -47,10 +46,10 @@ public class GamePlay extends Application{
 		canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> this.player.shoot(e.getX(), e.getY()));
 		
-		Scene scene = new Scene(pane, 800, 600);
+		Scene scene3 = new Scene(root3, 800, 600);
 		stage.setResizable(false);
 		stage.setTitle("smooth move");
-		stage.setScene(scene);
+		stage.setScene(scene3);
 		stage.show();
 	}
 	

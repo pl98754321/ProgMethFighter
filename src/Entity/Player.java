@@ -34,7 +34,7 @@ public class Player extends BaseEntity {
 	}
 
 	public void setLv(int lv) {
-		Lv = lv;
+		this.Lv = lv;
 	}
 
 	public void setHp(int hp) {
@@ -54,7 +54,7 @@ public class Player extends BaseEntity {
 	public void shoot(double x, double y){
 		if (shooting) return;
 		shooting = true;
-		GamePlay.shedule(0, () -> this.shooting = false);
+		GamePlay.shedule(500, () -> this.shooting = false);
 		double direction = Math.atan2(y-this.getY(), x-this.getX());
 		Bullet b = new Bullet(direction, this.getX()+20, this.getY()+20);
 		this.bullets.add(b);

@@ -7,6 +7,7 @@ import java.util.Map;
 import Entity.Player;
 import StageSelection.SSController;
 import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -61,10 +62,6 @@ public class FirstPage extends Application {
 				root3.getChildren().add(canvas);
 				
 				this.player = new Player(100,350, 250);
-				
-				Timeline loop = new Timeline(new KeyFrame(Duration.millis(1000.0/40), e -> update(gc)));
-				loop.setCycleCount(Animation.INDEFINITE);
-				loop.play();
 
 				canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
 				canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
@@ -105,6 +102,14 @@ public class FirstPage extends Application {
 		primaryStage.setScene(scene); // Place the scene
 		primaryStage.setResizable(false);
 		primaryStage.show();
+		
+		AnimationTimer animation = new AnimationTimer() {
+			public void handle(long now) {
+				// TODO Auto-generated method stub
+				update(gc);
+			}
+		};
+		animation.start();
 	}
 	public static void shedule(long time, Runnable r){
 		new Thread(() -> {

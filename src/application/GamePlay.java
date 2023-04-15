@@ -39,11 +39,8 @@ public class GamePlay extends Application{
 		root3.getChildren().add(canvas);
 		
 		this.player = new Player(100,350, 250);
-		
-		Timeline loop = new Timeline(new KeyFrame(Duration.millis(1000.0/40), e -> update(gc)));
-		loop.setCycleCount(Animation.INDEFINITE);
-		loop.play();
 		spawnEnemies();
+		
 		canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> this.player.shoot(e.getX(), e.getY()));
@@ -52,6 +49,14 @@ public class GamePlay extends Application{
 		stage.setResizable(false);
 		stage.setScene(scene3);
 		stage.show();
+		
+		AnimationTimer animation = new AnimationTimer() {
+			public void handle(long now) {
+				// TODO Auto-generated method stub
+				update(gc);
+			}
+		};
+		animation.start();
 	}
 	
 	private void spawnEnemies(){
@@ -59,9 +64,7 @@ public class GamePlay extends Application{
 			try {
 				Random random = new Random();
 				while (true){
-					int x =(int)( random.nextDouble()*800);
-					int y =(int)( random.nextDouble()*600);
-					this.enemies.add(new Enemy(this.player, x, y));
+					this.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
 					Thread.sleep(1000);
 				}
 			} catch (InterruptedException ex){

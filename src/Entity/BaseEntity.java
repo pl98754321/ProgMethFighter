@@ -1,7 +1,5 @@
 package Entity;
 
-import java.util.ArrayList;
-
 public abstract class BaseEntity {
 	private int Hp;
 	private int speed;

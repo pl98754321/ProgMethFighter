@@ -23,7 +23,7 @@ public class Bullet{
 	
 	public void update(GraphicsContext gc){
 		gc.setFill(Color.BLACK);
-		gc.fillOval(this.x, this.y,20 , 20);
+		gc.fillOval(this.x, this.y, 20 , 20);
 		this.x += Math.cos(this.direction)*10;
 		this.y += Math.sin(this.direction)*10;
 	}

@@ -11,11 +11,12 @@ import javafx.util.Duration;
 import javafx.scene.input.KeyCode;
 import Entity.Player;
 import java.util.*;
+import Entity.Enemy;
 
 public class GamePlay extends Application{
 	private Player player;
 	private Map<KeyCode, Boolean> keys = new HashMap<>();
-	
+	public static List<Enemy> enemies = new ArrayList<>();
 	
 	public static void shedule(long time, Runnable r){
 		new Thread(() -> {
@@ -41,17 +42,34 @@ public class GamePlay extends Application{
 		Timeline loop = new Timeline(new KeyFrame(Duration.millis(1000.0/40), e -> update(gc)));
 		loop.setCycleCount(Animation.INDEFINITE);
 		loop.play();
-
+		spawnEnemies();
 		canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> this.player.shoot(e.getX(), e.getY()));
 		
 		Scene scene3 = new Scene(root3, 800, 600);
 		stage.setResizable(false);
-		stage.setTitle("smooth move");
 		stage.setScene(scene3);
 		stage.show();
 	}
+	
+	private void spawnEnemies(){
+		Thread spawner = new Thread(() -> {
+			try {
+				Random random = new Random();
+				while (true){
+					int x =(int)( random.nextDouble()*800);
+					int y =(int)( random.nextDouble()*600);
+					this.enemies.add(new Enemy(this.player, x, y));
+					Thread.sleep(1000);
+				}
+			} catch (InterruptedException ex){
+			}
+		});
+		spawner.setDaemon(true);
+		spawner.start();
+	}
+	
 	
 
 	public static void main(String[] args){
@@ -62,6 +80,19 @@ public class GamePlay extends Application{
 		gc.clearRect(0, 0, 800, 600);
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, 800, 600);
+		
+		for (int i = 0; i < enemies.size(); i++){
+			Enemy e = enemies.get(i);
+			e.render(gc);
+			for (int j = 0; j < Player.bullets.size(); j++){
+				if (e.collided(Player.bullets.get(j).getX(), Player.bullets.get(j).getY(),40,20)){
+					Player.bullets.remove(j);
+					enemies.remove(i);
+					i++;
+					break;
+				}
+			}
+		}
 		
 		this.player.render(gc);
 
@@ -82,7 +113,7 @@ public class GamePlay extends Application{
 		gc.fillRect(30, 20, this.player.getHp()*250/100, 30);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 20, 250, 30);
-		
+		//exp 
 		gc.setFill(Color.LIGHTBLUE);
 		gc.fillRect(30, 50, this.player.getCurrentExp()*200/100, 10);
 		gc.setStroke(Color.BLACK);

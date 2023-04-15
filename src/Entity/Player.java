@@ -10,7 +10,24 @@ import javafx.scene.paint.Color;
 public class Player extends BaseEntity {
 	private int hp = 100;
 	private int currentexp=0;
+	private int nextLv;
 	private int Lv;
+	public int getCurrentexp() {
+		return currentexp;
+	}
+
+	public void setCurrentexp(int currentexp) {
+		this.currentexp = currentexp;
+	}
+
+	public int getNextLv() {
+		return this.nextLv;
+	}
+
+	public void setNextLv(int nextLv) {
+		this.nextLv = nextLv;
+	}
+
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
 	public static final int SPEED=3;
 	private boolean shooting = false, damage = false;
@@ -19,6 +36,8 @@ public class Player extends BaseEntity {
 		super(Hp,x,y);
 		this.setLv(1);
 		this.setCurrentExp(0);
+		this.Lv=1;
+		this.nextLv=100;
 	}
 	
 	public int getCurrentExp() {
@@ -30,7 +49,7 @@ public class Player extends BaseEntity {
 	}
 
 	public int getLv() {
-		return Lv;
+		return this.Lv;
 	}
 
 	public void setLv(int lv) {
@@ -38,7 +57,7 @@ public class Player extends BaseEntity {
 	}
 
 	public void setHp(int hp) {
-		this.hp = hp;
+		this.hp = this.hp;
 	}
 
 	public int getHp(){

@@ -17,6 +17,7 @@ public class GamePlay extends Application{
 	private Player player;
 	private Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static List<Enemy> enemies = new ArrayList<>();
+	public static List<Exp> exps = new ArrayList<>();
 	
 	public static void shedule(long time, Runnable r){
 		new Thread(() -> {
@@ -81,6 +82,21 @@ public class GamePlay extends Application{
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, 800, 600);
 		
+		for (int i = 0; i < this.exps.size(); i++){
+			Exp exp=exps.get(i);
+			exp.render(gc,this.exps.get(i).getX(),this.exps.get(i).getY());
+			if(exp.collided(player.getX(), player.getY(), 10,40)){
+				player.setCurrentExp(player.getCurrentExp()+exp.exp);
+				if(player.getCurrentExp()>=player.getNextLv()) {
+					System.out.println("lv up");
+					player.setLv(player.getLv()+1);
+					player.setCurrentExp(0);
+					player.setNextLv(player.getNextLv()*2);
+				}
+				exps.remove(i);
+			}
+		}
+		
 		for (int i = 0; i < enemies.size(); i++){
 			Enemy e = enemies.get(i);
 			e.render(gc);
@@ -88,6 +104,7 @@ public class GamePlay extends Application{
 				if (e.collided(Player.bullets.get(j).getX(), Player.bullets.get(j).getY(),40,20)){
 					Player.bullets.remove(j);
 					enemies.remove(i);
+					exps.add(new Exp(e.getX(),e.getY()));
 					i++;
 					break;
 				}
@@ -115,9 +132,11 @@ public class GamePlay extends Application{
 		gc.strokeRect(30, 20, 250, 30);
 		//exp 
 		gc.setFill(Color.LIGHTBLUE);
-		gc.fillRect(30, 50, this.player.getCurrentExp()*200/100, 10);
+		gc.fillRect(30, 50, this.player.getCurrentExp()*200/player.getNextLv(), 10);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 50, 200, 10);
 		
+		gc.setFill(Color.BLACK);
+		gc.fillText("Lv : "+player.getLv()+" EXP : "+player.getCurrentExp()+"/"+player.getNextLv(),240 ,60);
 	}
 }

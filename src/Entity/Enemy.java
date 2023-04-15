@@ -36,7 +36,6 @@ public class Enemy{
 	
 	public void render(GraphicsContext gc){
 		gc.setFill(Color.RED);
-		System.out.println(this.x+","+this.y);
 		gc.fillOval(this.x, this.y, 40, 40);
 		double distance = Math.sqrt(Math.pow(this.x-this.player.getX(), 2)+Math.pow(this.y-this.player.getY(), 2));
 		if (distance <= 40){
@@ -54,5 +53,21 @@ public class Enemy{
 				this.y -= Math.sin(angle)*2;
 			}
 		}
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
 	}
 }

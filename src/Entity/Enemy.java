@@ -1,6 +1,6 @@
 package Entity;
 
-import application.FirstPage;
+import application.MainApplication;
 import application.GamePlay;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -41,7 +41,7 @@ public class Enemy{
 		if (distance <= 40){
 			this.player.takeDamage(5);
 //			GamePlay.enemies.remove(this);
-			FirstPage.enemies.remove(this);
+			MainApplication.enemies.remove(this);
 		} else {
 			double angle = Math.atan2(this.player.getY()-this.y, this.player.getX()-this.x);
 			this.x += Math.cos(angle)*2;

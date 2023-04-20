@@ -41,7 +41,7 @@ public class GamePlay extends Application{
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root3.getChildren().add(canvas);
 		
-		this.player = new Player(100,350, 250);
+		this.player = new Player(10,350, 250);
 		spawnEnemies();
 		
 		canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));

@@ -17,6 +17,7 @@ import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -26,9 +27,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -63,19 +68,19 @@ public class MainApplication extends Application {
 		root.add(history,0,1);
 		Scene scene =new Scene(root,800,600);
 		//gameplay page
-				StackPane root3 = new StackPane();
-				Canvas canvas = new Canvas(800, 600);
-				canvas.setFocusTraversable(true);
-				GraphicsContext gc = canvas.getGraphicsContext2D();
-				root3.getChildren().add(canvas);
+		StackPane root3 = new StackPane();
+		Canvas canvas = new Canvas(800, 600);
+		canvas.setFocusTraversable(true);
+		GraphicsContext gc = canvas.getGraphicsContext2D();
+		root3.getChildren().add(canvas);
 				
-				this.player = new Player(100,350, 250);
+		this.player = new Player(100,350, 250);
 
-				canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
-				canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
-				canvas.setOnMouseClicked(e -> this.player.shoot(e.getX(), e.getY()));
+		canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
+		canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
+		canvas.setOnMouseClicked(e -> this.player.shoot(e.getX(), e.getY()));
 				
-				Scene scene3 = new Scene(root3, 800, 600);
+		Scene scene3 = new Scene(root3, 800, 600);
 		
 		//select stage page
 		FXMLLoader loader = new FXMLLoader(Thread.currentThread().getContextClassLoader().getResource("SSFXML.fxml"));
@@ -103,6 +108,42 @@ public class MainApplication extends Application {
 			
 		});
 		
+		GridPane root4 = new GridPane();
+		root4.setBackground(Background.fill(Color.GRAY));
+		root4.setAlignment(Pos.CENTER);
+		root4.setHgap(15);
+		root4.setVgap(15);
+		
+		Text lose = new Text("YOU LOSE");
+		lose.setFont(Font.font(50));
+		lose.setFill(Color.RED);
+		Button restart = new Button("----RESTART----");
+		restart.setOnMouseClicked(e -> {
+			player = new Player(100,350, 250);
+			this.keys.clear();
+			this.items.clear();
+			this.enemies.clear();
+			primaryStage.setScene(scene3);
+			spawnEnemies();
+
+			
+		});
+		Button menu = new Button(" -MAIN MENU- ");
+		menu.setOnMouseClicked(e -> {
+			player = new Player(100,350, 250);
+			player.setX(350);
+			player.setY(250);
+			this.items.clear();
+			this.enemies.clear();
+			primaryStage.setScene(scene);
+
+			
+		});
+		root4.add(lose, 0, 0,2,1);
+		root4.add(restart,0,1);
+		root4.add(menu,1,1);
+		Scene scene4 =new Scene(root4,800,600);
+		
 		
 		
 		
@@ -114,8 +155,12 @@ public class MainApplication extends Application {
 		
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
-				// TODO Auto-generated method stub
-				update(gc);
+				if(player.getHp()>0) {
+					update(gc);
+				}
+				else {
+					primaryStage.setScene(scene4);
+				}
 			}
 		};
 		animation.start();
@@ -127,6 +172,9 @@ public class MainApplication extends Application {
 				while (true){
 					this.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
 					Thread.sleep(1000);
+					if(player.getHp()<=0) {
+						return;
+					}
 				}
 			} catch (InterruptedException ex){
 			}
@@ -181,14 +229,14 @@ public class MainApplication extends Application {
 		}
 		if (this.keys.getOrDefault(KeyCode.A, false)){
 			this.player.move(-player.SPEED, 0);
-		}
+			}
 		if (this.keys.getOrDefault(KeyCode.S, false)){
 			this.player.move(0, player.SPEED);
 		}
 		if (this.keys.getOrDefault(KeyCode.D, false)){
 			this.player.move(player.SPEED, 0);
 		}
-		//HP 
+			//HP 
 		gc.setFill(Color.FORESTGREEN);
 		gc.fillRect(30, 20, this.player.getHp()*250/100, 30);
 		gc.setStroke(Color.BLACK);
@@ -201,6 +249,7 @@ public class MainApplication extends Application {
 		
 		gc.setFill(Color.BLACK);
 		gc.fillText("Lv : "+player.getLv()+" EXP : "+player.getCurrentExp()+"/"+player.getNextLv(),240 ,60);
+	
 		
 	}
 

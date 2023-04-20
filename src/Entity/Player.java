@@ -8,7 +8,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
-	private int hp = 100;
+	private int hp;
 	private int currentexp=0;
 	private int nextLv;
 	private int Lv;
@@ -66,7 +66,7 @@ public class Player extends BaseEntity {
 	
 	public void takeDamage(int dmg){
 		if (damage) return;
-		this.hp -= dmg;
+		this.setHp(this.getHp()-dmg);
 		damage = true;
 		GamePlay.shedule(150, () -> damage = false);
 	}

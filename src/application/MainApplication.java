@@ -133,6 +133,7 @@ public class MainApplication extends Application {
 			player = new Player(100,350, 250);
 			player.setX(350);
 			player.setY(250);
+			this.keys.clear();
 			this.items.clear();
 			this.enemies.clear();
 			primaryStage.setScene(scene);

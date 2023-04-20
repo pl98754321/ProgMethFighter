@@ -1,5 +1,6 @@
 package Entity;
 
+import application.FirstPage;
 import application.GamePlay;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -30,7 +31,6 @@ public class Enemy{
 
 
 	public boolean collided(double x, double y, double w1, double w2){
-		// Check if the distance between the center of the the 2 enemies is less than the total width (diameter)
 		return Math.sqrt(Math.pow(this.x+w1/2-x-w2/2, 2)+Math.pow(this.y+w1/2-y-w2/2, 2)) <= w1/2+w2/2;
 	}
 	
@@ -39,9 +39,9 @@ public class Enemy{
 		gc.fillOval(this.x, this.y, 40, 40);
 		double distance = Math.sqrt(Math.pow(this.x-this.player.getX(), 2)+Math.pow(this.y-this.player.getY(), 2));
 		if (distance <= 40){
-			// Damage to player
 			this.player.takeDamage(5);
-			GamePlay.enemies.remove(this);
+//			GamePlay.enemies.remove(this);
+			FirstPage.enemies.remove(this);
 		} else {
 			double angle = Math.atan2(this.player.getY()-this.y, this.player.getX()-this.x);
 			this.x += Math.cos(angle)*2;

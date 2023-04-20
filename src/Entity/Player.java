@@ -57,7 +57,7 @@ public class Player extends BaseEntity {
 	}
 
 	public void setHp(int hp) {
-		this.hp = this.hp;
+		this.hp = Math.min(100, hp);
 	}
 
 	public int getHp(){

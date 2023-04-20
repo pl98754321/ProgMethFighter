@@ -7,17 +7,20 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.*;
 import javafx.scene.paint.Color;
 import javafx.animation.*;
-import javafx.util.Duration;
 import javafx.scene.input.KeyCode;
 import Entity.Player;
+import Item.*;
+
 import java.util.*;
 import Entity.Enemy;
 
 public class GamePlay extends Application{
 	private Player player;
 	private Map<KeyCode, Boolean> keys = new HashMap<>();
-	public static List<Enemy> enemies = new ArrayList<>();
-	public static List<Exp> exps = new ArrayList<>();
+	public static ArrayList<Enemy> enemies = new ArrayList<>();
+	public static ArrayList<BaseItem> items = new ArrayList<>();
+	
+	
 	
 	public static void shedule(long time, Runnable r){
 		new Thread(() -> {
@@ -85,18 +88,12 @@ public class GamePlay extends Application{
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, 800, 600);
 		
-		for (int i = 0; i < this.exps.size(); i++){
-			Exp exp=exps.get(i);
-			exp.render(gc,this.exps.get(i).getX(),this.exps.get(i).getY());
-			if(exp.collided(player.getX(), player.getY(), 10,40)){
-				player.setCurrentExp(player.getCurrentExp()+exp.exp);
-				if(player.getCurrentExp()>=player.getNextLv()) {
-					System.out.println("lv up");
-					player.setLv(player.getLv()+1);
-					player.setCurrentExp(0);
-					player.setNextLv(player.getNextLv()*2);
-				}
-				exps.remove(i);
+		for (int i = 0; i < this.items.size(); i++){
+			BaseItem item=items.get(i);
+			item.render(gc);
+			if(item.collided(player.getX(), player.getY(), 10,40)){
+				item.performEffect(player);
+				items.remove(i);
 			}
 		}
 		
@@ -107,7 +104,10 @@ public class GamePlay extends Application{
 				if (e.collided(Player.bullets.get(j).getX(), Player.bullets.get(j).getY(),40,20)){
 					Player.bullets.remove(j);
 					enemies.remove(i);
-					exps.add(new Exp(e.getX(),e.getY()));
+					items.add(new Exp(e.getX(),e.getY()));
+					if(Math.random()<=0.2) {
+						items.add(new Potion(e.getX(),e.getY()));
+					}
 					i++;
 					break;
 				}

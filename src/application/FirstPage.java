@@ -1,10 +1,16 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
+import Entity.Enemy;
 import Entity.Player;
+import Item.BaseItem;
+import Item.Exp;
+import Item.Potion;
 import StageSelection.SSController;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
@@ -30,6 +36,8 @@ import javafx.scene.input.KeyEvent;
 public class FirstPage extends Application {
 	private Player player;
 	private Map<KeyCode, Boolean> keys = new HashMap<>();
+	public static ArrayList<Enemy> enemies = new ArrayList<>();
+	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public void start(final Stage primaryStage) throws IOException {
 		//start page
 		GridPane root = new GridPane();
@@ -86,6 +94,7 @@ public class FirstPage extends Application {
 					case S:
 						myController.toGamePlay();	
 						primaryStage.setScene(scene3);
+						spawnEnemies();
 						break;	
 					default:
 						break;
@@ -111,6 +120,20 @@ public class FirstPage extends Application {
 		};
 		animation.start();
 	}
+	private void spawnEnemies(){
+		Thread spawner = new Thread(() -> {
+			try {
+				Random random = new Random();
+				while (true){
+					this.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
+					Thread.sleep(1000);
+				}
+			} catch (InterruptedException ex){
+			}
+		});
+		spawner.setDaemon(true);
+		spawner.start();
+	}
 	public static void shedule(long time, Runnable r){
 		new Thread(() -> {
 			try {
@@ -124,6 +147,32 @@ public class FirstPage extends Application {
 		gc.clearRect(0, 0, 800, 600);
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, 800, 600);
+		
+		for (int i = 0; i < this.items.size(); i++){
+			BaseItem item=items.get(i);
+			item.render(gc);
+			if(item.collided(player.getX(), player.getY(), 10,40)){
+				item.performEffect(player);
+				items.remove(i);
+			}
+		}
+		
+		for (int i = 0; i < enemies.size(); i++){
+			Enemy e = enemies.get(i);
+			e.render(gc);
+			for (int j = 0; j < Player.bullets.size(); j++){
+				if (e.collided(Player.bullets.get(j).getX(), Player.bullets.get(j).getY(),40,20)){
+					Player.bullets.remove(j);
+					enemies.remove(i);
+					items.add(new Exp(e.getX(),e.getY()));
+					if(Math.random()<=0.2) {
+						items.add(new Potion(e.getX(),e.getY()));
+					}
+					i++;
+					break;
+				}
+			}
+		}
 		
 		this.player.render(gc);
 
@@ -144,11 +193,14 @@ public class FirstPage extends Application {
 		gc.fillRect(30, 20, this.player.getHp()*250/100, 30);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 20, 250, 30);
-		
+		//exp 
 		gc.setFill(Color.LIGHTBLUE);
-		gc.fillRect(30, 50, this.player.getCurrentExp()*200/100, 10);
+		gc.fillRect(30, 50, this.player.getCurrentExp()*200/player.getNextLv(), 10);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 50, 200, 10);
+		
+		gc.setFill(Color.BLACK);
+		gc.fillText("Lv : "+player.getLv()+" EXP : "+player.getCurrentExp()+"/"+player.getNextLv(),240 ,60);
 		
 	}
 

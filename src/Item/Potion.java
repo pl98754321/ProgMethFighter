@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Potion extends BaseItem {
-	public int Hp=10;
+	public final int HP=10;
 	
 	public Potion(int x, int y) {
 		super(x,y);
@@ -19,7 +19,7 @@ public class Potion extends BaseItem {
 
 	@Override
 	public void performEffect(Player player) {
-		player.setHp(player.getHp()+this.Hp);
+		player.setHp(player.getHp()+this.HP);
 		}
 		
 }	

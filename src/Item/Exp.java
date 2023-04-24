@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Exp extends BaseItem {
-	public int exp=10;
+	public final int EXP=10;
 	
 	public Exp(int x, int y) {
 		super(x,y);
@@ -19,7 +19,7 @@ public class Exp extends BaseItem {
 
 	@Override
 	public void performEffect(Player player) {
-		player.setCurrentExp(player.getCurrentExp()+10);
+		player.setCurrentExp(player.getCurrentExp()+this.EXP);
 		if(player.getCurrentExp()>=player.getNextLv()) {
 			player.setLv(player.getLv()+1);
 			player.setCurrentExp(player.getCurrentexp()-player.getNextLv());

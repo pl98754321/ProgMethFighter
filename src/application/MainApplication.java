@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
 import Entity.Enemy;
 import Entity.Player;
 import Item.BaseItem;
@@ -18,6 +17,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.stage.Stage;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -43,24 +43,29 @@ public class MainApplication extends Application {
 		root.setAlignment(Pos.CENTER);
 		root.setHgap(15);
 		root.setVgap(15);
-		final Button start = new Button("------START------");
-		
+		Button start = new Button("------START------");
+		start.getStyleClass().add("start");
+		start.setPrefWidth(120);
 		start.setOnMouseEntered(e -> {
 			start.setPrefWidth(start.getWidth()*5/4);
 			start.setPrefHeight(start.getHeight()*5/4);
+			start.setCursor(Cursor.HAND);
 		});
 		start.setOnMouseExited(e -> {
 			start.setPrefWidth(start.getWidth()*4/5);
 			start.setPrefHeight(start.getHeight()*4/5);
+			
 		});
-		Button history = new Button("HALL OF FRAME");
-		history.setOnAction(e -> {
-			System.out.println("switch to history page");
+		Button something = new Button("something");
+		something.setPrefWidth(120);
+		something.setOnAction(e -> {
+			System.out.println("something");
 		});
 
 		root.add(start,0,0);
-		root.add(history,0,1);
+		root.add(something,0,1);
 		Scene scene =new Scene(root,800,600);
+		scene.getStylesheets().add(this.getClass().getResource("application.css").toExternalForm());
 		//gameplay page
 		StackPane root3 = new StackPane();
 		Canvas canvas = new Canvas(800, 600);
@@ -166,7 +171,7 @@ public class MainApplication extends Application {
 				Random random = new Random();
 				while (true){
 					this.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
-					Thread.sleep(1000);
+					Thread.sleep(700);
 					if(player.getHp()<=0) {
 						return;
 					}

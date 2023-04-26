@@ -8,13 +8,11 @@ public class Exp extends BaseItem {
 	public final int EXP=10;
 	
 	public Exp(int x, int y) {
-		super(x,y);
+		super(x,y,10);
 	}
-	
+	@Override
 	public void render(GraphicsContext gc){
-		gc.setFill(Color.YELLOW);
-		gc.fillOval(this.getX(), this.getY(), 10, 10);
-		
+		this.render(gc, Color.YELLOW);
 	}
 
 	@Override

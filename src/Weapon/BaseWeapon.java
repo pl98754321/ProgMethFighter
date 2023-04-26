@@ -1,26 +1,15 @@
 package Weapon;
 
-import Skill.Skill;
-
 public abstract class BaseWeapon {
 	private int attack;
 	private int speed;
-	private Skill skill;
 	
-	public BaseWeapon(int attack,int speed,Skill skill) {
+	public BaseWeapon(int attack,int speed) {
 		this.setAttack(attack);
 		this.setSpeed(speed);
-		this.setSkill(skill);
 	}
-
-	public Skill getSkill() {
-		return skill;
-	}
-
-	public void setSkill(Skill skill) {
-		this.skill = skill;
-	}
-
+	
+	//getter setter
 	public int getAttack() {
 		return attack;
 	}

@@ -1,30 +1,20 @@
 package Bullet;
 
+import Entity.BaseObjective;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Bullet{
-	private int  x, y;
+public class Bullet extends BaseObjective{
 	private double direction;
 	
 	public Bullet(double direction, int x, int y){
-		this.x = x;
-		this.y = y;
+		super(x,y,20);
 		this.direction = direction;
 	}
 	
-	public double getX(){
-		return this.x;
-	}
-	
-	public double getY(){
-		return this.y;
-	}
-	
 	public void update(GraphicsContext gc){
-		gc.setFill(Color.BLACK);
-		gc.fillOval(this.x, this.y, 20 , 20);
-		this.x += Math.cos(this.direction)*10;
-		this.y += Math.sin(this.direction)*10;
+		this.render(gc, Color.BLACK);
+		this.move((int) (Math.cos(this.direction)*10), 
+				(int) (Math.sin(this.direction)*10));
 	}
 }

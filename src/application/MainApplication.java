@@ -199,7 +199,7 @@ public class MainApplication extends Application {
 		for (int i = 0; i < this.items.size(); i++){
 			BaseItem item=items.get(i);
 			item.render(gc);
-			if(item.collided(player.getX(), player.getY(), 10,40)){
+			if(item.distance(player)<=0){
 				item.performEffect(player);
 				items.remove(i);
 			}
@@ -209,12 +209,15 @@ public class MainApplication extends Application {
 			Enemy e = enemies.get(i);
 			e.render(gc);
 			for (int j = 0; j < Player.bullets.size(); j++){
-				if (e.collided(Player.bullets.get(j).getX(), Player.bullets.get(j).getY(),40,20)){
+				if (e.distance(Player.bullets.get(j))<=0){
 					Player.bullets.remove(j);
 					enemies.remove(i);
-					items.add(new Exp(e.getX(),e.getY()));
 					if(Math.random()<=0.2) {
-						items.add(new Potion(e.getX(),e.getY()));
+						items.add(new Exp(e.getX()+2,e.getY()));
+						items.add(new Potion(e.getX()-2,e.getY()));
+					}
+					else {
+						items.add(new Exp(e.getX(),e.getY()));
 					}
 					i++;
 					break;

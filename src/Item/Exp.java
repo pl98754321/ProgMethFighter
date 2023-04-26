@@ -22,7 +22,7 @@ public class Exp extends BaseItem {
 		player.setCurrentExp(player.getCurrentExp()+this.EXP);
 		if(player.getCurrentExp()>=player.getNextLv()) {
 			player.setLv(player.getLv()+1);
-			player.setCurrentExp(player.getCurrentexp()-player.getNextLv());
+			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
 			player.setNextLv((int)(player.getNextLv()*1.1));
 		}
 	}	

@@ -73,7 +73,7 @@ public class MainApplication extends Application {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root3.getChildren().add(canvas);
 				
-		this.player = new Player(100,350, 250);
+		this.player = new Player(350, 250);
 
 		canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
@@ -118,7 +118,7 @@ public class MainApplication extends Application {
 		lose.setFill(Color.RED);
 		Button restart = new Button("----RESTART----");
 		restart.setOnMouseClicked(e -> {
-			player = new Player(100,350, 250);
+			player = new Player(350, 250);
 			this.keys.clear();
 			this.items.clear();
 			this.enemies.clear();
@@ -129,7 +129,7 @@ public class MainApplication extends Application {
 		});
 		Button menu = new Button(" -MAIN MENU- ");
 		menu.setOnMouseClicked(e -> {
-			player = new Player(100,350, 250);
+			player = new Player(350, 250);
 			player.setX(350);
 			player.setY(250);
 			this.keys.clear();

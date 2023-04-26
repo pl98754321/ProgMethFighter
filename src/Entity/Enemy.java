@@ -1,7 +1,6 @@
 package Entity;
 
 import application.MainApplication;
-import application.GamePlay;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -15,8 +14,8 @@ public class Enemy extends BaseEntity{
 	}
 	
 	private boolean checkCollision(){
-		for (int i = 0; i < GamePlay.enemies.size(); i++){
-			Enemy e = GamePlay.enemies.get(i);
+		for (int i = 0; i < MainApplication.enemies.size(); i++){
+			Enemy e = MainApplication.enemies.get(i);
 			if (e != this){
 				if (this.distance(e) <=0){
 					return true;

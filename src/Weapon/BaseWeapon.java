@@ -9,6 +9,8 @@ public abstract class BaseWeapon {
 		this.setSpeed(speed);
 	}
 	
+	public abstract void shoot(int currentX, int currentY,int toX,int toY);
+	
 	//getter setter
 	public int getAttack() {
 		return attack;

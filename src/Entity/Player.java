@@ -3,19 +3,21 @@ package Entity;
 
 import java.util.ArrayList;
 import Bullet.Bullet;
-import application.GamePlay;
+import Weapon.BaseWeapon;
+import Weapon.Gun;
+import application.MainApplication;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
-	private int hp;
 	private int currentexp=0;
 	private int nextLv;
 	private int Lv;
+	private BaseWeapon weapon;
 
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
 	public static final int SPEED=3;
-	private boolean shooting = false, damage = false;
+	private boolean damage = false;
 	
 	public Player(int x, int y){
 		super(x,y,50);
@@ -23,13 +25,14 @@ public class Player extends BaseEntity {
 		this.setCurrentExp(0);
 		this.Lv=1;
 		this.nextLv=100;
+		this.weapon = new Gun();
 	}
 	
 	public void takeDamage(int dmg){
 		if (damage) return;
 		this.setHp(this.getHp()-dmg);
 		damage = true;
-		GamePlay.shedule(150, () -> damage = false);
+		MainApplication.shedule(150, () -> damage = false);
 	}
 	
 	public void render(GraphicsContext gc){
@@ -39,13 +42,8 @@ public class Player extends BaseEntity {
 		}
 	}
 	
-	public void shoot(double x, double y){
-		if (shooting) return;
-		shooting = true;
-		GamePlay.shedule(200, () -> this.shooting = false);
-		double direction = Math.atan2(y-this.getY(), x-this.getX());
-		Bullet b = new Bullet(direction, this.getX()+20, this.getY()+20);
-		this.bullets.add(b);
+	public void shoot(int x, int y){
+		weapon.shoot(this.getX(), this.getY(), x, y);
 	}
 	
 	//getter setter
@@ -70,13 +68,5 @@ public class Player extends BaseEntity {
 
 	public void setLv(int lv) {
 		this.Lv = lv;
-	}
-
-	public void setHp(int hp) {
-		this.hp = Math.min(100, hp);
-	}
-
-	public int getHp(){
-		return this.hp;
 	}
 }

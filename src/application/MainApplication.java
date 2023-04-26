@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+
+import Bullet.Bullet;
 import Entity.Enemy;
 import Entity.Player;
 import Item.BaseItem;
@@ -37,6 +39,7 @@ public class MainApplication extends Application {
 	private Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
+	public static ArrayList<Bullet> bullets = new ArrayList<>();
 	public void start(final Stage primaryStage) throws IOException {
 		//start page
 		GridPane root = new GridPane();
@@ -66,7 +69,7 @@ public class MainApplication extends Application {
 		root.add(something,0,1);
 		Scene scene =new Scene(root,800,600);
 		scene.getStylesheets().add(this.getClass().getResource("application.css").toExternalForm());
-		//gameplay page
+		//Game play page
 		StackPane root3 = new StackPane();
 		Canvas canvas = new Canvas(800, 600);
 		canvas.setFocusTraversable(true);
@@ -77,7 +80,7 @@ public class MainApplication extends Application {
 
 		canvas.setOnKeyPressed(e -> this.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> this.keys.put(e.getCode(), false));
-		canvas.setOnMouseClicked(e -> this.player.shoot(e.getX(), e.getY()));
+		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));
 				
 		Scene scene3 = new Scene(root3, 800, 600);
 		
@@ -247,7 +250,7 @@ public class MainApplication extends Application {
 		
 		gc.setFill(Color.BLACK);
 		gc.fillText("HP : "+player.getHp()+" / "+100,290 ,50);
-		//exp 
+		//EXP
 		gc.setFill(Color.LIGHTBLUE);
 		gc.fillRect(30, 50, this.player.getCurrentExp()*200/player.getNextLv(), 10);
 		gc.setStroke(Color.BLACK);

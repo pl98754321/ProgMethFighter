@@ -14,20 +14,19 @@ public class Enemy extends BaseEntity{
 	}
 	
 	private boolean checkCollision(){
-		System.out.print("CheckCo");
 		for (int i = 0; i < MainApplication.enemies.size(); i++){
 			Enemy e = MainApplication.enemies.get(i);
 			if (e != this){
 				if (this.distance(e) <=0){
-					e.knogback(this);
-					this.knogback(e);
+					e.knockback(this);
+					this.knockback(e);
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	public void knogback(BaseObjective others) {
+	public void knockback(BaseObjective others) {
 		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
 		this.move(-(int) (Math.cos(angle)*10),-(int) (Math.sin(angle)*10));
 		this.checkCollision();

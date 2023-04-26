@@ -64,4 +64,5 @@ configurations:
 *.pdf
 *.doc
 .DS_Store
+.classpath
 

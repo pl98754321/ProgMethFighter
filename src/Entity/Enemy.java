@@ -14,15 +14,36 @@ public class Enemy extends BaseEntity{
 	}
 	
 	private boolean checkCollision(){
+		System.out.print("CheckCo");
 		for (int i = 0; i < MainApplication.enemies.size(); i++){
 			Enemy e = MainApplication.enemies.get(i);
 			if (e != this){
 				if (this.distance(e) <=0){
+					e.knogback(this);
+					this.knogback(e);
 					return true;
 				}
 			}
 		}
 		return false;
+	}
+	public void knogback(BaseObjective others) {
+		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
+		this.move(-(int) (Math.cos(angle)*10),-(int) (Math.sin(angle)*10));
+		this.checkCollision();
+	}
+	
+	public void move(BaseObjective others) {
+		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
+		this.move((int) (Math.cos(angle)*2),0);
+//		if (checkCollision()){
+//			this.move(-(int) (Math.cos(angle)*2),0);
+//		}
+		this.move(0,(int) (Math.sin(angle)*2));
+		this.checkCollision();
+//		if (checkCollision()){
+//			this.move(0,-(int) (Math.sin(angle)*2));
+//		}
 	}
 	
 	public void render(GraphicsContext gc){
@@ -32,15 +53,7 @@ public class Enemy extends BaseEntity{
 //			GamePlay.enemies.remove(this);
 			MainApplication.enemies.remove(this);
 		} else {
-			double angle = Math.atan2(this.player.getY()-this.getY(), this.player.getX()-this.getX());
-			this.move((int) (Math.cos(angle)*2),0);
-			if (checkCollision()){
-				this.move(-(int) (Math.cos(angle)*2),0);
-			}
-			this.move(0,(int) (Math.sin(angle)*2));
-			if (checkCollision()){
-				this.move(0,-(int) (Math.sin(angle)*2));
-			}
+			this.move(this.player);
 		}
 	}
 }

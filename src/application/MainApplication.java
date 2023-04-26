@@ -199,6 +199,10 @@ public class MainApplication extends Application {
 		gc.setFill(Color.WHITE);
 		gc.fillRect(0, 0, 800, 600);
 		
+		for (Bullet a :bullets){
+			a.update(gc);
+		}
+		
 		for (int i = 0; i < this.items.size(); i++){
 			BaseItem item=items.get(i);
 			item.render(gc);
@@ -211,9 +215,9 @@ public class MainApplication extends Application {
 		for (int i = 0; i < enemies.size(); i++){
 			Enemy e = enemies.get(i);
 			e.render(gc);
-			for (int j = 0; j < Player.bullets.size(); j++){
-				if (e.distance(Player.bullets.get(j))<=0){
-					Player.bullets.remove(j);
+			for (int j = 0; j < bullets.size(); j++){
+				if (e.distance(bullets.get(j))<=0){
+					bullets.remove(j);
 					enemies.remove(i);
 					if(Math.random()<=0.2) {
 						items.add(new Exp(e.getX()+2,e.getY()));

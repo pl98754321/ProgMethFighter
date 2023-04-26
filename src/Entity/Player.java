@@ -14,8 +14,7 @@ public class Player extends BaseEntity {
 	private int nextLv;
 	private int Lv;
 	private BaseWeapon weapon;
-
-	public static ArrayList<Bullet> bullets = new ArrayList<>();
+	
 	public static final int SPEED=3;
 	private boolean damage = false;
 	
@@ -37,9 +36,6 @@ public class Player extends BaseEntity {
 	
 	public void render(GraphicsContext gc){
 		this.render(gc, Color.BLUE);
-		for (int i = 0; i < this.bullets.size(); i++){
-			this.bullets.get(i).update(gc);
-		}
 	}
 	
 	public void shoot(int x, int y){

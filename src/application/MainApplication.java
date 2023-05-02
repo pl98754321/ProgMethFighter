@@ -1,11 +1,9 @@
 package application;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-
 import Bullet.Bullet;
 import Entity.Enemy;
 import Entity.Player;
@@ -33,7 +31,6 @@ import javafx.scene.text.Text;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-
 public class MainApplication extends Application {
 	private Player player;
 	private Map<KeyCode, Boolean> keys = new HashMap<>();
@@ -219,13 +216,7 @@ public class MainApplication extends Application {
 				if (e.distance(bullets.get(j))<=0){
 					bullets.remove(j);
 					enemies.remove(i);
-					if(Math.random()<=0.2) {
-						items.add(new Exp(e.getX()+2,e.getY()));
-						items.add(new Potion(e.getX()-2,e.getY()));
-					}
-					else {
-						items.add(new Exp(e.getX(),e.getY()));
-					}
+					e.dropItem(items, e);
 					i++;
 					break;
 				}
@@ -245,6 +236,9 @@ public class MainApplication extends Application {
 		}
 		if (this.keys.getOrDefault(KeyCode.D, false)){
 			this.player.move(player.SPEED, 0);
+		}
+		if (this.keys.getOrDefault(KeyCode.E, false)){
+			this.player.iAmAtomic(enemies);;
 		}
 			//HP 
 		gc.setFill(Color.FORESTGREEN);

@@ -33,6 +33,12 @@ public class Player extends BaseEntity {
 		damage = true;
 		MainApplication.shedule(150, () -> damage = false);
 	}
+	public void iAmAtomic(ArrayList<Enemy> Enemys) {
+		for(Enemy e : Enemys) {
+			e.dropItem(MainApplication.items, e);
+		}
+		Enemys.clear();
+	}
 	
 	public void render(GraphicsContext gc){
 		this.render(gc, Color.BLUE);

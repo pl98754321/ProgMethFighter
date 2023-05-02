@@ -1,5 +1,10 @@
 package Entity;
 
+import java.util.ArrayList;
+
+import Item.BaseItem;
+import Item.Exp;
+import Item.Potion;
 import application.MainApplication;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -43,6 +48,15 @@ public class Enemy extends BaseEntity{
 //		if (checkCollision()){
 //			this.move(0,-(int) (Math.sin(angle)*2));
 //		}
+	}
+	public void dropItem(ArrayList<BaseItem> items,Enemy e) {
+		if(Math.random()<=0.2) {
+			items.add(new Exp(e.getX()+2,e.getY()));
+			items.add(new Potion(e.getX()-2,e.getY()));
+		}
+		else {
+			items.add(new Exp(e.getX(),e.getY()));
+		}
 	}
 	
 	public void render(GraphicsContext gc){

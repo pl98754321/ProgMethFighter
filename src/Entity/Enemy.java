@@ -49,13 +49,13 @@ public class Enemy extends BaseEntity{
 //			this.move(0,-(int) (Math.sin(angle)*2));
 //		}
 	}
-	public void dropItem(ArrayList<BaseItem> items,Enemy e) {
+	public void dropItem(ArrayList<BaseItem> items) {
 		if(Math.random()<=0.2) {
-			items.add(new Exp(e.getX()+2,e.getY()));
-			items.add(new Potion(e.getX()-2,e.getY()));
+			items.add(new Exp(this.getX()+2,this.getY()));
+			items.add(new Potion(this.getX()-2,this.getY()));
 		}
 		else {
-			items.add(new Exp(e.getX(),e.getY()));
+			items.add(new Exp(this.getX(),this.getY()));
 		}
 	}
 	

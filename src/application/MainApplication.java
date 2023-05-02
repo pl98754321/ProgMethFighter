@@ -216,7 +216,7 @@ public class MainApplication extends Application {
 				if (e.distance(bullets.get(j))<=0){
 					bullets.remove(j);
 					enemies.remove(i);
-					e.dropItem(items, e);
+					e.dropItem(items);
 					i++;
 					break;
 				}

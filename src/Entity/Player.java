@@ -15,7 +15,7 @@ public class Player extends BaseEntity {
 	private int Lv;
 	private BaseWeapon weapon;
 	
-	public static final int SPEED=3;
+	public final int SPEED=3;
 	private boolean damage = false;
 	
 	public Player(int x, int y){
@@ -33,9 +33,9 @@ public class Player extends BaseEntity {
 		damage = true;
 		MainApplication.shedule(150, () -> damage = false);
 	}
-	public void iAmAtomic(ArrayList<Enemy> Enemys) {
+	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill ("i am atomic" มาจากการ์ตูนเรื่องนึงครับ)
 		for(Enemy e : Enemys) {
-			e.dropItem(MainApplication.items, e);
+			e.dropItem(MainApplication.items);
 		}
 		Enemys.clear();
 	}

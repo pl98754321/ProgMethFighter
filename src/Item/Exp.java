@@ -1,6 +1,7 @@
 package Item;
 
 import Entity.Player;
+import application.MainApplication;
 import javafx.scene.paint.Color;
 
 public class Exp extends BaseItem {
@@ -19,5 +20,6 @@ public class Exp extends BaseItem {
 			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
 			player.setNextLv((int)(player.getNextLv()*1.1));
 		}
+		MainApplication.items.remove(this);
 	}	
 }

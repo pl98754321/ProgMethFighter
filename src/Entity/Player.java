@@ -2,11 +2,9 @@ package Entity;
 
 
 import java.util.ArrayList;
-import Bullet.Bullet;
 import Weapon.BaseWeapon;
 import Weapon.Gun;
 import application.MainApplication;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
@@ -14,7 +12,7 @@ public class Player extends BaseEntity {
 	private int nextLv;
 	private int Lv;
 	private BaseWeapon weapon;
-	private boolean ultiReady=true;
+	private boolean ultiReady=true; //check player can use ultimate skill
 	
 	public boolean isUltiReady() {
 		return ultiReady;
@@ -49,7 +47,7 @@ public class Player extends BaseEntity {
 				e.dropItem(MainApplication.items);
 			}
 			this.setUltiReady(false);
-			MainApplication.coolDown(5000, () -> this.setUltiReady(true));
+			MainApplication.coolDown(5000, () -> this.setUltiReady(true));//perform ultimate skill  with cooldown 5 sec (not balance)
 			Enemys.clear();
 		}
 		else {

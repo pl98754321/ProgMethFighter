@@ -1,6 +1,7 @@
 package Item;
 
 import Entity.Player;
+import application.MainApplication;
 import javafx.scene.paint.Color;
 
 public class Magnet extends BaseItem {
@@ -11,7 +12,13 @@ public class Magnet extends BaseItem {
 	}
 
 	@Override
-	public void performEffect(Player player) {
-		System.out.println("proform all item");
+	public void performEffect(Player player) {//let all item on the screen perform!!!
+		for(BaseItem item:MainApplication.items) {
+			System.out.println(item.toString());
+			if(!(item instanceof Magnet)) {//if(it is  Magnet ){recursive ?!?!?}
+				item.performEffect(player);
+			}
+		}
+		MainApplication.items.clear();
 	}
 }

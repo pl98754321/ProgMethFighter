@@ -58,7 +58,7 @@ public class Enemy extends BaseEntity{
 		}
 		else {
 			items.add(new Exp(this.getX(),this.getY()));
-			items.add(new Magnet(this.getX(),this.getY()));
+			items.add(new Magnet(this.getX()+4,this.getY()));
 		}
 	}
 	

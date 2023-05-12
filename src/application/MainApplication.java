@@ -9,6 +9,7 @@ import Entity.Enemy;
 import Entity.Player;
 import Item.BaseItem;
 import Item.Exp;
+import Item.Magnet;
 import Item.Potion;
 import StageSelection.SSController;
 import javafx.animation.AnimationTimer;
@@ -205,7 +206,10 @@ public class MainApplication extends Application {
 			item.render(gc);
 			if(item.distance(player)<=0){
 				item.performEffect(player);
-				items.remove(i);
+				if(item instanceof Magnet) {
+					break;
+				}
+
 			}
 		}
 		

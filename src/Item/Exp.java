@@ -1,7 +1,6 @@
 package Item;
 
 import Entity.Player;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Exp extends BaseItem {
@@ -9,10 +8,7 @@ public class Exp extends BaseItem {
 	
 	public Exp(int x, int y) {
 		super(x,y,10);
-	}
-	@Override
-	public void render(GraphicsContext gc){
-		this.render(gc, Color.YELLOW);
+		this.setColor(Color.YELLOW);
 	}
 
 	@Override

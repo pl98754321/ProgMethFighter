@@ -14,7 +14,7 @@ public class Gun extends BaseWeapon {
 		// TODO Auto-generated method stub
 		if (!shooting) {
 			shooting = true;
-			MainApplication.shedule(200, () -> this.shooting = false);
+			MainApplication.coolDown(200, () -> this.shooting = false);
 			double direction = Math.atan2(toY-currentY, toX-currentX);
 			Bullet b = new Bullet(direction, currentX+20, currentY+20);
 			MainApplication.bullets.add(b);

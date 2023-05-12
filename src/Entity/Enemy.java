@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Item.BaseItem;
 import Item.Exp;
+import Item.Magnet;
 import Item.Potion;
 import application.MainApplication;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,6 +16,7 @@ public class Enemy extends BaseEntity{
 	
 	public Enemy(Player p, int x, int y){
 		super(x,y,40);
+		this.setColor(Color.BLACK);
 		this.player = p;
 	}
 	
@@ -56,11 +58,12 @@ public class Enemy extends BaseEntity{
 		}
 		else {
 			items.add(new Exp(this.getX(),this.getY()));
+			items.add(new Magnet(this.getX(),this.getY()));
 		}
 	}
 	
 	public void render(GraphicsContext gc){
-		this.render(gc, Color.BLACK);
+		super.render(gc);
 		if (this.distance(player) <= 0){
 			this.player.takeDamage(5);
 //			GamePlay.enemies.remove(this);

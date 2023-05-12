@@ -182,7 +182,7 @@ public class MainApplication extends Application {
 		spawner.setDaemon(true);
 		spawner.start();
 	}
-	public static void shedule(long time, Runnable r){
+	public static void coolDown(long time, Runnable r){
 		new Thread(() -> {
 			try {
 				Thread.sleep(time);
@@ -257,7 +257,10 @@ public class MainApplication extends Application {
 		gc.setFill(Color.BLACK);
 		gc.fillText("Lv : "+player.getLv()+" EXP : "+player.getCurrentExp()+"/"+player.getNextLv(),240 ,60);
 	
-		
+		if(player.isUltiReady()) {
+			gc.setFill(Color.BLACK);
+			gc.fillText("can use ultimate skill",30,70);
+		}
 	}
 
 	public static void main(String[] args) {

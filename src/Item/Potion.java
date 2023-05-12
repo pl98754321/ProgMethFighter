@@ -1,7 +1,6 @@
 package Item;
 
 import Entity.Player;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Potion extends BaseItem {
@@ -9,11 +8,7 @@ public class Potion extends BaseItem {
 	
 	public Potion(int x, int y) {
 		super(x,y,10);
-	}
-	
-	@Override
-	public void render(GraphicsContext gc){
-		this.render(gc, Color.LIGHTBLUE);		
+		this.setColor(Color.LIGHTBLUE);
 	}
 
 	@Override

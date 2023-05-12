@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 public class BaseObjective {
 	private int x,y;
 	private int size;
+	private Color color;
 	
 	public BaseObjective(int x ,int y,int size) {
 		this.x = x;
@@ -26,11 +27,12 @@ public class BaseObjective {
 		return dis-this.getSize()/2-others.getSize()/2;
 	} 
 	
-	public void render(GraphicsContext gc,Color color) {
-		gc.setFill(color);
+	public void render(GraphicsContext gc) {
+		gc.setFill(this.getColor());
 		gc.fillOval(this.getX()-size/2, this.getY()-size/2, size, size);
 	}
 	
+
 	// Getter setter
 	public int getSize() {
 		return this.size;
@@ -53,5 +55,11 @@ public class BaseObjective {
 
 	public void setY(int y) {
 		this.y = y;
+	}
+	public void setColor(Color c) {
+		this.color=c;
+	}
+	public Color getColor() {
+		return this.color;
 	}
 }

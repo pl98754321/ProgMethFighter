@@ -9,11 +9,12 @@ public class Bullet extends BaseObjective{
 	
 	public Bullet(double direction, int x, int y){
 		super(x,y,20);
+		this.setColor(Color.BLACK);
 		this.direction = direction;
 	}
 	
 	public void update(GraphicsContext gc){
-		this.render(gc, Color.BLACK);
+		this.render(gc);
 		this.move((int) (Math.cos(this.direction)*10), 
 				(int) (Math.sin(this.direction)*10));
 	}

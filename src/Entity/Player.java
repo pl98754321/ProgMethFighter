@@ -14,12 +14,22 @@ public class Player extends BaseEntity {
 	private int nextLv;
 	private int Lv;
 	private BaseWeapon weapon;
+	private boolean ultiReady=true;
 	
+	public boolean isUltiReady() {
+		return ultiReady;
+	}
+
+	public void setUltiReady(boolean ultiReady) {
+		this.ultiReady = ultiReady;
+	}
+
 	public final int SPEED=3;
 	private boolean damage = false;
 	
 	public Player(int x, int y){
 		super(x,y,50);
+		this.setColor(Color.BLUE);
 		this.setLv(1);
 		this.setCurrentExp(0);
 		this.Lv=1;
@@ -31,19 +41,27 @@ public class Player extends BaseEntity {
 		if (damage) return;
 		this.setHp(this.getHp()-dmg);
 		damage = true;
-		MainApplication.shedule(150, () -> damage = false);
+		MainApplication.coolDown(150, () -> damage = false);
 	}
 	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill ("i am atomic" มาจากการ์ตูนเรื่องนึงครับ)
-		for(Enemy e : Enemys) {
-			e.dropItem(MainApplication.items);
+		if(this.isUltiReady()) {
+			for(Enemy e : Enemys) {
+				e.dropItem(MainApplication.items);
+			}
+			this.setUltiReady(false);
+			MainApplication.coolDown(5000, () -> this.setUltiReady(true));
+			Enemys.clear();
 		}
-		Enemys.clear();
+		else {
+			return;
+		}
+		
 	}
 	
-	public void render(GraphicsContext gc){
-		this.render(gc, Color.BLUE);
-	}
 	
+	
+
+
 	public void shoot(int x, int y){
 		weapon.shoot(this.getX(), this.getY(), x, y);
 	}

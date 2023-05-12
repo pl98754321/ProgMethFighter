@@ -10,7 +10,7 @@ import application.MainApplication;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Enemy extends BaseEntity{
+public class Enemy extends BaseEntity implements KnockBackAble{
 	private Player player;
 
 	
@@ -25,15 +25,15 @@ public class Enemy extends BaseEntity{
 			Enemy e = MainApplication.enemies.get(i);
 			if (e != this){
 				if (this.distance(e) <=0){
-					e.knockback(this);
-					this.knockback(e);
+					e.KnockBack(this);
+					this.KnockBack(e);
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	public void knockback(BaseObjective others) {
+	public void KnockBack(Enemy others) {
 		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
 		this.move(-(int) (Math.cos(angle)*10),-(int) (Math.sin(angle)*10));
 		this.checkCollision();

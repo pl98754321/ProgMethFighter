@@ -47,7 +47,7 @@ public class Player extends BaseEntity {
 				e.dropItem(MainApplication.items);
 			}
 			this.setUltiReady(false);
-			MainApplication.coolDown(5000, () -> this.setUltiReady(true));//perform ultimate skill  with cooldown 5 sec (not balance)
+			MainApplication.coolDown(0, () -> this.setUltiReady(true));//perform ultimate skill  with cooldown 0 sec (not balance)
 			Enemys.clear();
 		}
 		else {

@@ -14,8 +14,8 @@ public class Exp extends BaseItem {
 
 	@Override
 	public void performEffect(Player player) {
-		player.setCurrentExp(player.getCurrentExp()+this.EXP);
-		if(player.getCurrentExp()>=player.getNextLv()) {
+		player.setCurrentExp(player.getCurrentExp()+this.EXP);//add player EXP
+		if(player.getCurrentExp()>=player.getNextLv()) {//player level up
 			player.setLv(player.getLv()+1);
 			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
 			player.setNextLv((int)(player.getNextLv()*1.1));

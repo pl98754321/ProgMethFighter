@@ -13,12 +13,17 @@ public class Magnet extends BaseItem {
 
 	@Override
 	public void performEffect(Player player) {//let all item on the screen perform!!!
-		for(BaseItem item:MainApplication.items) {
-			System.out.println(item.toString());
-			if(!(item instanceof Magnet)) {//if(it is  Magnet ){recursive ?!?!?}
-				item.performEffect(player);
+		new Thread(() -> {
+			for(BaseItem item:MainApplication.items) {
+				
+				if(!(item instanceof Magnet)) {//if(it is  Magnet ){recursive ?!?!?}
+					item.performEffect(player);
+					System.out.println(item.toString());
+				}
 			}
-		}
-		MainApplication.items.clear();
+			MainApplication.items.clear();
+		}).start();
+		
+		
 	}
 }

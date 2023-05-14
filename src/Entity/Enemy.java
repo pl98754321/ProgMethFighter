@@ -53,13 +53,12 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	}
 	public void dropItem(ArrayList<BaseItem> items) {
 		if(Math.random()<=0.2) {
-			items.add(new Exp(this.getX()+2,this.getY()));
 			items.add(new Potion(this.getX()-2,this.getY()));
 		}
-		else {
-			items.add(new Exp(this.getX(),this.getY()));
+		if(Math.random()<=1) {
 			items.add(new Magnet(this.getX()+4,this.getY()));
-		}
+		}			
+		items.add(new Exp(this.getX()+2,this.getY()));
 	}
 	
 	public void render(GraphicsContext gc){

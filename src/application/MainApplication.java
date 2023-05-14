@@ -198,7 +198,7 @@ public class MainApplication extends Application {
 		gc.fillRect(0, 0, 800, 600);
 		
 		for (Bullet a :bullets){
-			a.update(gc);
+			a.render(gc);
 		}
 		
 		for (int i = 0; i < this.items.size(); i++){

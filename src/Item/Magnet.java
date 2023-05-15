@@ -23,9 +23,9 @@ public class Magnet extends BaseItem {
 //		System.out.println("performed all item");
 		
 		new Thread(() -> {
-			for(BaseItem item:MainApplication.items) {
-				if(!(item instanceof Magnet)) {//if(it is  Magnet ){recursive ?!?!?}
-					item.performEffect(player);
+			for(int i=0;i<MainApplication.items.size();i++) {
+				if(!(MainApplication.items.get(i) instanceof Magnet)) {//if(it is  Magnet ){recursive ?!?!?}
+					MainApplication.items.get(i).performEffect(player);
 					}
 				}
 				MainApplication.items.clear();

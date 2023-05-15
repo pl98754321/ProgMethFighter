@@ -15,10 +15,8 @@ public class BaseObjective {
 	}
 	
 	public void move(int vx, int vy){
-		int nextX=this.getX()+vx;
-		int nextY=this.getY()+vy;
-		this.setX(nextX);
-		this.setY(nextY);
+		this.setX(this.getX()+vx);
+		this.setY(this.getY()+vy);
 	}
 	
 	public double distance(BaseObjective others) {

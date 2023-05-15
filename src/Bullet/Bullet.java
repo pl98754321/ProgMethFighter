@@ -14,7 +14,7 @@ public class Bullet extends BaseObjective{
 	}
 	
 	public void render(GraphicsContext gc){
-		this.render(gc);
+		super.render(gc);
 		this.move((int) (Math.cos(this.direction)*10), 
 				(int) (Math.sin(this.direction)*10));
 	}

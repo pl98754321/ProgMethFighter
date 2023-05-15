@@ -200,9 +200,10 @@ public class MainApplication extends Application {
 		for (Bullet a :bullets){
 			a.render(gc);
 		}
-		
-		for (int i = 0; i < this.items.size(); i++){
-			BaseItem item=items.get(i);
+	
+
+		for (int i = 0; i < MainApplication.items.size(); i++){
+			BaseItem item = MainApplication.items.get(i);
 			item.render(gc);
 			if(item.distance(player)<=0){
 				item.performEffect(player);
@@ -212,7 +213,6 @@ public class MainApplication extends Application {
 
 			}
 		}
-		
 		for (int i = 0; i < enemies.size(); i++){
 			Enemy e = enemies.get(i);
 			e.render(gc);

@@ -15,7 +15,6 @@ public class Potion extends BaseItem {
 	@Override
 	public void performEffect(Player player) {
 		player.setHp(player.getHp()+this.HP);
-		MainApplication.items.remove(this);
 	}
 		
 		

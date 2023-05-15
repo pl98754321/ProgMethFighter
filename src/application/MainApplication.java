@@ -8,9 +8,7 @@ import Bullet.Bullet;
 import Entity.Enemy;
 import Entity.Player;
 import Item.BaseItem;
-import Item.Exp;
 import Item.Magnet;
-import Item.Potion;
 import StageSelection.SSController;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -121,8 +119,8 @@ public class MainApplication extends Application {
 		restart.setOnMouseClicked(e -> {
 			player = new Player(350, 250);
 			this.keys.clear();
-			this.items.clear();
-			this.enemies.clear();
+			MainApplication.items.clear();
+			MainApplication.enemies.clear();
 			primaryStage.setScene(scene3);
 			spawnEnemies();
 
@@ -134,8 +132,8 @@ public class MainApplication extends Application {
 			player.setX(350);
 			player.setY(250);
 			this.keys.clear();
-			this.items.clear();
-			this.enemies.clear();
+			MainApplication.items.clear();
+			MainApplication.enemies.clear();
 			primaryStage.setScene(scene);
 
 			
@@ -171,7 +169,7 @@ public class MainApplication extends Application {
 			try {
 				Random random = new Random();
 				while (true){
-					this.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
+					MainApplication.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
 					Thread.sleep(700);
 					if(player.getHp()<=0) {
 						return;
@@ -210,7 +208,7 @@ public class MainApplication extends Application {
 				if(item instanceof Magnet) {
 					break;
 				}
-
+				MainApplication.items.remove(item);
 			}
 		}
 		for (int i = 0; i < enemies.size(); i++){

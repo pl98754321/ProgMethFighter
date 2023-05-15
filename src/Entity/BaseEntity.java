@@ -11,8 +11,7 @@ public abstract class BaseEntity extends BaseObjective{
 	}
 	// getter setter
 	public void setHp(int hp) {
-		hp = Math.min(maxHP, hp);
-		this.Hp = Math.max(0, hp);
+		this.Hp = Math.max(0, Math.min(maxHP, hp));
 		if(this.Hp==0) {
 			System.out.println("you not win");
 		}

@@ -4,7 +4,7 @@ package Entity;
 import java.util.ArrayList;
 import Weapon.BaseWeapon;
 import Weapon.Gun;
-import application.MainApplication;
+import application.GamePlayPage;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
@@ -39,15 +39,15 @@ public class Player extends BaseEntity {
 		if (damage) return;
 		this.setHp(this.getHp()-dmg);
 		damage = true;
-		MainApplication.coolDown(150, () -> damage = false);
+		GamePlayPage.coolDown(150, () -> damage = false);
 	}
 	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill ("i am atomic" มาจากการ์ตูนเรื่องนึงครับ)
 		if(this.isUltiReady()) {
 			for(Enemy e : Enemys) {
-				e.dropItem(MainApplication.items);
+				e.dropItem(GamePlayPage.items);
 			}
 			this.setUltiReady(false);
-			MainApplication.coolDown(0, () -> this.setUltiReady(true));//perform ultimate skill  with cooldown 0 sec (not balance)
+			GamePlayPage.coolDown(5000, () -> this.setUltiReady(true));//perform ultimate skill  with cooldown 5 sec (not balance)
 			Enemys.clear();
 		}
 		else {
@@ -55,10 +55,6 @@ public class Player extends BaseEntity {
 		}
 		
 	}
-	
-	
-	
-
 
 	public void shoot(int x, int y){
 		weapon.shoot(this.getX(), this.getY(), x, y);

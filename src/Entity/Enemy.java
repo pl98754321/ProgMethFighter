@@ -6,7 +6,7 @@ import Item.BaseItem;
 import Item.Exp;
 import Item.Magnet;
 import Item.Potion;
-import application.MainApplication;
+import application.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -21,8 +21,8 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	}
 	
 	private boolean checkCollision(){
-		for (int i = 0; i < MainApplication.enemies.size(); i++){
-			Enemy e = MainApplication.enemies.get(i);
+		for (int i = 0; i < GamePlayPage.enemies.size(); i++){
+			Enemy e = GamePlayPage.enemies.get(i);
 			if (e != this){
 				if (this.distance(e) <=0){
 					e.KnockBack(this);
@@ -42,14 +42,9 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	public void move(BaseObjective others) {
 		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
 		this.move((int) (Math.cos(angle)*2),0);
-//		if (checkCollision()){
-//			this.move(-(int) (Math.cos(angle)*2),0);
-//		}
 		this.move(0,(int) (Math.sin(angle)*2));
 		this.checkCollision();
-//		if (checkCollision()){
-//			this.move(0,-(int) (Math.sin(angle)*2));
-//		}
+
 	}
 	public void dropItem(ArrayList<BaseItem> items) {
 		if(Math.random()<=0.2) {
@@ -65,8 +60,7 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		super.render(gc);
 		if (this.distance(player) <= 0){
 			this.player.takeDamage(5);
-//			GamePlay.enemies.remove(this);
-			MainApplication.enemies.remove(this);
+			GamePlayPage.enemies.remove(this);
 		} else {
 			this.move(this.player);
 		}

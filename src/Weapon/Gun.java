@@ -1,7 +1,7 @@
 package Weapon;
 
 import Bullet.Bullet;
-import application.MainApplication;
+import application.GamePlayPage;
 
 public class Gun extends BaseWeapon {
 	private boolean shooting = false;
@@ -14,10 +14,10 @@ public class Gun extends BaseWeapon {
 		// TODO Auto-generated method stub
 		if (!shooting) {
 			shooting = true;
-			MainApplication.coolDown(200, () -> this.shooting = false);
+			GamePlayPage.coolDown(200, () -> this.shooting = false);
 			double direction = Math.atan2(toY-currentY, toX-currentX);
 			Bullet b = new Bullet(direction, currentX+20, currentY+20);
-			MainApplication.bullets.add(b);
+			GamePlayPage.bullets.add(b);
 		}
 	}
 }

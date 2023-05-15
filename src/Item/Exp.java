@@ -1,7 +1,6 @@
 package Item;
 
 import Entity.Player;
-import application.MainApplication;
 import javafx.scene.paint.Color;
 
 public class Exp extends BaseItem {

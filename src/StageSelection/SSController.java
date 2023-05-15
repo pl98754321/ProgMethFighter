@@ -1,10 +1,15 @@
 package StageSelection;
 
+import application.GamePlayPage;
+import application.StartPage;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class SSController{
 	@FXML
@@ -19,6 +24,10 @@ public class SSController{
 	private Rectangle center;
 	@FXML
 	private Text numStage;
+	@FXML
+	private ImageView Home;
+	@FXML
+	private Button Confirm;
 	
 	private int SelectedStage = 1;
 	
@@ -72,7 +81,14 @@ public class SSController{
 	}
 	public void toGamePlay() {
 		System.out.println("Game start");
-		System.out.println("Select : Stage "+SelectedStage);
-		
+		System.out.println("Select : Stage "+SelectedStage);	
+	}
+	public void goHome() {
+		Stage thisStage = (Stage) Home.getScene().getWindow();
+		thisStage.setScene(StartPage.getStartPageScene());
+	}
+	public void gameStart() {
+		Stage thisStage = (Stage) Home.getScene().getWindow();
+		thisStage.setScene(GamePlayPage.getGamePlayPage());
 	}
 }

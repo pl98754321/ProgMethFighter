@@ -17,8 +17,6 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
-
 public class StartPage{
 	public VBox root;
 	public Scene scene;

@@ -14,6 +14,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -24,6 +25,7 @@ public class GamePlayPage {
 	public Canvas canvas;
 	public Scene scene3;
 	private Player player;
+	private Image background;
 	public static Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
@@ -46,6 +48,7 @@ public class GamePlayPage {
 		
 		this.boss=new Boss(player, 350, 250);
 		
+		background =new Image(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString());
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));	
@@ -88,8 +91,7 @@ public class GamePlayPage {
 	}
 	private void update(GraphicsContext gc){
 		gc.clearRect(0, 0, 800, 600);
-		gc.setFill(Color.WHITE);
-		gc.fillRect(0, 0, 800, 600);
+		gc.drawImage(background, 0, 0,2000,1500);;
 		
 		for (Bullet a :bullets){
 			a.render(gc);

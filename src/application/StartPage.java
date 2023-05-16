@@ -36,7 +36,7 @@ public class StartPage{
 
 	     //Set background image
 	     backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening0.png").toString());
-	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 	     root.setBackground(new Background(background));
 	     
 	     new Thread(() -> {
@@ -62,7 +62,6 @@ public class StartPage{
 //	     Image logoImage = new Image("logo.png");
 //	     ImageView logoImageView = new ImageView(logoImage);
 
-	     // Start button
 	     Button startButton = new Button("Start Game");
 	     startButton.setTranslateX(150);
 	     startButton.setTranslateY(20);

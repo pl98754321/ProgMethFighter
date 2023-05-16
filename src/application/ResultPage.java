@@ -12,7 +12,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class DeathPage {
+public class ResultPage {
+	public static boolean result;
 	GridPane root4;
 	Text lose;
 	Button restart;
@@ -21,7 +22,7 @@ public class DeathPage {
 	Scene scene4;
 	
 	public static Scene getDeathPage() {
-		DeathPage page = new DeathPage();
+		ResultPage page = new ResultPage();
 		page.initializeStartPage();
 		return page.scene4;
 	}
@@ -31,7 +32,12 @@ public class DeathPage {
 		root4.setAlignment(Pos.CENTER);
 		root4.setHgap(15);
 		root4.setVgap(15);
-		lose = new Text("YOU LOSE");
+		if(result) {
+			lose = new Text("YOU win");
+		}
+		else{
+			lose = new Text("YOU LOSE");
+		}
 		lose.setFont(Font.font(50));
 		lose.setFill(Color.RED);
 		

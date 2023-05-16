@@ -13,6 +13,8 @@ public class Player extends BaseEntity {
 	private int Lv;
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill
+	public final int SPEED=3;
+	private boolean damage = false;
 	
 	public boolean isUltiReady() {
 		return ultiReady;
@@ -22,16 +24,13 @@ public class Player extends BaseEntity {
 		this.ultiReady = ultiReady;
 	}
 
-	public final int SPEED=3;
-	private boolean damage = false;
-	
 	public Player(int x, int y){
 		super(x,y,50);
 		this.setColor(Color.BLUE);
 		this.setLv(1);
 		this.setCurrentExp(0);
-		this.Lv=1;
-		this.nextLv=100;
+		this.setLv(1);
+		this.setNextLv(100);
 		this.weapon = new Gun();
 	}
 	

@@ -9,9 +9,9 @@ public class BaseObjective {
 	private Color color;
 	
 	public BaseObjective(int x ,int y,int size) {
-		this.x = x;
-		this.y = y;
-		this.size = size;
+		this.setX(x);
+		this.setY(y);
+		this.setSize(size);
 	}
 	
 	public void move(int vx, int vy){
@@ -20,8 +20,7 @@ public class BaseObjective {
 	}
 	
 	public double distance(BaseObjective others) {
-		double dis = Math.sqrt(Math.pow(x-others.x, 2)+Math.pow(y-others.y, 2)
-				);
+		double dis = Math.sqrt(Math.pow(x-others.x, 2)+Math.pow(y-others.y, 2));
 		return dis-this.getSize()/2-others.getSize()/2;
 	} 
 	

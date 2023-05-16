@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import Bullet.Bullet;
+import Entity.Boss;
 import Entity.Enemy;
 import Entity.Player;
 import Item.BaseItem;
@@ -28,6 +29,8 @@ public class GamePlayPage {
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
+	public static boolean result=true;
+	private Boss boss;
 	
 	public static Scene getGamePlayPage() {
 		GamePlayPage page = new GamePlayPage();
@@ -42,6 +45,9 @@ public class GamePlayPage {
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root3.getChildren().add(canvas);
 		this.player = new Player(350, 250);
+		
+		this.boss=new Boss(player, 350, 250);
+		
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));	
@@ -49,13 +55,21 @@ public class GamePlayPage {
 		spawnEnemies();
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
-				if(player.getHp()>0) {
-					update(gc);
-				}
-				else {
+				if(boss.getHp()<=0) {
 					Stage thisStage = (Stage) scene3.getWindow();
-					thisStage.setScene(DeathPage.getDeathPage());
+					thisStage.setScene(ResultPage.getDeathPage());
+					result=true;
 					stop();
+					
+				}
+				else if(player.getHp()==0) {
+					Stage thisStage = (Stage) scene3.getWindow();
+					thisStage.setScene(ResultPage.getDeathPage());
+					result=false;
+					stop();
+				}
+				else{
+					update(gc);
 				}
 			}
 		};
@@ -114,7 +128,22 @@ public class GamePlayPage {
 		}
 		
 		this.player.render(gc);
-
+		if(player.getLv()>=2) {
+			this.boss.render(gc);
+			gc.setFill(Color.RED);
+			gc.fillRect(520, 20, this.boss.getHp()*250/100, 30);
+			gc.setStroke(Color.BLACK);
+			gc.strokeRect(520, 20, 250, 30);
+			for (int j = 0; j < bullets.size(); j++){
+				if (boss.distance(bullets.get(j))<=0){
+					bullets.remove(j);
+					System.out.println("hit boss");
+					boss.takeDamage(5);
+					break;
+				}
+			}
+		}
+		
 		if (GamePlayPage.keys.getOrDefault(KeyCode.W, false)){
 			this.player.move(0, -player.SPEED);
 		}
@@ -160,6 +189,9 @@ public class GamePlayPage {
 			} catch (InterruptedException ex){
 			}
 		}).start();
+	}
+	public static boolean isWin() {
+		return result;
 	}
 	
 	

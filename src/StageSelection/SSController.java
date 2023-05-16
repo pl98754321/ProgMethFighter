@@ -79,10 +79,6 @@ public class SSController{
 			
 		}
 	}
-	public void toGamePlay() {
-		System.out.println("Game start");
-		System.out.println("Select : Stage "+SelectedStage);	
-	}
 	public void goHome() {
 		Stage thisStage = (Stage) Home.getScene().getWindow();
 		thisStage.setScene(StartPage.getStartPageScene());

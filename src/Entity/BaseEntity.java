@@ -13,7 +13,9 @@ public abstract class BaseEntity extends BaseObjective{
 	public void setHp(int hp) {
 		this.Hp = Math.max(0, Math.min(maxHP, hp));
 		if(this.Hp==0) {
-			System.out.println("you not win");
+			if(this instanceof Player) {
+				System.out.println("you not win");
+			}
 		}
 	}
 	public int getHp() {

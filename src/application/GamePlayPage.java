@@ -20,16 +20,14 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class GamePlayPage {
-	StackPane root3;
-	Canvas canvas;
-	Scene scene3;
-	
+	public StackPane root3;
+	public Canvas canvas;
+	public Scene scene3;
 	private Player player;
 	public static Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
-	public static boolean result=true;
 	private Boss boss;
 	
 	public static Scene getGamePlayPage() {
@@ -52,20 +50,33 @@ public class GamePlayPage {
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));	
 		scene3 = new Scene(root3, 800, 600);
-		spawnEnemies();
+		Thread spawner = new Thread(() -> {
+			try {
+				Random random = new Random();
+				while (true){
+					GamePlayPage.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
+					Thread.sleep(700);
+					if(player.getHp()<=0) {
+						Thread.currentThread().interrupt();
+						return;
+					}
+				}
+			} catch (InterruptedException ex){
+			}
+		});
+		spawner.start();
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				if(boss.getHp()<=0) {
 					Stage thisStage = (Stage) scene3.getWindow();
-					thisStage.setScene(ResultPage.getDeathPage());
-					result=true;
+					thisStage.setScene(ResultPage.getResultPage(1));
+					spawner.interrupt();
 					stop();
-					
 				}
 				else if(player.getHp()==0) {
 					Stage thisStage = (Stage) scene3.getWindow();
-					thisStage.setScene(ResultPage.getDeathPage());
-					result=false;
+					thisStage.setScene(ResultPage.getResultPage(0));
+					spawner.interrupt();
 					stop();
 				}
 				else{
@@ -74,23 +85,6 @@ public class GamePlayPage {
 			}
 		};
 		animation.start();
-	}
-	public void spawnEnemies(){
-		Thread spawner = new Thread(() -> {
-			try {
-				Random random = new Random();
-				while (true){
-					GamePlayPage.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
-					Thread.sleep(700);
-					if(player.getHp()<=0) {
-						return;
-					}
-				}
-			} catch (InterruptedException ex){
-			}
-		});
-		spawner.setDaemon(true);
-		spawner.start();
 	}
 	private void update(GraphicsContext gc){
 		gc.clearRect(0, 0, 800, 600);
@@ -101,7 +95,6 @@ public class GamePlayPage {
 			a.render(gc);
 		}
 	
-
 		for (int i = 0; i < GamePlayPage.items.size(); i++){
 			BaseItem item = GamePlayPage.items.get(i);
 			item.render(gc);
@@ -128,6 +121,7 @@ public class GamePlayPage {
 		}
 		
 		this.player.render(gc);
+		
 		if(player.getLv()>=2) {
 			this.boss.render(gc);
 			gc.setFill(Color.RED);
@@ -137,7 +131,6 @@ public class GamePlayPage {
 			for (int j = 0; j < bullets.size(); j++){
 				if (boss.distance(bullets.get(j))<=0){
 					bullets.remove(j);
-					System.out.println("hit boss");
 					boss.takeDamage(5);
 					break;
 				}
@@ -189,9 +182,6 @@ public class GamePlayPage {
 			} catch (InterruptedException ex){
 			}
 		}).start();
-	}
-	public static boolean isWin() {
-		return result;
 	}
 	
 	

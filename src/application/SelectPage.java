@@ -33,8 +33,6 @@ public class SelectPage {
 					myController.slideright();	
 					break;
 				case S:
-					System.out.println("hello from select ");
-					myController.toGamePlay();	
 					Stage thisStage = (Stage) ((Scene) e.getSource()).getWindow();
 					thisStage.setScene(GamePlayPage.getGamePlayPage());
 					break;	
@@ -43,7 +41,4 @@ public class SelectPage {
 				}
 			});
 	}
-	
-	
-
 }

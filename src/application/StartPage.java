@@ -2,10 +2,9 @@ package application;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -20,6 +19,9 @@ import javafx.stage.Stage;
 public class StartPage{
 	public VBox root;
 	public Scene scene;
+	Image backgroundImage;
+	BackgroundImage background;
+	int i =1;
 	
 	public static Scene getStartPageScene() {
 		StartPage page = new StartPage();
@@ -33,10 +35,29 @@ public class StartPage{
 	     root.setAlignment(Pos.CENTER_LEFT);
 
 	     //Set background image
-	     Image backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening1.png").toString());
-	     BackgroundImage background = new BackgroundImage(backgroundImage,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+	     backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening0.png").toString());
+	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 	     root.setBackground(new Background(background));
-
+	     
+	     new Thread(() -> {
+	    	 
+	    	 while(true) {
+	    		 i=i%3;
+	    		 try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	    		 Platform.runLater(() -> {
+	    			 backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening"+i+".png").toString());
+		    	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+		    	     root.setBackground(new Background(background));
+	    		 });
+	    		 i+=1;
+	    		 
+	    	 }
+	     }).start();
 	     // Game logo
 //	     Image logoImage = new Image("logo.png");
 //	     ImageView logoImageView = new ImageView(logoImage);
@@ -73,44 +94,7 @@ public class StartPage{
 		
 		
 		
-		// myself
-//		root = new GridPane();
-//		root.setAlignment(Pos.CENTER);
-//		root.setHgap(15);
-//		root.setVgap(15);
-//		Button start = new Button("------START------");
-//		start.getStyleClass().add("start");
-//		start.setPrefWidth(120);
-//		start.setOnMouseEntered(e -> {
-//			start.setPrefWidth(start.getWidth()*5/4);
-//			start.setPrefHeight(start.getHeight()*5/4);
-//			start.setCursor(Cursor.HAND);
-//		});
-//		start.setOnMouseExited(e -> {
-//			start.setPrefWidth(start.getWidth()*4/5);
-//			start.setPrefHeight(start.getHeight()*4/5);
-//			
-//		});
-//		start.setOnAction(e -> {
-//		    Stage thisStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-//		    try {
-//				thisStage.setScene(SelectPage.getSelectScene());
-//			} catch (IOException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//		});
-//		
-//		Button something = new Button("something");
-//		something.setPrefWidth(120);
-//		something.setOnAction(e -> {
-//			System.out.println("something");
-//		});
-//
-//		root.add(start,0,0);
-//		root.add(something,0,1);
-//		scene = new Scene(root,800,600);
-//		scene.getStylesheets().add(this.getClass().getResource("application.css").toExternalForm());
+		
 	}
 	
 }

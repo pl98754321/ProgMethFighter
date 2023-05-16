@@ -30,10 +30,10 @@ public class StartPage{
 	public void initializeStartPage(){
 		 root = new VBox(10);
 	     root.setPadding(new Insets(20));
-	     root.setAlignment(Pos.CENTER);
+	     root.setAlignment(Pos.CENTER_LEFT);
 
 	     //Set background image
-	     Image backgroundImage = new Image((String) ClassLoader.getSystemResource("Stage 2.png").toString());
+	     Image backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening1.png").toString());
 	     BackgroundImage background = new BackgroundImage(backgroundImage,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 	     root.setBackground(new Background(background));
 
@@ -43,6 +43,8 @@ public class StartPage{
 
 	     // Start button
 	     Button startButton = new Button("Start Game");
+	     startButton.setTranslateX(150);
+	     startButton.setTranslateY(20);
 	     startButton.setPrefSize(200, 50);
 	     startButton.setOnAction(e -> {
 	    	 Stage thisStage = (Stage) (startButton.getScene().getWindow());
@@ -55,8 +57,10 @@ public class StartPage{
 			});
 
 	     Button something = new Button("something");
-			something.setPrefWidth(120);
-			something.setOnAction(e -> {
+	     something.setPrefWidth(120);
+	     something.setTranslateX(150);
+	     something.setTranslateY(30);
+	     something.setOnAction(e -> {
 				System.out.println("something");
 			});
 		something.setPrefSize(200, 50);

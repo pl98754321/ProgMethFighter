@@ -30,23 +30,23 @@ public class SSController{
 	
 	public void slideleft() {
 		if(SelectedStage == 1 ) {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-	        right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+	        center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
 			numStage.setText("NameStage 2");
 			SelectedStage=2;
 		}
 		else if(SelectedStage == 2) {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
 			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
 			numStage.setText("NameStage 3");
 			SelectedStage=3;
 		}
 		else {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
 			center.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
 			numStage.setText("the Nightmare Exam Room");
 			SelectedStage=1;
 			
@@ -54,23 +54,23 @@ public class SSController{
 	}
 	public void slideright() {
 		if(SelectedStage == 1 ) {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
 			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
 			numStage.setText("NameStage 3");
 			SelectedStage=3;
 		}
 		else if(SelectedStage == 3) {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
-	        right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+	        center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
 			numStage.setText("NameStage 2");
 			SelectedStage=2;
 		}
 		else {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
 			center.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
 			numStage.setText("the Nightmare Exam Room");
 			SelectedStage=1;
 		}

@@ -34,7 +34,7 @@ public class SelectPage {
 					break;
 				case S:
 					Stage thisStage = (Stage) ((Scene) e.getSource()).getWindow();
-					thisStage.setScene(GamePlayPage.getGamePlayPage());
+					thisStage.setScene(StartCutScene.getStartCutScenePageScene());
 					break;	
 				default:
 					break;

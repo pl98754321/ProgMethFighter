@@ -21,7 +21,7 @@ public class SSController{
 	@FXML
 	private ImageView  center =new ImageView( new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
 	@FXML
-	private Text nameStage;
+	private static Text nameStage = new Text("the Nightmare Exam Room");
 	@FXML
 	private ImageView Home;
 	@FXML
@@ -84,5 +84,8 @@ public class SSController{
 	}
 	public static int selectedStage() {
 		return SelectedStage;
+	}
+	public static String getNameStage() {
+		return nameStage.getText();
 	}
 }

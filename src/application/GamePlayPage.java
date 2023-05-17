@@ -10,6 +10,7 @@ import Entity.Enemy;
 import Entity.Player;
 import Item.BaseItem;
 import Item.Magnet;
+import StageSelection.SSController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -47,8 +48,15 @@ public class GamePlayPage {
 		this.player = new Player(350, 250);
 		
 		this.boss=new Boss(player, 350, 250);
-		
-		background =new Image(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString());
+		if(SSController.selectedStage()==1) {
+			background =new Image(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString());
+		}
+		else if(SSController.selectedStage()==2) {
+			background =new Image(ClassLoader.getSystemResource("Stage 2.png").toString());
+		}
+		else{
+			background =new Image(ClassLoader.getSystemResource("Stage 3.png").toString());
+		}
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));	

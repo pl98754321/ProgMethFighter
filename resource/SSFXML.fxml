@@ -29,7 +29,7 @@
       <Ellipse fill="WHITE" layoutX="399.0" layoutY="632.0" radiusX="900.0" radiusY="200.0" stroke="BLACK" strokeType="INSIDE" />
       <Button fx:id="slideleft" layoutX="14.0" layoutY="287.0" mnemonicParsing="false" onAction="#slideleft" text="&lt;-" />
       <Button fx:id="slideright" layoutX="756.0" layoutY="287.0" mnemonicParsing="false" onAction="#slideright" text="-&gt;" />
-      <Text fx:id="numStage" fill="#ff3838" fontSmoothingType="LCD" layoutX="-6.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="the Nightmare Exam Room" textAlignment="CENTER" wrappingWidth="807.0128173828125">
+      <Text fx:id="nameStage" fill="#ff3838" fontSmoothingType="LCD" layoutX="-6.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="the Nightmare Exam Room" textAlignment="CENTER" wrappingWidth="807.0128173828125">
          <font>
             <Font size="30.0" />
          </font>

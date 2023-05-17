@@ -10,9 +10,9 @@
 
 <AnchorPane fx:id="ssScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StageSelection.SSController">
    <children>
-      <ImageView fx:id="left" fitHeight="533.34" fitWidth="400.0" layoutX="-200.0" layoutY="62.0">
+      <ImageView fx:id="left" fitHeight="399.0" fitWidth="450.0" layoutX="-156.0" layoutY="100.0">
          <image>
-            <Image url="@Stage%202.png" />
+            <Image url="@theCurseOfProgMeth.png" />
          </image>
       </ImageView>
       <ImageView fx:id="right" fitHeight="533.34" fitWidth="400.0" layoutX="601.0" layoutY="62.0">

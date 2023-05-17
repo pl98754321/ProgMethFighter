@@ -52,7 +52,7 @@ public class GamePlayPage {
 			background =new Image(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString());
 		}
 		else if(SSController.selectedStage()==2) {
-			background =new Image(ClassLoader.getSystemResource("Stage 2.png").toString());
+			background =new Image(ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString());
 		}
 		else{
 			background =new Image(ClassLoader.getSystemResource("Stage 3.png").toString());

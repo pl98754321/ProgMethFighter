@@ -47,7 +47,7 @@ public class GamePlayPage {
 		root3.getChildren().add(canvas);
 		this.player = new Player(350,  250);
 		
-		this.boss=new Boss(player,(int) Math.random()*800,(int) Math.random()*600);
+		this.boss=new Boss(player,350,250);
 		if(SSController.selectedStage()==1) {
 			background =new Image(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString());
 		}

@@ -22,7 +22,6 @@ public class SelectPage {
 	public void initializeSelectPage() throws IOException {
 		loader = new FXMLLoader(ClassLoader.getSystemResource("SSFXML.fxml"));
 		root2 = loader.load();
-		System.out.println("hello");
 		scene2 = new Scene(root2,800,600);
 		myController = loader.getController();
 		scene2.setOnKeyPressed(e -> {

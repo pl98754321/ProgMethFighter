@@ -15,7 +15,7 @@ public class SSController{
 	@FXML
 	private Button slideleft;
 	@FXML
-	private ImageView left = new ImageView(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
+	private ImageView left = new ImageView(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
 	@FXML
 	private ImageView right = new ImageView(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
 	@FXML

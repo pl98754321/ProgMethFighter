@@ -10,7 +10,7 @@ public class Boss extends Enemy{
 		super(p, x, y);
 		this.setSize(60);
 		this.setColor(Color.LIGHTGREEN);
-		this.setHp(10);
+		this.setHp(100);
 	}
 	
 	public void takeDamage(int dmg){

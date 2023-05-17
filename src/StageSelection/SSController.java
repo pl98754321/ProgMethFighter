@@ -49,7 +49,6 @@ public class SSController{
 			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
 			numStage.setText("the Nightmare Exam Room");
 			SelectedStage=1;
-			
 		}
 	}
 	public void slideright() {

@@ -1,6 +1,6 @@
 package StageSelection;
 
-import application.GamePlayPage;
+import application.StartCutScene;
 import application.StartPage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,7 +21,7 @@ public class SSController{
 	@FXML
 	private ImageView  center =new ImageView( new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
 	@FXML
-	private static Text nameStage = new Text("the Nightmare Exam Room");
+	private Text nameStage = new Text("the Nightmare Exam Room");
 	@FXML
 	private ImageView Home;
 	@FXML
@@ -80,12 +80,20 @@ public class SSController{
 	}
 	public void gameStart() {
 		Stage thisStage = (Stage) Home.getScene().getWindow();
-		thisStage.setScene(GamePlayPage.getGamePlayPage());
+		thisStage.setScene(StartCutScene.getStartCutScenePageScene());
 	}
 	public static int selectedStage() {
 		return SelectedStage;
 	}
 	public static String getNameStage() {
-		return nameStage.getText();
+		if(SelectedStage==1) {
+			return "the Nightmare Exam Room";
+		}
+		else if(SelectedStage==2) {
+			return "Stage 2";
+		}
+		else {
+			return "Stage 3";
+		}
 	}
 }

@@ -39,15 +39,13 @@ public class StartPage{
 	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 	     root.setBackground(new Background(background));
 	     
-	     new Thread(() -> {
+	     Thread t =new Thread(() -> {
 	    	 
 	    	 while(true) {
 	    		 i=i%3;
 	    		 try {
 					Thread.sleep(3000);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
 	    		 Platform.runLater(() -> {
 	    			 backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening"+i+".png").toString());
@@ -57,12 +55,14 @@ public class StartPage{
 	    		 i+=1;
 	    		 
 	    	 }
-	     }).start();
+	     });
+	     t.start();
 	     // Game logo
 //	     Image logoImage = new Image("logo.png");
 //	     ImageView logoImageView = new ImageView(logoImage);
 
 	     Button startButton = new Button("Start Game");
+	     startButton.setStyle("-fx-font-size:20");
 	     startButton.setTranslateX(150);
 	     startButton.setTranslateY(20);
 	     startButton.setPrefSize(200, 50);
@@ -70,6 +70,7 @@ public class StartPage{
 	    	 Stage thisStage = (Stage) (startButton.getScene().getWindow());
 			    try {
 					thisStage.setScene(SelectPage.getSelectScene());
+					t.interrupt();
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -77,6 +78,7 @@ public class StartPage{
 			});
 
 	     Button something = new Button("something");
+	     something.setStyle("-fx-font-size:20");
 	     something.setPrefWidth(120);
 	     something.setTranslateX(150);
 	     something.setTranslateY(30);

@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import Entity.Player;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -50,7 +52,9 @@ public class ResultPage {
 		restart.setOnMouseClicked(e -> {
 			
 			Stage thisStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-			thisStage.setScene(GamePlayPage.getGamePlayPage());
+			try {
+				thisStage.setScene(SelectPage.getSelectScene());
+			} catch (IOException e1) {}
 		});
 			menu = new Button(" -MAIN MENU- ");
 			menu.setOnMouseClicked(e -> {

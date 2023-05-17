@@ -45,9 +45,9 @@ public class GamePlayPage {
 		canvas.setFocusTraversable(true);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root3.getChildren().add(canvas);
-		this.player = new Player(350, 250);
+		this.player = new Player(350,  250);
 		
-		this.boss=new Boss(player, 350, 250);
+		this.boss=new Boss(player,(int) Math.random()*800,(int) Math.random()*600);
 		if(SSController.selectedStage()==1) {
 			background =new Image(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString());
 		}

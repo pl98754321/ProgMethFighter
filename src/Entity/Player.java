@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import Weapon.BaseWeapon;
 import Weapon.Gun;
 import application.GamePlayPage;
-import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {

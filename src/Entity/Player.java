@@ -56,9 +56,28 @@ public class Player extends BaseEntity {
 		
 	}
 	public void move(int vx, int vy){
-		GamePlayPage.background.setX(GamePlayPage.background.getX()-vx);
-		GamePlayPage.background.setY(GamePlayPage.background.getY()-vy);
-
+		if(GamePlayPage.background.getX()<=0 || GamePlayPage.background.getX()+GamePlayPage.background.getWidth()>800) {
+			if(GamePlayPage.background.getX()-vx>=0) {
+				GamePlayPage.background.setX(0);
+			}
+			else if(GamePlayPage.background.getX()-vx+GamePlayPage.background.getWidth()<=800) {
+//				GamePlayPage.background.setX(1200);
+			}
+			else {
+				GamePlayPage.background.setX(GamePlayPage.background.getX()-vx);
+			}
+			}
+		if(GamePlayPage.background.getY()<=0 || GamePlayPage.background.getY()+GamePlayPage.background.getWidth()>600) {
+			if(GamePlayPage.background.getY()-vy>=0) {
+				GamePlayPage.background.setY(0);
+			}
+			else if(GamePlayPage.background.getY()-vy+GamePlayPage.background.getWidth()<=600) {
+//				GamePlayPage.background.setX(1200);
+			}
+			else {
+				GamePlayPage.background.setY(GamePlayPage.background.getY()-vy);
+			}
+			}
 	}
 
 	public void shoot(int x, int y){

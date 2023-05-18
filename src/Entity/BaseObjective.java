@@ -21,9 +21,9 @@ public class BaseObjective {
 		this.setY(this.getY()+vy);
 	}
 	
-	public double distance(BaseObjective others) {
-		double dis = Math.sqrt(Math.pow(x-others.x, 2)+Math.pow(y-others.y, 2));
-		return dis-this.getSize()/2-others.getSize()/2;
+	public double distance(Player p) {
+		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));
+		return dis-this.getSize()/2-p.getSize()/2;
 	} 
 	
 	

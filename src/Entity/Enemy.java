@@ -2,6 +2,7 @@ package Entity;
 
 import java.util.ArrayList;
 
+import Bullet.Bullet;
 import Item.BaseItem;
 import Item.Exp;
 import Item.Magnet;
@@ -64,5 +65,9 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		} else {
 			this.move(this.player);
 		}
+	}
+	public double distance(BaseObjective others) {
+		double dis = Math.sqrt(Math.pow(+x-others.x, 2)+Math.pow(+y-others.y, 2));
+		return dis-this.getSize()/2-others.getSize()/2;
 	}
 }

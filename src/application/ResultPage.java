@@ -46,6 +46,7 @@ public class ResultPage {
 		GamePlayPage.keys.clear();
 		GamePlayPage.items.clear();
 		GamePlayPage.enemies.clear();
+		GamePlayPage.bullets.clear();
 		player = new Player(350, 250);
 		
 		restart = new Button("----RESTART----");

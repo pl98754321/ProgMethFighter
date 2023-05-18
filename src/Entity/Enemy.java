@@ -2,7 +2,6 @@ package Entity;
 
 import java.util.ArrayList;
 
-import Bullet.Bullet;
 import Item.BaseItem;
 import Item.Exp;
 import Item.Magnet;

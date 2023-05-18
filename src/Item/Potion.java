@@ -4,7 +4,7 @@ import Entity.Player;
 import javafx.scene.paint.Color;
 
 public class Potion extends BaseItem {
-	public final int HP=10;
+	public final int HP=5;
 	
 	public Potion(int x, int y) {
 		super(x,y,10);

@@ -65,8 +65,8 @@ public class GamePlayPage {
 			try {
 				Random random = new Random();
 				while (true){
-					GamePlayPage.enemies.add(new Enemy(this.player,-GamePlayPage.background.getX()+(int)( random.nextDouble()*800),-GamePlayPage.background.getX()+ (int)( random.nextDouble()*600)));
-					Thread.sleep(700);
+					GamePlayPage.enemies.add(new Enemy(this.player,(int) (GamePlayPage.background.getHeight()*random.nextDouble()),(int) (GamePlayPage.background.getWidth()*random.nextDouble())));
+					Thread.sleep(500);
 					if(player.getHp()<=0) {
 						Thread.currentThread().interrupt();
 						return;
@@ -132,7 +132,7 @@ public class GamePlayPage {
 		
 		this.player.render(gc);
 		
-		if(player.getLv()>=2) {
+		if(player.getLv()>=15) {
 			this.boss.render(gc);
 			gc.setFill(Color.RED);
 			gc.fillRect(520, 20, this.boss.getHp()*250/100, 30);

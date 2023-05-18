@@ -4,7 +4,7 @@ import Entity.Player;
 import javafx.scene.paint.Color;
 
 public class Exp extends BaseItem {
-	public final int EXP=10;
+	public final int EXP=5;
 	
 	public Exp(int x, int y) {
 		super(x,y,10);

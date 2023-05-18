@@ -132,7 +132,7 @@ public class GamePlayPage {
 		
 		this.player.render(gc);
 		
-		if(player.getLv()>=1) {
+		if(player.getLv()>=15) {
 			this.boss.render(gc);
 			gc.setFill(Color.RED);
 			gc.fillRect(520, 20, (this.boss.getHp()*250/this.boss.getMaxHP()), 30);
@@ -141,7 +141,7 @@ public class GamePlayPage {
 			for (int j = 0; j < bullets.size(); j++){
 				if (boss.distance(bullets.get(j))<=0){
 					bullets.remove(j);
-					boss.takeDamage(5);
+					boss.takeDamage(this.player.getAtk());
 					break;
 				}
 			}

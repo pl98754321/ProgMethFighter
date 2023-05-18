@@ -12,6 +12,8 @@ public class Player extends BaseEntity {
 	private int currentexp=0;
 	private int nextLv;
 	private int Lv;
+	private int atk; 
+	
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill
 	public final int SPEED=3;
@@ -32,6 +34,7 @@ public class Player extends BaseEntity {
 		this.setCurrentExp(0);
 		this.setLv(1);
 		this.setNextLv(100);
+		this.setAtk(5);
 		this.weapon = new Gun();
 	}
 	
@@ -151,6 +154,13 @@ public class Player extends BaseEntity {
 	}
 	public void setY(int y) {
 		this.y = Math.max(25, Math.min(575, y));
+	}
+	public int getAtk() {
+		return atk;
+	}
+
+	public void setAtk(int atk) {
+		this.atk = atk;
 	}
 	public void render(GraphicsContext gc) {
 		gc.setFill(this.getColor());

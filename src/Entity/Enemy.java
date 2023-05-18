@@ -17,7 +17,7 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	public Enemy(Player p, int x, int y){
 		super(x,y,40);
 		this.setColor(Color.BLACK);
-		this.player = p;
+		this.setPlayer(p);
 	}
 	
 	private boolean checkCollision(){
@@ -41,8 +41,7 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	
 	public void move(BaseObjective others) {
 		double angle = Math.atan2(-GamePlayPage.background.getY()+others.getY()-this.getY(),-GamePlayPage.background.getX()+others.getX()-this.getX());
-		this.move((int) (Math.cos(angle)*2),0);
-		this.move(0,(int) (Math.sin(angle)*2));
+		this.move((int) (Math.cos(angle)*2),(int) (Math.sin(angle)*2));
 		this.checkCollision();
 
 	}
@@ -56,8 +55,21 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		items.add(new Exp(this.getX(),this.getY()));
 	}
 	
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+
 	public void render(GraphicsContext gc){
-		super.render(gc);
+		if(this instanceof Boss) {
+			((Boss) this).draw(gc);
+		}
+		else {
+			super.render(gc);
+		}
 		if (this.distance(player) <= 0){
 			this.player.takeDamage(5);
 			GamePlayPage.enemies.remove(this);

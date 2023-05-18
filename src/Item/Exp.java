@@ -16,6 +16,7 @@ public class Exp extends BaseItem {
 		player.setCurrentExp(player.getCurrentExp()+this.EXP);//add player EXP
 		if(player.getCurrentExp()>=player.getNextLv()) {//player level up
 			player.setLv(player.getLv()+1);
+			player.setAtk(player.getAtk()+5);
 			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
 			player.setNextLv((int)(player.getNextLv()*1.1));
 		}

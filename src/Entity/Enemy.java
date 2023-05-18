@@ -40,7 +40,7 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	}
 	
 	public void move(BaseObjective others) {
-		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
+		double angle = Math.atan2(-GamePlayPage.background.getY()+others.getY()-this.getY(),-GamePlayPage.background.getX()+others.getX()-this.getX());
 		this.move((int) (Math.cos(angle)*2),0);
 		this.move(0,(int) (Math.sin(angle)*2));
 		this.checkCollision();

@@ -59,13 +59,13 @@ public class GamePlayPage {
 		}
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
-		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));	
+		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));
 		scene3 = new Scene(root3, 800, 600);
 		Thread spawner = new Thread(() -> {
 			try {
 				Random random = new Random();
 				while (true){
-					GamePlayPage.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
+					GamePlayPage.enemies.add(new Enemy(this.player,(int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
 					Thread.sleep(700);
 					if(player.getHp()<=0) {
 						Thread.currentThread().interrupt();
@@ -75,7 +75,7 @@ public class GamePlayPage {
 			} catch (InterruptedException ex){
 			}
 		});
-//		spawner.start();
+		spawner.start();
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				if(boss.getHp()<=0) {
@@ -193,11 +193,4 @@ public class GamePlayPage {
 			}
 		}).start();
 	}
-//	public static boolean isHitBound() {
-//		if(background.getX()<=0 || background.getY()<=0 || background.getX()+background.getWidth()>=800 || background.getY()+background.getHeight()>=600) {
-//			return true;
-//		}
-//		
-//		return false;
-//	}
 }

@@ -1,5 +1,6 @@
 package Entity;
 
+import application.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
@@ -25,9 +26,11 @@ public class BaseObjective {
 		return dis-this.getSize()/2-others.getSize()/2;
 	} 
 	
+	
+	
 	public void render(GraphicsContext gc) {
 		gc.setFill(this.getColor());
-		gc.fillOval(this.getX()-size/2, this.getY()-size/2, size, size);
+		gc.fillOval(GamePlayPage.background.getX()+this.getX()-size/2,GamePlayPage.background.getY()+ this.getY()-size/2, size, size);
 	}
 	
 

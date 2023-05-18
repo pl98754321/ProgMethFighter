@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Weapon.BaseWeapon;
 import Weapon.Gun;
 import application.GamePlayPage;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
@@ -150,5 +151,9 @@ public class Player extends BaseEntity {
 	}
 	public void setY(int y) {
 		this.y = Math.max(25, Math.min(575, y));
+	}
+	public void render(GraphicsContext gc) {
+		gc.setFill(this.getColor());
+		gc.fillOval(this.getX()-25, this.getY()-25, 50, 50);
 	}
 }

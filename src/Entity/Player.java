@@ -56,27 +56,66 @@ public class Player extends BaseEntity {
 		
 	}
 	public void move(int vx, int vy){
-		if(GamePlayPage.background.getX()<=0 || GamePlayPage.background.getX()+GamePlayPage.background.getWidth()>800) {
-			if(GamePlayPage.background.getX()-vx>=0) {
+		if(GamePlayPage.background.getX()<=0 || GamePlayPage.background.getX()+GamePlayPage.background.getWidth()>800) {//X-axis
+			if(GamePlayPage.background.getX()-vx>=0) {//left bound
 				GamePlayPage.background.setX(0);
-			}
-			else if(GamePlayPage.background.getX()-vx+GamePlayPage.background.getWidth()<=800) {
-//				GamePlayPage.background.setX(1200);
-			}
+				this.setX(this.getX()+vx);
+				}
+			else if(GamePlayPage.background.getX()-vx+GamePlayPage.background.getWidth()<=800) {//right bound
+				this.setX(this.getX()+vx);
+				}
 			else {
-				GamePlayPage.background.setX(GamePlayPage.background.getX()-vx);
+				if(this.getX()<400) {
+					if(this.getX()+vx>400) {
+						this.setX(400);
+						}
+					else {
+						this.setX(this.getX()+vx);
+						}
+					}
+				else if(this.getX()>400) {
+					if(this.getX()+vx<400) {
+						this.setX(400);
+						}
+					else {
+						this.setX(this.getX()+vx);
+						}
+					}
+				else {
+					GamePlayPage.background.setX(GamePlayPage.background.getX()-vx);
+					}
 			}
 			}
-		if(GamePlayPage.background.getY()<=0 || GamePlayPage.background.getY()+GamePlayPage.background.getWidth()>600) {
-			if(GamePlayPage.background.getY()-vy>=0) {
+				
+		if(GamePlayPage.background.getY()<=0 || GamePlayPage.background.getY()+GamePlayPage.background.getHeight()>600) {//Y-axis
+			if(GamePlayPage.background.getY()-vy>=0) {//top bound
 				GamePlayPage.background.setY(0);
-			}
-			else if(GamePlayPage.background.getY()-vy+GamePlayPage.background.getWidth()<=600) {
-//				GamePlayPage.background.setX(1200);
-			}
+				this.setY(this.getY()+vy);
+				}
+			else if(GamePlayPage.background.getY()-vy+GamePlayPage.background.getHeight()<=600) {//bottom bound
+				this.setY(this.getY()+vy);
+				}
 			else {
-				GamePlayPage.background.setY(GamePlayPage.background.getY()-vy);
-			}
+				if(this.getY()<300) {
+					if(this.getY()+vy>300) {
+						this.setY(300);
+						}
+					else {
+						this.setY(this.getY()+vy);
+						}
+					}
+				else if(this.getY()>300) {
+					if(this.getY()+vy<300) {
+						this.setY(300);
+						}
+					else {
+						this.setY(this.getY()+vy);
+						}
+					}
+				else {
+					GamePlayPage.background.setY(GamePlayPage.background.getY()-vy);
+					}
+				}
 			}
 	}
 
@@ -106,5 +145,11 @@ public class Player extends BaseEntity {
 
 	public void setLv(int lv) {
 		this.Lv = lv;
+	}
+	public void setX(int x) {
+		this.x=Math.max(25, Math.min(775, x));
+	}
+	public void setY(int y) {
+		this.y = Math.max(25, Math.min(575, y));
 	}
 }

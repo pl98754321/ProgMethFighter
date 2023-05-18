@@ -4,7 +4,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class BaseObjective {
-	private int x,y;
+	protected int x;
+	protected int y;
 	private int size;
 	private Color color;
 	
@@ -43,7 +44,7 @@ public class BaseObjective {
 	}
 
 	public void setX(int x) {
-		this.x = x;
+		this.x=x;
 	}
 
 	public int getY() {

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Weapon.BaseWeapon;
 import Weapon.Gun;
 import application.GamePlayPage;
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
@@ -53,6 +54,11 @@ public class Player extends BaseEntity {
 			return;
 		}
 		
+	}
+	public void move(int vx, int vy){
+		GamePlayPage.background.setX(Math.max(0,GamePlayPage.background.getX()-vx));
+		GamePlayPage.background.setY(GamePlayPage.background.getY()-vy);
+
 	}
 
 	public void shoot(int x, int y){

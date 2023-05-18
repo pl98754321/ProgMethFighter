@@ -7,6 +7,7 @@ import java.util.Random;
 import Bullet.Bullet;
 import Entity.Boss;
 import Entity.Enemy;
+import Entity.MapImage;
 import Entity.Player;
 import Item.BaseItem;
 import Item.Magnet;
@@ -15,7 +16,6 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -26,7 +26,7 @@ public class GamePlayPage {
 	public Canvas canvas;
 	public Scene scene3;
 	private Player player;
-	private Image background;
+	public static MapImage background;
 	public static Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
@@ -45,17 +45,17 @@ public class GamePlayPage {
 		canvas.setFocusTraversable(true);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root3.getChildren().add(canvas);
-		this.player = new Player(350,  250);
+		this.player = new Player(400,  300);
 		
 		this.boss=new Boss(player,350,250);
 		if(SSController.selectedStage()==1) {
-			background =new Image(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString());
+			background =new MapImage(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString(),0,0);
 		}
 		else if(SSController.selectedStage()==2) {
-			background =new Image(ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString());
+			background =new MapImage(ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString(),0,0);
 		}
 		else{
-			background =new Image(ClassLoader.getSystemResource("Stage 3.png").toString());
+			background =new MapImage(ClassLoader.getSystemResource("Stage 3.png").toString(),0,0);
 		}
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
@@ -99,7 +99,7 @@ public class GamePlayPage {
 	}
 	private void update(GraphicsContext gc){
 		gc.clearRect(0, 0, 800, 600);
-		gc.drawImage(background, 0, 0,2000,1500);;
+		gc.drawImage(background, background.getX(), background.getY(),2000,1500);;
 		
 		for (Bullet a :bullets){
 			a.render(gc);
@@ -193,4 +193,11 @@ public class GamePlayPage {
 			}
 		}).start();
 	}
+//	public static boolean isHitBound() {
+//		if(background.getX()<=0 || background.getY()<=0 || background.getX()+background.getWidth()>=800 || background.getY()+background.getHeight()>=600) {
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 }

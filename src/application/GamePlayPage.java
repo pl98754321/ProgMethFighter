@@ -65,7 +65,7 @@ public class GamePlayPage {
 			try {
 				Random random = new Random();
 				while (true){
-					GamePlayPage.enemies.add(new Enemy(this.player,(int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
+					GamePlayPage.enemies.add(new Enemy(this.player,-GamePlayPage.background.getX()+(int)( random.nextDouble()*800),-GamePlayPage.background.getX()+ (int)( random.nextDouble()*600)));
 					Thread.sleep(700);
 					if(player.getHp()<=0) {
 						Thread.currentThread().interrupt();

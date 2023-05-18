@@ -8,9 +8,10 @@ public class Boss extends Enemy{
 	
 	public Boss(Player p, int x, int y) {
 		super(p, x, y);
-		this.setSize(60);
+		this.setSize(100);
+		this.setMaxHP(500);
 		this.setColor(Color.LIGHTGREEN);
-		this.setHp(100);
+		this.setHp(500);
 	}
 	
 	public void takeDamage(int dmg){

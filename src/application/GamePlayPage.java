@@ -132,10 +132,10 @@ public class GamePlayPage {
 		
 		this.player.render(gc);
 		
-		if(player.getLv()>=15) {
+		if(player.getLv()>=1) {
 			this.boss.render(gc);
 			gc.setFill(Color.RED);
-			gc.fillRect(520, 20, this.boss.getHp()*250/100, 30);
+			gc.fillRect(520, 20, (this.boss.getHp()*250/this.boss.getMaxHP()), 30);
 			gc.setStroke(Color.BLACK);
 			gc.strokeRect(520, 20, 250, 30);
 			for (int j = 0; j < bullets.size(); j++){
@@ -163,7 +163,19 @@ public class GamePlayPage {
 			this.player.iAmAtomic(enemies);;
 		}
 			//HP 
-		gc.setFill(Color.FORESTGREEN);
+		int hp =this.player.getHp();
+		if(hp>=75) {
+			gc.setFill(Color.FORESTGREEN);
+		}
+		else if(hp>=50) {
+			gc.setFill(Color.YELLOW);
+		}
+		else if(hp>=25) {
+			gc.setFill(Color.ORANGE);
+		}
+		else {
+			gc.setFill(Color.RED);
+		}
 		gc.fillRect(30, 20, this.player.getHp()*250/100, 30);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 20, 250, 30);

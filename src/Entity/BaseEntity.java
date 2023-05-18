@@ -6,17 +6,18 @@ public abstract class BaseEntity extends BaseObjective{
 	
 	public BaseEntity(int x,int y,int size) {
 		super(x,y,size);
-		this.maxHP = 100;
+		this.setMaxHP(100);
 		this.setHp(100);
 	}
 	// getter setter
 	public void setHp(int hp) {
 		this.Hp = Math.max(0, Math.min(maxHP, hp));
-		if(this.Hp==0) {
-			if(this instanceof Player) {
-				System.out.println("you not win");
-			}
-		}
+	}
+	public int getMaxHP() {
+		return maxHP;
+	}
+	public void setMaxHP(int maxHP) {
+		this.maxHP = maxHP;
 	}
 	public int getHp() {
 		return this.Hp;

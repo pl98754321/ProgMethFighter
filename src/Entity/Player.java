@@ -41,7 +41,7 @@ public class Player extends BaseEntity {
 		damage = true;
 		GamePlayPage.coolDown(150, () -> damage = false);
 	}
-	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill ("i am atomic" มาจากการ์ตูนเรื่องนึงครับ)
+	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill
 		if(this.isUltiReady()) {
 			for(Enemy e : Enemys) {
 				e.dropItem(GamePlayPage.items);
@@ -56,7 +56,7 @@ public class Player extends BaseEntity {
 		
 	}
 	public void move(int vx, int vy){
-		GamePlayPage.background.setX(Math.max(0,GamePlayPage.background.getX()-vx));
+		GamePlayPage.background.setX(GamePlayPage.background.getX()-vx);
 		GamePlayPage.background.setY(GamePlayPage.background.getY()-vy);
 
 	}

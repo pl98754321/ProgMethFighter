@@ -55,7 +55,7 @@ public class GamePlayPage {
 			background =new MapImage(ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString(),0,0);
 		}
 		else{
-			background =new MapImage(ClassLoader.getSystemResource("Stage 3.png").toString(),0,0);
+			background =new MapImage(ClassLoader.getSystemResource("chillbeach.png").toString(),0,0);
 		}
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
@@ -75,7 +75,7 @@ public class GamePlayPage {
 			} catch (InterruptedException ex){
 			}
 		});
-		spawner.start();
+//		spawner.start();
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				if(boss.getHp()<=0) {
@@ -99,7 +99,7 @@ public class GamePlayPage {
 	}
 	private void update(GraphicsContext gc){
 		gc.clearRect(0, 0, 800, 600);
-		gc.drawImage(background, background.getX(), background.getY(),2000,1500);;
+		gc.drawImage(background, background.getX(), background.getY(),background.getWidth(),background.getHeight());;
 		
 		for (Bullet a :bullets){
 			a.render(gc);

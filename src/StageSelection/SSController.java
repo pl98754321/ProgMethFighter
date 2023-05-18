@@ -17,7 +17,7 @@ public class SSController{
 	@FXML
 	private ImageView left = new ImageView(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
 	@FXML
-	private ImageView right = new ImageView(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+	private ImageView right = new ImageView(new Image((String) (ClassLoader.getSystemResource("chillbeach.png").toString())));
 	@FXML
 	private ImageView  center =new ImageView( new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
 	@FXML
@@ -31,22 +31,22 @@ public class SSController{
 	public void slideleft() {
 		if(SelectedStage == 1 ) {
 			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("chillbeach.png").toString())));
 	        center.setImage(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
 			nameStage.setText("the Curse of ProgMeth");
 			SelectedStage=2;
 		}
 		else if(SelectedStage == 2) {
 			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			center.setImage(new Image((String) (ClassLoader.getSystemResource("chillbeach.png").toString())));
 			right.setImage(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
-			nameStage.setText("NameStage 3");
+			nameStage.setText("after Exam Trip");
 			SelectedStage=3;
 		}
 		else {
 			left.setImage(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
 			center.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("chillbeach.png").toString())));
 			nameStage.setText("the Nightmare Exam Room");
 			SelectedStage=1;
 		}
@@ -54,14 +54,14 @@ public class SSController{
 	public void slideright() {
 		if(SelectedStage == 1 ) {
 			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			center.setImage(new Image((String) (ClassLoader.getSystemResource("chillbeach.png").toString())));
 			right.setImage(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
-			nameStage.setText("NameStage 3");
+			nameStage.setText("after Exam Trip");
 			SelectedStage=3;
 		}
 		else if(SelectedStage == 3) {
 			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("chillbeach.png").toString())));
 	        center.setImage(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
 			nameStage.setText("the Curse of ProgMeth");
 			SelectedStage=2;
@@ -69,7 +69,7 @@ public class SSController{
 		else {
 			left.setImage(new Image((String) (ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString())));
 			center.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("chillbeach.png").toString())));
 			nameStage.setText("the Nightmare Exam Room");
 			SelectedStage=1;
 		}
@@ -93,7 +93,7 @@ public class SSController{
 			return "the Curse of ProgMeth";
 		}
 		else {
-			return "Stage 3";
+			return "after Exam Trip";
 		}
 	}
 }

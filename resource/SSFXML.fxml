@@ -15,9 +15,9 @@
             <Image url="@theCurseOfProgMeth.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="right" fitHeight="533.34" fitWidth="400.0" layoutX="586.0" layoutY="62.0">
+      <ImageView fx:id="right" fitHeight="400.0" fitWidth="400.0" layoutX="482.0" layoutY="87.0">
          <image>
-            <Image url="@Stage%203.png" />
+            <Image url="@chillbeach.png" />
          </image>
       </ImageView>
       <ImageView fx:id="center" fitHeight="533.34" fitWidth="400.0" layoutX="200.0" layoutY="62.0">

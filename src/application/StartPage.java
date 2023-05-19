@@ -14,6 +14,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 public class StartPage{
@@ -22,6 +23,7 @@ public class StartPage{
 	Image backgroundImage;
 	BackgroundImage background;
 	int i =1;
+	AudioClip bgSong = new AudioClip(ClassLoader.getSystemResource("audio/openingsound.mp3").toString());
 	
 	public static Scene getStartPageScene() {
 		StartPage page = new StartPage();
@@ -33,20 +35,21 @@ public class StartPage{
 		 root = new VBox(10);
 	     root.setPadding(new Insets(20));
 	     root.setAlignment(Pos.CENTER_LEFT);
-
+	     bgSong.setCycleCount(3);
+	     bgSong.play();
 	     //Set background image
 	     backgroundImage = new Image((String) ClassLoader.getSystemResource("opening/Opening0.png").toString());
 	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 	     root.setBackground(new Background(background));
 	     
-	     Thread t =new Thread(() -> {
-	    	 
+	     Thread t =new Thread(() -> {  	 
 	    	 while(true) {
 	    		 i=i%3;
 	    		 try {
 					Thread.sleep(3000);
 				} catch (InterruptedException e) {
 				}
+	    		 
 	    		 Platform.runLater(() -> {
 	    			 backgroundImage = new Image((String) ClassLoader.getSystemResource("opening/Opening"+i+".png").toString());
 		    	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
@@ -69,11 +72,10 @@ public class StartPage{
 	     startButton.setOnAction(e -> {
 	    	 Stage thisStage = (Stage) (startButton.getScene().getWindow());
 			    try {
+			    	bgSong.stop();
 					thisStage.setScene(SelectPage.getSelectScene());
 					t.interrupt();
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
 			});
 
@@ -91,11 +93,7 @@ public class StartPage{
 
 	     // Create the scene and set it on the stage
 	     scene = new Scene(root, 800, 600);
-		
-		
-		
-		
-		
+
 	}
 	
 }

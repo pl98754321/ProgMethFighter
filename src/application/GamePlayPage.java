@@ -16,6 +16,7 @@ import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -28,12 +29,13 @@ public class GamePlayPage {
 	public Scene scene3;
 	private Player player;
 	public static MapImage background;
+	private Image UtiImage = new Image(ClassLoader.getSystemResource("halo.png").toString());
 	public static Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
 	private Boss boss;
-	AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
+	private AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
 	
 	
 	public static Scene getGamePlayPage() {
@@ -196,8 +198,7 @@ public class GamePlayPage {
 		gc.fillText("Lv : "+player.getLv()+" EXP : "+player.getCurrentExp()+"/"+player.getNextLv(),240 ,60);
 	
 		if(player.isUltiReady()) {
-			gc.setFill(Color.BLACK);
-			gc.fillText("can use ultimate skill",30,70);
+			gc.drawImage(UtiImage,30,70,50,50);
 		}
 	}
 	public static void coolDown(long time, Runnable r){

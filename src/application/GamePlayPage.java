@@ -20,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.scene.media.AudioClip;
 
 public class GamePlayPage {
 	public StackPane root3;
@@ -32,6 +33,8 @@ public class GamePlayPage {
 	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
 	private Boss boss;
+	AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
+	
 	
 	public static Scene getGamePlayPage() {
 		GamePlayPage page = new GamePlayPage();
@@ -123,6 +126,7 @@ public class GamePlayPage {
 				if (e.distance(bullets.get(j))<=0){
 					bullets.remove(j);
 					enemies.remove(i);
+					explosion.play();
 					e.dropItem(items);
 					i++;
 					break;

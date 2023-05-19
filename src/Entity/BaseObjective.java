@@ -5,20 +5,23 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class BaseObjective {
-	protected int x;
-	protected int y;
+	protected double x;
+	protected double y;
 	private int size;
 	private int speed;
 	private Color color;
 	
-	public BaseObjective(int x ,int y,int size,int speed) {
-		this.setX(x);
-		this.setY(y);
+	public BaseObjective(double d ,double e,int size,int speed) {
+		this.setX(d);
+		this.setY(e);
 		this.setSize(size);
 		this.speed = speed;
 	}
 	
 	public void move(int vx, int vy){
+		this.move((double) (vx),(double) (vy));
+	}
+	public void move(double vx, double vy){
 		this.setX(this.getX()+vx);
 		this.setY(this.getY()+vy);
 	}
@@ -49,19 +52,19 @@ public class BaseObjective {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	public int getX() {
+	public double getX() {
 		return this.x;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x=x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return this.y;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	public void setColor(Color c) {

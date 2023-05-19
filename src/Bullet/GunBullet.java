@@ -7,8 +7,8 @@ import javafx.scene.paint.Color;
 public class GunBullet extends BaseBullet{
 	private double direction;
 	
-	public GunBullet(int x, int y,int size,int speed,double direction){
-		super(x, y,size,speed);
+	public GunBullet(double d, double e,int size,int speed,double direction){
+		super(d, e,size,speed);
 		this.setColor(Color.BLACK);
 		this.direction = direction;
 	}

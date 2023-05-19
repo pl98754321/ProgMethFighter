@@ -35,7 +35,7 @@ public class Player extends BaseEntity {
 		this.setLv(1);
 		this.setNextLv(100);
 		this.setAtk(5);
-		this.weapon = new Gun();
+		this.weapon = new Book();
 	}
 	
 	public void takeDamage(int dmg){
@@ -124,9 +124,9 @@ public class Player extends BaseEntity {
 	}
 
 	public void shoot(int x, int y){
-		System.out.println(GamePlayPage.background.getX()+this.getX());
-		System.out.println(GamePlayPage.background.getY()+this.getY());
-		weapon.shoot(GamePlayPage.background.getX()+this.getX(), GamePlayPage.background.getY()+this.getY(), x, y);
+//		System.out.println(GamePlayPage.background.getX()+this.getX());
+//		System.out.println(GamePlayPage.background.getY()+this.getY());
+		weapon.shoot(this.getX(), this.getY(), x, y);
 	}
 	
 	public void levelUp() {

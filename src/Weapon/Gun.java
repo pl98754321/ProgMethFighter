@@ -14,7 +14,7 @@ public class Gun extends BaseWeapon {
 	}
 	
 	@Override
-	public void shoot(int currentX, int currentY, int toX, int toY) {
+	public void shoot(double currentX, double currentY, double toX, double toY) {
 		// TODO Auto-generated method stub
 		if (!shooting) {
 			shooting = true;

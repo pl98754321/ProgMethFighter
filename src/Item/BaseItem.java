@@ -5,7 +5,7 @@ import Entity.Player;
 
 public abstract class BaseItem extends BaseObjective{	
 	boolean Ismagnet;
-	public BaseItem(int x,int y,int size) {
+	public BaseItem(double x,double y,int size) {
 		super(x,y,size,10);
 		this.Ismagnet = false;
 	}

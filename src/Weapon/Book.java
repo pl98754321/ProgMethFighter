@@ -14,12 +14,12 @@ public class Book extends BaseWeapon {
 	}
 	
 	@Override
-	public void shoot(int currentX, int currentY, int toX, int toY) {
+	public void shoot(double currentX, double currentY, double toX, double toY) {
 		// TODO Auto-generated method stub
 		if (!shooting) {
 			shooting = true;
 			GamePlayPage.coolDown(this.getCoolDown(), () -> this.shooting = false);
-			BookBullet b = new BookBullet(currentX, currentY+50,this.getSize(),this.getSpeed(),50);
+			BookBullet b = new BookBullet(currentX, currentY-100,this.getSize(),this.getSpeed(),50);
 			shoot.play();
 			GamePlayPage.bullets.add(b);
 		}

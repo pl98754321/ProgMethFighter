@@ -1,9 +1,5 @@
 package Weapon;
 
-import Bullet.GunBullet;
-import application.GamePlayPage;
-import javafx.scene.media.AudioClip;
-
 public class Magic extends BaseWeapon {
 
 	public Magic(int attack, int speed, int size, int coolDown) {
@@ -12,7 +8,7 @@ public class Magic extends BaseWeapon {
 	}
 
 	@Override
-	public void shoot(int currentX, int currentY, int toX, int toY) {
+	public void shoot(double currentX, double currentY, double toX, double toY) {
 		// TODO Auto-generated method stub
 		
 	}

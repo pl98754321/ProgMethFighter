@@ -13,7 +13,7 @@ public abstract class BaseWeapon {
 		this.setCoolDown(coolDown);
 	}
 	
-	public abstract void shoot(int currentX, int currentY,int toX,int toY);
+	public abstract void shoot(double d, double e,double toX,double toY);
 	
 	//getter setter
 	public int getAttack() {

@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class MainApplication extends Application {
@@ -10,6 +11,7 @@ public class MainApplication extends Application {
 		primaryStage.setTitle("ProgMeth Fighter"); // Set the stage title
 		primaryStage.setScene(StartPage.getStartPageScene()); // Place the scene
 		primaryStage.setResizable(false);
+		primaryStage.getIcons().add(new Image((String) ClassLoader.getSystemResource("bossPic.png").toString()));
 		primaryStage.setOnCloseRequest(e -> {
 			StartPage.bgSong.stop();
 			Platform.exit();

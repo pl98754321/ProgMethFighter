@@ -136,7 +136,7 @@ public class GamePlayPage {
 		
 		this.player.render(gc);
 		
-		if(player.getLv()>=15) {
+		if(player.getLv()>=1) {
 			this.boss.render(gc);
 			gc.setFill(Color.RED);
 			gc.fillRect(520, 20, (this.boss.getHp()*250/this.boss.getMaxHP()), 30);

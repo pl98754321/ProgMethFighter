@@ -15,7 +15,7 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 
 	
 	public Enemy(Player p, int x, int y){
-		super(x,y,40);
+		super(x,y,40,2);
 		this.setColor(Color.BLACK);
 		this.setPlayer(p);
 	}
@@ -34,12 +34,12 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		return false;
 	}
 	public void KnockBack(Enemy others) {
-		this.move(others, -10);
+		super.move(others, -10);
 		this.checkCollision();
 	}
 	
 	public void move(Player player) {
-		this.move(player, 2);
+		super.move(player);
 		this.checkCollision();
 	}
 	public void dropItem(ArrayList<BaseItem> items) {
@@ -50,14 +50,6 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 			items.add(new Magnet(this.getX()+4,this.getY()));			
 		}
 		items.add(new Exp(this.getX(),this.getY()));
-	}
-	
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
 	}
 
 	public void render(GraphicsContext gc){
@@ -77,5 +69,13 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	public double distance(BaseObjective others) {
 		double dis = Math.sqrt(Math.pow(+x-others.x, 2)+Math.pow(+y-others.y, 2));
 		return dis-this.getSize()/2-others.getSize()/2;
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 }

@@ -5,7 +5,7 @@ import application.GamePlayPage;
 import javafx.scene.paint.Color;
 
 public class Magnet extends BaseItem {
-	public Magnet(int x, int y) {
+	public Magnet(double x, double y) {
 		super(x,y,10);
 		this.setColor(Color.RED);
 	}

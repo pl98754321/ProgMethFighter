@@ -2,8 +2,15 @@ package Entity;
 
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
+
+import Skill.BaseSkill;
+import Skill.SpeedUp;
 import Weapon.BaseWeapon;
+import Weapon.Book;
 import Weapon.Gun;
+import Weapon.GunDagger;
 import application.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -15,28 +22,20 @@ public class Player extends BaseEntity {
 	private int Lv;
 	private int atk; 
 	private AudioClip hit  =new AudioClip(ClassLoader.getSystemResource("audio/PlayerHit.mp3").toString());
+	private ArrayList<BaseSkill> skills; 
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill
-	public final int SPEED=3;
 	private boolean damage = false;
-	
-	public boolean isUltiReady() {
-		return ultiReady;
-	}
-
-	public void setUltiReady(boolean ultiReady) {
-		this.ultiReady = ultiReady;
-	}
 
 	public Player(int x, int y){
-		super(x,y,50);
+		super(x,y,50,3);
 		this.setColor(Color.BLUE);
 		this.setLv(1);
 		this.setCurrentExp(0);
 		this.setLv(1);
 		this.setNextLv(100);
 		this.setAtk(5);
-		this.weapon = new Gun();
+		this.weapon = new Book();
 	}
 	
 	public void takeDamage(int dmg){
@@ -125,7 +124,33 @@ public class Player extends BaseEntity {
 	}
 
 	public void shoot(int x, int y){
+//		System.out.println(GamePlayPage.background.getX()+this.getX());
+//		System.out.println(GamePlayPage.background.getY()+this.getY());
 		weapon.shoot(this.getX(), this.getY(), x, y);
+	}
+	
+	public void levelUp() {
+		this.setWeapon(new GunDagger());
+		(new SpeedUp()).performEffect(this);;
+	}
+	public int getCurrentexp() {
+		return currentexp;
+	}
+
+	public void setCurrentexp(int currentexp) {
+		this.currentexp = currentexp;
+	}
+
+	public void addSkill(int index) {
+        Dictionary<Integer, BaseSkill> dict= new Hashtable<>();
+        dict.put(1, new SpeedUp());
+        dict.put(1, new SpeedUp());
+		this.skills.add(dict.get(index));
+	}
+	
+	public void render(GraphicsContext gc) {
+		gc.setFill(this.getColor());
+		gc.fillOval(this.getX()-25, this.getY()-25, 50, 50);
 	}
 	
 	//getter setter
@@ -164,8 +189,28 @@ public class Player extends BaseEntity {
 	public void setAtk(int atk) {
 		this.atk = atk;
 	}
-	public void render(GraphicsContext gc) {
-		gc.setFill(this.getColor());
-		gc.fillOval(this.getX()-25, this.getY()-25, 50, 50);
+
+	public ArrayList<BaseSkill> getSkills() {
+		return skills;
 	}
+
+	public void setSkills(ArrayList<BaseSkill> skills) {
+		this.skills = skills;
+	}
+
+	public BaseWeapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(BaseWeapon weapon) {
+		this.weapon = weapon;
+	}
+	public boolean isUltiReady() {
+		return ultiReady;
+	}
+
+	public void setUltiReady(boolean ultiReady) {
+		this.ultiReady = ultiReady;
+	}
+
 }

@@ -8,7 +8,7 @@ public class Exp extends BaseItem {
 	public final int EXP=5;
 	private AudioClip levelUp = new AudioClip(ClassLoader.getSystemResource("audio/lvlUP.mp3").toString()); 
 	
-	public Exp(int x, int y) {
+	public Exp(double x, double y) {
 		super(x,y,10);
 		this.setColor(Color.YELLOW);
 	}
@@ -22,6 +22,7 @@ public class Exp extends BaseItem {
 			player.setAtk(player.getAtk()+5);
 			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
 			player.setNextLv((int)(player.getNextLv()*1.1));
+			player.levelUp();
 		}
 	}	
 }

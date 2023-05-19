@@ -5,24 +5,30 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class BaseObjective {
-	protected int x;
-	protected int y;
+	protected double x;
+	protected double y;
 	private int size;
+	private int speed;
 	private Color color;
 	
-	public BaseObjective(int x ,int y,int size) {
-		this.setX(x);
-		this.setY(y);
+	public BaseObjective(double d ,double e,int size,int speed) {
+		this.setX(d);
+		this.setY(e);
 		this.setSize(size);
+		this.speed = speed;
 	}
 	
 	public void move(int vx, int vy){
+		this.move((double) (vx),(double) (vy));
+	}
+	public void move(double vx, double vy){
 		this.setX(this.getX()+vx);
 		this.setY(this.getY()+vy);
 	}
-	public void move(Player player,int speed) {
+
+	public void move(Player player) {
 		double angle = Math.atan2(-GamePlayPage.background.getY()+player.getY()-this.getY(),-GamePlayPage.background.getX()+player.getX()-this.getX());
-		this.move((int) (Math.cos(angle)*speed),(int) (Math.sin(angle)*speed));
+		this.move((int) (Math.cos(angle)*this.speed),(int) (Math.sin(angle)*this.speed));
 	}
 	public void move(BaseObjective others,int speed) {
 		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
@@ -32,16 +38,12 @@ public class BaseObjective {
 	public double distance(Player p) {
 		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));
 		return dis-this.getSize()/2-p.getSize()/2;
-	} 
-	
-	
+	}
 	
 	public void render(GraphicsContext gc) {
 		gc.setFill(this.getColor());
 		gc.fillOval(GamePlayPage.background.getX()+this.getX()-size/2,GamePlayPage.background.getY()+ this.getY()-size/2, size, size);
 	}
-	
-
 	// Getter setter
 	public int getSize() {
 		return this.size;
@@ -50,19 +52,19 @@ public class BaseObjective {
 	public void setSize(int size) {
 		this.size = size;
 	}
-	public int getX() {
+	public double getX() {
 		return this.x;
 	}
 
-	public void setX(int x) {
+	public void setX(double x) {
 		this.x=x;
 	}
 
-	public int getY() {
+	public double getY() {
 		return this.y;
 	}
 
-	public void setY(int y) {
+	public void setY(double y) {
 		this.y = y;
 	}
 	public void setColor(Color c) {
@@ -70,5 +72,12 @@ public class BaseObjective {
 	}
 	public Color getColor() {
 		return this.color;
+	}
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 }

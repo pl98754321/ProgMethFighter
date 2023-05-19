@@ -231,7 +231,7 @@ public class GamePlayPage {
 		if(!this.pauseDetect) {
 			this.pause=!(this.isPause());
 			this.setPauseDetect(true);
-			coolDown(1000,() -> this.setPauseDetect(false));
+			coolDown(100,() -> this.setPauseDetect(false));
 		}
 	}
 

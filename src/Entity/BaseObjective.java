@@ -35,9 +35,7 @@ public class BaseObjective {
 	}
 	
 	public double distance(Player p) {
-//		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));
-		double dis = Math.sqrt(Math.pow(x-p.x, 2)+Math.pow(y-p.y, 2));
-
+		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));
 		return dis-this.getSize()/2-p.getSize()/2;
 	}
 	

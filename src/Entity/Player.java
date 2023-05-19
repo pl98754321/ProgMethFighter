@@ -64,31 +64,31 @@ public class Player extends BaseEntity {
 		if(GamePlayPage.background.getX()<=0 || GamePlayPage.background.getX()+GamePlayPage.background.getWidth()>800) {//X-axis
 			if(GamePlayPage.background.getX()-vx>=0) {//left bound
 				GamePlayPage.background.setX(0);
-				this.setX(this.getX()+vx);
+				this.PsetX(this.getX()+vx);
 				BookBullet.followXPlayer(vx);
 				}
 			else if(GamePlayPage.background.getX()-vx+GamePlayPage.background.getWidth()<=800) {//right bound
-				this.setX(this.getX()+vx);
+				this.PsetX(this.getX()+vx);
 				BookBullet.followXPlayer(vx);
 				}
 			else {
 				if(this.getX()<400) {
 					if(this.getX()+vx>400) {
-						this.setX(400);
+						this.PsetX(400);
 						BookBullet.followXPlayer(vx);
 						}
 					else {
-						this.setX(this.getX()+vx);
+						this.PsetX(this.getX()+vx);
 						BookBullet.followXPlayer(vx);
 						}
 					}
 				else if(this.getX()>400) {
 					if(this.getX()+vx<400) {
-						this.setX(400);
+						this.PsetX(400);
 						BookBullet.followXPlayer(vx);
 						}
 					else {
-						this.setX(this.getX()+vx);
+						this.PsetX(this.getX()+vx);
 						BookBullet.followXPlayer(vx);
 						}
 					}
@@ -102,31 +102,31 @@ public class Player extends BaseEntity {
 		if(GamePlayPage.background.getY()<=0 || GamePlayPage.background.getY()+GamePlayPage.background.getHeight()>600) {//Y-axis
 			if(GamePlayPage.background.getY()-vy>=0) {//top bound
 				GamePlayPage.background.setY(0);
-				this.setY(this.getY()+vy);
+				this.PsetY(this.getY()+vy);
 				BookBullet.followYPlayer(vy);
 				}
 			else if(GamePlayPage.background.getY()-vy+GamePlayPage.background.getHeight()<=600) {//bottom bound
-				this.setY(this.getY()+vy);
+				this.PsetY(this.getY()+vy);
 				BookBullet.followYPlayer(vy);
 				}
 			else {
 				if(this.getY()<300) {
 					if(this.getY()+vy>300) {
-						this.setY(300);
+						this.PsetY(300);
 						BookBullet.followYPlayer(vy);
 						}
 					else {
-						this.setY(this.getY()+vy);
+						this.PsetY(this.getY()+vy);
 						BookBullet.followYPlayer(vy);
 						}
 					}
 				else if(this.getY()>300) {
 					if(this.getY()+vy<300) {
-						this.setY(300);
+						this.PsetY(300);
 						BookBullet.followYPlayer(vy);
 						}
 					else {
-						this.setY(this.getY()+vy);
+						this.PsetY(this.getY()+vy);
 						BookBullet.followYPlayer(vy);
 						}
 					}
@@ -191,10 +191,10 @@ public class Player extends BaseEntity {
 	public void setLv(int lv) {
 		this.Lv = lv;
 	}
-	public void setX(int x) {
+	public void PsetX(double x) {
 		this.x=Math.max(25, Math.min(775, x));
 	}
-	public void setY(int y) {
+	public void PsetY(double y) {
 		this.y = Math.max(25, Math.min(575, y));
 	}
 	public int getAtk() {

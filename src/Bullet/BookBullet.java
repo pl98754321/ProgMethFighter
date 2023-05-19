@@ -15,8 +15,23 @@ public class BookBullet extends BaseBullet{
 //		double acc = Math.atan2(this.x-player.getX(),this.y-player.getY());
 		double direction = Math.atan2(this.y-player.getY()+GamePlayPage.background.getY(), 
 				this.x-player.getX()+GamePlayPage.background.getX());
-		this.move(-Math.sin(direction)*2, 
-				Math.cos(direction)*2);
+		this.move(-Math.sin(direction)*2, Math.cos(direction)*2);
+	}
+	public static void followXPlayer(int vx) {
+		for(int i =0 ;i<GamePlayPage.bullets.size();i++) {
+			BaseBullet b= GamePlayPage.bullets.get(i);
+			if(b instanceof BookBullet) {
+				b.setX(b.getX()+vx);
+			}
+		}
+	}
+	public static void followYPlayer(int vy) {
+		for(int i =0 ;i<GamePlayPage.bullets.size();i++) {
+			BaseBullet b= GamePlayPage.bullets.get(i);
+			if(b instanceof BookBullet) {
+				b.setY(b.getY()+vy);
+			}
+		}
 	}
 
 }

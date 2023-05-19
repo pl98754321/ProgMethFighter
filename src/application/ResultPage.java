@@ -2,7 +2,6 @@ package application;
 
 import java.io.IOException;
 
-import Entity.Player;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;

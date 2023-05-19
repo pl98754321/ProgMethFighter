@@ -1,10 +1,12 @@
 package Entity;
 
+import application.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class BaseObjective {
-	private int x,y;
+	protected int x;
+	protected int y;
 	private int size;
 	private Color color;
 	
@@ -24,14 +26,16 @@ public class BaseObjective {
 		this.move(0,(int) (Math.sin(angle)*speed));
 	}
 	
-	public double distance(BaseObjective others) {
-		double dis = Math.sqrt(Math.pow(x-others.x, 2)+Math.pow(y-others.y, 2));
-		return dis-this.getSize()/2-others.getSize()/2;
+	public double distance(Player p) {
+		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));
+		return dis-this.getSize()/2-p.getSize()/2;
 	} 
+	
+	
 	
 	public void render(GraphicsContext gc) {
 		gc.setFill(this.getColor());
-		gc.fillOval(this.getX()-size/2, this.getY()-size/2, size, size);
+		gc.fillOval(GamePlayPage.background.getX()+this.getX()-size/2,GamePlayPage.background.getY()+ this.getY()-size/2, size, size);
 	}
 	
 
@@ -48,7 +52,7 @@ public class BaseObjective {
 	}
 
 	public void setX(int x) {
-		this.x = x;
+		this.x=x;
 	}
 
 	public int getY() {

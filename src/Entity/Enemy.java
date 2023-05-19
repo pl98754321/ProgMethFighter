@@ -10,21 +10,20 @@ import application.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class Enemy extends BaseEntity implements KnockBackAble{
+public class Enemy extends BaseEntity implements KnockBackAble {
 	private Player player;
 
-	
-	public Enemy(Player p, int x, int y){
-		super(x,y,40);
+	public Enemy(Player p, int x, int y) {
+		super(x, y, 40);
 		this.setColor(Color.BLACK);
-		this.player = p;
+		this.setPlayer(p);
 	}
-	
-	private boolean checkCollision(){
-		for (int i = 0; i < GamePlayPage.enemies.size(); i++){
+
+	private boolean checkCollision() {
+		for (int i = 0; i < GamePlayPage.enemies.size(); i++) {
 			Enemy e = GamePlayPage.enemies.get(i);
-			if (e != this){
-				if (this.distance(e) <=0){
+			if (e != this) {
+				if (this.distance(e) <= 0) {
 					e.KnockBack(this);
 					this.KnockBack(e);
 					return true;
@@ -33,11 +32,12 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		}
 		return false;
 	}
+
 	public void KnockBack(Enemy others) {
 		this.move(others, -10);
 		this.checkCollision();
 	}
-	
+
 	public void move(BaseObjective others) {
 		this.move(others, 2);
 		this.checkCollision();
@@ -46,19 +46,38 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		if(Math.random()<=0.2) {
 			items.add(new Potion(this.getX()-5,this.getY()));
 		}
-		if(Math.random()<=0.2) {
+		
+
 			items.add(new Magnet(this.getX()+5,this.getY()));			
-		}
-		items.add(new Exp(this.getX(),this.getY()));
+		}   
+		items.add(new Exp(this.getX(),thi s .g etY()));
 	}
-	
+	   
+	public Player getPlayer() {   
+		return player;
+	} 
+
+
+		this.player = player;
+	}
+
 	public void render(GraphicsContext gc){
-		super.render(gc);
+		if(this instanceof Boss) {
+			((Boss) this).draw(gc);
+		}
+		else {
+			super.render(gc); 
+		} 
 		if (this.distance(player) <= 0){
-			this.player.takeDamage(5);
-			GamePlayPage.enemies.remove(this);
+			 	GamePlayPage.enemies.remove(this);
 		} else {
 			this.move(this.player);
-		}
+		} 
+	}
+	public double distance(BaseObjective others) {
+		double dis = Math.sqrt(Math.pow(+x-others.x, 2)+Math.pow(+y-others.y, 2));
+		return dis-this.getSize()/2-others.getSize()/2;
 	}
 }
+
+	              

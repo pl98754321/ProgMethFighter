@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import Weapon.BaseWeapon;
 import Weapon.Gun;
 import application.GamePlayPage;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 public class Player extends BaseEntity {
 	private int currentexp=0;
 	private int nextLv;
 	private int Lv;
+	private int atk; 
+	
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill
 	public final int SPEED=3;
@@ -31,6 +34,7 @@ public class Player extends BaseEntity {
 		this.setCurrentExp(0);
 		this.setLv(1);
 		this.setNextLv(100);
+		this.setAtk(5);
 		this.weapon = new Gun();
 	}
 	
@@ -40,7 +44,7 @@ public class Player extends BaseEntity {
 		damage = true;
 		GamePlayPage.coolDown(150, () -> damage = false);
 	}
-	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill ("i am atomic" มาจากการ์ตูนเรื่องนึงครับ)
+	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill
 		if(this.isUltiReady()) {
 			for(Enemy e : Enemys) {
 				e.dropItem(GamePlayPage.items);
@@ -53,6 +57,69 @@ public class Player extends BaseEntity {
 			return;
 		}
 		
+	}
+	public void move(int vx, int vy){
+		if(GamePlayPage.background.getX()<=0 || GamePlayPage.background.getX()+GamePlayPage.background.getWidth()>800) {//X-axis
+			if(GamePlayPage.background.getX()-vx>=0) {//left bound
+				GamePlayPage.background.setX(0);
+				this.setX(this.getX()+vx);
+				}
+			else if(GamePlayPage.background.getX()-vx+GamePlayPage.background.getWidth()<=800) {//right bound
+				this.setX(this.getX()+vx);
+				}
+			else {
+				if(this.getX()<400) {
+					if(this.getX()+vx>400) {
+						this.setX(400);
+						}
+					else {
+						this.setX(this.getX()+vx);
+						}
+					}
+				else if(this.getX()>400) {
+					if(this.getX()+vx<400) {
+						this.setX(400);
+						}
+					else {
+						this.setX(this.getX()+vx);
+						}
+					}
+				else {
+					GamePlayPage.background.setX(GamePlayPage.background.getX()-vx);
+					}
+			}
+			}
+				
+		if(GamePlayPage.background.getY()<=0 || GamePlayPage.background.getY()+GamePlayPage.background.getHeight()>600) {//Y-axis
+			if(GamePlayPage.background.getY()-vy>=0) {//top bound
+				GamePlayPage.background.setY(0);
+				this.setY(this.getY()+vy);
+				}
+			else if(GamePlayPage.background.getY()-vy+GamePlayPage.background.getHeight()<=600) {//bottom bound
+				this.setY(this.getY()+vy);
+				}
+			else {
+				if(this.getY()<300) {
+					if(this.getY()+vy>300) {
+						this.setY(300);
+						}
+					else {
+						this.setY(this.getY()+vy);
+						}
+					}
+				else if(this.getY()>300) {
+					if(this.getY()+vy<300) {
+						this.setY(300);
+						}
+					else {
+						this.setY(this.getY()+vy);
+						}
+					}
+				else {
+					GamePlayPage.background.setY(GamePlayPage.background.getY()-vy);
+					}
+				}
+			}
 	}
 
 	public void shoot(int x, int y){
@@ -81,5 +148,22 @@ public class Player extends BaseEntity {
 
 	public void setLv(int lv) {
 		this.Lv = lv;
+	}
+	public void setX(int x) {
+		this.x=Math.max(25, Math.min(775, x));
+	}
+	public void setY(int y) {
+		this.y = Math.max(25, Math.min(575, y));
+	}
+	public int getAtk() {
+		return atk;
+	}
+
+	public void setAtk(int atk) {
+		this.atk = atk;
+	}
+	public void render(GraphicsContext gc) {
+		gc.setFill(this.getColor());
+		gc.fillOval(this.getX()-25, this.getY()-25, 50, 50);
 	}
 }

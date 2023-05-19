@@ -2,6 +2,14 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="resource"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-19-FX"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-19 with FX"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.base.jar"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.controls.jar"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.media.jar"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.swing.jar"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx.web.jar"/>
+	<classpathentry kind="lib" path="C:/Users/theepob/Desktop/Desktop/openjfx-19.0.2.1_windows-x64_bin-sdk/javafx-sdk-19.0.2.1/lib/javafx-swt.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

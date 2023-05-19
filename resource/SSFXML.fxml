@@ -8,28 +8,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ssScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: skyblue;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StageSelection.SSController">
+<AnchorPane fx:id="ssScene" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0"  xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="StageSelection.SSController">
    <children>
-      <ImageView fx:id="left" fitHeight="533.34" fitWidth="400.0" layoutX="-200.0" layoutY="62.0">
+      <ImageView fx:id="left" fitHeight="399.0" fitWidth="450.0" layoutX="-156.0" layoutY="100.0">
          <image>
-            <Image url="@Stage%202.png" />
+            <Image url="@Map/theCurseOfProgMeth.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="right" fitHeight="533.34" fitWidth="400.0" layoutX="601.0" layoutY="62.0">
+      <ImageView fx:id="right" fitHeight="400.0" fitWidth="400.0" layoutX="482.0" layoutY="87.0">
          <image>
-            <Image url="@Stage%203.png" />
+            <Image url="@Map/chillbeach.png" />
          </image>
       </ImageView>
       <ImageView fx:id="center" fitHeight="533.34" fitWidth="400.0" layoutX="200.0" layoutY="62.0">
          <image>
-            <Image url="@theNightmareExamRoom.png" />
+            <Image url="@Map/theNightmareExamRoom.png" />
          </image>
       </ImageView>
       <Ellipse fill="WHITE" layoutX="414.0" layoutY="-39.0" radiusX="900.0" radiusY="200.0" stroke="BLACK" strokeType="INSIDE" />
       <Ellipse fill="WHITE" layoutX="399.0" layoutY="632.0" radiusX="900.0" radiusY="200.0" stroke="BLACK" strokeType="INSIDE" />
       <Button fx:id="slideleft" layoutX="14.0" layoutY="287.0" mnemonicParsing="false" onAction="#slideleft" text="&lt;-" />
       <Button fx:id="slideright" layoutX="756.0" layoutY="287.0" mnemonicParsing="false" onAction="#slideright" text="-&gt;" />
-      <Text fx:id="numStage" fill="#ff3838" fontSmoothingType="LCD" layoutX="-6.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="the Nightmare Exam Room" textAlignment="CENTER" wrappingWidth="807.0128173828125">
+      <Text fx:id="nameStage" fill="#ff3838" fontSmoothingType="LCD" layoutX="-6.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="the Nightmare Exam Room" textAlignment="CENTER" wrappingWidth="807.0128173828125">
          <font>
             <Font size="30.0" />
          </font>

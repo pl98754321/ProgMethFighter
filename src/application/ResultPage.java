@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import Entity.Player;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -7,18 +9,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ResultPage {
-	GridPane root4;
-	Text resultText;
-	Button restart;
-	Player player;
-	Button menu;
-	Scene scene4;
+	private GridPane root4;
+	private Text resultText;
+	private Button restart;
+	private Button menu;
+	private Scene scene4;
+	private AudioClip resultsound;
 	
 	public static Scene getResultPage(int result) {
 		ResultPage page = new ResultPage();
@@ -32,25 +35,30 @@ public class ResultPage {
 		root4.setHgap(15);
 		root4.setVgap(15);
 		if(result==1) {
+			resultsound =new AudioClip(ClassLoader.getSystemResource("audio/victory.mp3").toString());
 			resultText = new Text("YOU WIN");
 			resultText.setFill(Color.GOLD);
 		}
 		else if(result ==0) {
+			resultsound =new AudioClip(ClassLoader.getSystemResource("audio/death.mp3").toString());
 			resultText = new Text("YOU LOSE");
 			resultText.setFill(Color.RED);
 		}
 		resultText.setFont(Font.font(50));
+		resultsound.play();
 		
 		GamePlayPage.keys.clear();
 		GamePlayPage.items.clear();
 		GamePlayPage.enemies.clear();
-		player = new Player(350, 250);
+		GamePlayPage.bullets.clear();
 		
 		restart = new Button("----RESTART----");
 		restart.setOnMouseClicked(e -> {
 			
 			Stage thisStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-			thisStage.setScene(GamePlayPage.getGamePlayPage());
+			try {
+				thisStage.setScene(SelectPage.getSelectScene());
+			} catch (IOException e1) {}
 		});
 			menu = new Button(" -MAIN MENU- ");
 			menu.setOnMouseClicked(e -> {

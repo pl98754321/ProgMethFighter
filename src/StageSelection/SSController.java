@@ -1,6 +1,6 @@
 package StageSelection;
 
-import application.GamePlayPage;
+import application.StartCutScene;
 import application.StartPage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,63 +15,62 @@ public class SSController{
 	@FXML
 	private Button slideleft;
 	@FXML
-	private ImageView left = new ImageView(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
+	private ImageView left = new ImageView(new Image((String) (ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString())));
 	@FXML
-	private ImageView right = new ImageView(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
+	private ImageView right = new ImageView(new Image((String) (ClassLoader.getSystemResource("Map/chillbeach.png").toString())));
 	@FXML
-	private ImageView  center =new ImageView( new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
+	private ImageView  center =new ImageView( new Image((String) (ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString())));
 	@FXML
-	private Text numStage;
+	private Text nameStage = new Text("the Nightmare Exam Room");
 	@FXML
 	private ImageView Home;
 	@FXML
 	private Button Confirm;
-	private int SelectedStage = 1;
+	public static int SelectedStage = 1;
 	
 	public void slideleft() {
 		if(SelectedStage == 1 ) {
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-	        center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
-			numStage.setText("NameStage 2");
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Map/chillbeach.png").toString())));
+	        center.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString())));
+			nameStage.setText("the Curse of ProgMeth");
 			SelectedStage=2;
 		}
 		else if(SelectedStage == 2) {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
-			numStage.setText("NameStage 3");
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString())));
+			center.setImage(new Image((String) (ClassLoader.getSystemResource("Map/chillbeach.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString())));
+			nameStage.setText("after Exam Trip");
 			SelectedStage=3;
 		}
 		else {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-			numStage.setText("the Nightmare Exam Room");
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString())));
+			center.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Map/chillbeach.png").toString())));
+			nameStage.setText("the Nightmare Exam Room");
 			SelectedStage=1;
-			
 		}
 	}
 	public void slideright() {
 		if(SelectedStage == 1 ) {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
-			numStage.setText("NameStage 3");
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString())));
+			center.setImage(new Image((String) (ClassLoader.getSystemResource("Map/chillbeach.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString())));
+			nameStage.setText("after Exam Trip");
 			SelectedStage=3;
 		}
 		else if(SelectedStage == 3) {
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-	        center.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
-			numStage.setText("NameStage 2");
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString())));
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Map/chillbeach.png").toString())));
+	        center.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString())));
+			nameStage.setText("the Curse of ProgMeth");
 			SelectedStage=2;
 		}
 		else {
-			left.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 2.png").toString())));
-			center.setImage(new Image((String) (ClassLoader.getSystemResource("theNightmareExamRoom.png").toString())));
-			right.setImage(new Image((String) (ClassLoader.getSystemResource("Stage 3.png").toString())));
-			numStage.setText("the Nightmare Exam Room");
+			left.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString())));
+			center.setImage(new Image((String) (ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString())));
+			right.setImage(new Image((String) (ClassLoader.getSystemResource("Map/chillbeach.png").toString())));
+			nameStage.setText("the Nightmare Exam Room");
 			SelectedStage=1;
 		}
 }
@@ -81,6 +80,20 @@ public class SSController{
 	}
 	public void gameStart() {
 		Stage thisStage = (Stage) Home.getScene().getWindow();
-		thisStage.setScene(GamePlayPage.getGamePlayPage());
+		thisStage.setScene(StartCutScene.getStartCutScenePageScene());
+	}
+	public static int selectedStage() {
+		return SelectedStage;
+	}
+	public static String getNameStage() {
+		if(SelectedStage==1) {
+			return "the Nightmare Exam Room";
+		}
+		else if(SelectedStage==2) {
+			return "the Curse of ProgMeth";
+		}
+		else {
+			return "after Exam Trip";
+		}
 	}
 }

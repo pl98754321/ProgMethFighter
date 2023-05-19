@@ -7,13 +7,14 @@ import Weapon.Gun;
 import application.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.media.AudioClip;
 
 public class Player extends BaseEntity {
 	private int currentexp=0;
 	private int nextLv;
 	private int Lv;
 	private int atk; 
-	
+	private AudioClip hit  =new AudioClip(ClassLoader.getSystemResource("audio/PlayerHit.mp3").toString());
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill
 	public final int SPEED=3;
@@ -42,6 +43,7 @@ public class Player extends BaseEntity {
 		if (damage) return;
 		this.setHp(this.getHp()-dmg);
 		damage = true;
+		hit.play();
 		GamePlayPage.coolDown(150, () -> damage = false);
 	}
 	public void iAmAtomic(ArrayList<Enemy> Enemys) {//ultimate skill

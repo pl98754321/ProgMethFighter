@@ -18,6 +18,11 @@ public class BaseObjective {
 		this.setX(this.getX()+vx);
 		this.setY(this.getY()+vy);
 	}
+	public void move(BaseObjective others,int speed){
+		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
+		this.move((int) (Math.cos(angle)*speed),0);
+		this.move(0,(int) (Math.sin(angle)*speed));
+	}
 	
 	public double distance(BaseObjective others) {
 		double dis = Math.sqrt(Math.pow(x-others.x, 2)+Math.pow(y-others.y, 2));

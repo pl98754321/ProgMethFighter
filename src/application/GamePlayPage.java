@@ -57,8 +57,26 @@ public class GamePlayPage {
 			try {
 				Random random = new Random();
 				while (true){
-					GamePlayPage.enemies.add(new Enemy(this.player, (int)( random.nextDouble()*800), (int)( random.nextDouble()*600)));
-					Thread.sleep(700);
+					int x ,y;
+					int rand = (int)( random.nextDouble()*2800);
+					if (rand <=800) {
+						x = rand;
+						y = 0;
+					}
+					else if (rand <= 1400) {
+						x = 800;
+						y = rand;
+					}
+					else if (rand <= 2200) {
+						x = rand;
+						y = 600;
+					}
+					else{
+						x = 0;
+						y = rand;
+					}
+					GamePlayPage.enemies.add(new Enemy(this.player, x, y));
+					Thread.sleep(500);
 					if(player.getHp()<=0) {
 						Thread.currentThread().interrupt();
 						return;
@@ -99,13 +117,14 @@ public class GamePlayPage {
 	
 		for (int i = 0; i < GamePlayPage.items.size(); i++){
 			BaseItem item = GamePlayPage.items.get(i);
+			item.move(player);
 			item.render(gc);
 			if(item.distance(player)<=0){
+				GamePlayPage.items.remove(item);
 				item.performEffect(player);
 				if(item instanceof Magnet) {
 					break;
 				}
-				GamePlayPage.items.remove(item);
 			}
 		}
 		for (int i = 0; i < enemies.size(); i++){

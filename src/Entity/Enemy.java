@@ -52,14 +52,6 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		}
 		items.add(new Exp(this.getX(),this.getY()));
 	}
-	
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
 
 	public void render(GraphicsContext gc){
 		if(this instanceof Boss) {
@@ -78,5 +70,13 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	public double distance(BaseObjective others) {
 		double dis = Math.sqrt(Math.pow(+x-others.x, 2)+Math.pow(+y-others.y, 2));
 		return dis-this.getSize()/2-others.getSize()/2;
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 }

@@ -3,10 +3,14 @@ package Weapon;
 public abstract class BaseWeapon {
 	private int attack;
 	private int speed;
-	
-	public BaseWeapon(int attack,int speed) {
+	private int size;
+	private int coolDown;
+
+	public BaseWeapon(int attack,int speed,int size,int coolDown) {
 		this.setAttack(attack);
 		this.setSpeed(speed);
+		this.setSize(size);
+		this.setCoolDown(coolDown);
 	}
 	
 	public abstract void shoot(int currentX, int currentY,int toX,int toY);
@@ -26,5 +30,20 @@ public abstract class BaseWeapon {
 
 	public void setSpeed(int speed) {
 		this.speed = Math.max(0, speed);
+	}
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+	public int getCoolDown() {
+		return coolDown;
+	}
+
+	public void setCoolDown(int coolDown) {
+		this.coolDown = coolDown;
 	}
 }

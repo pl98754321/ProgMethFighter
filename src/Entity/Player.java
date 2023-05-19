@@ -8,8 +8,9 @@ import java.util.Hashtable;
 import Skill.BaseSkill;
 import Skill.SpeedUp;
 import Weapon.BaseWeapon;
+import Weapon.Book;
 import Weapon.Gun;
-import Weapon.Magic;
+import Weapon.GunDagger;
 import application.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
@@ -25,14 +26,6 @@ public class Player extends BaseEntity {
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill
 	private boolean damage = false;
-	
-	public boolean isUltiReady() {
-		return ultiReady;
-	}
-
-	public void setUltiReady(boolean ultiReady) {
-		this.ultiReady = ultiReady;
-	}
 
 	public Player(int x, int y){
 		super(x,y,50,3);
@@ -131,11 +124,13 @@ public class Player extends BaseEntity {
 	}
 
 	public void shoot(int x, int y){
-		weapon.shoot(this.getX(), this.getY(), x, y);
+		System.out.println(GamePlayPage.background.getX()+this.getX());
+		System.out.println(GamePlayPage.background.getY()+this.getY());
+		weapon.shoot(GamePlayPage.background.getX()+this.getX(), GamePlayPage.background.getY()+this.getY(), x, y);
 	}
 	
 	public void levelUp() {
-		this.setWeapon(new Magic());
+		this.setWeapon(new GunDagger());
 		(new SpeedUp()).performEffect(this);;
 	}
 	public int getCurrentexp() {
@@ -209,6 +204,13 @@ public class Player extends BaseEntity {
 
 	public void setWeapon(BaseWeapon weapon) {
 		this.weapon = weapon;
+	}
+	public boolean isUltiReady() {
+		return ultiReady;
+	}
+
+	public void setUltiReady(boolean ultiReady) {
+		this.ultiReady = ultiReady;
 	}
 
 }

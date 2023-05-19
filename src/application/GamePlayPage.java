@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import Bullet.Bullet;
+
+import Bullet.BaseBullet;
+import Bullet.GunBullet;
 import Entity.Boss;
 import Entity.Enemy;
 import Entity.MapImage;
@@ -33,7 +35,7 @@ public class GamePlayPage {
 	public static Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
-	public static ArrayList<Bullet> bullets = new ArrayList<>();
+	public static ArrayList<BaseBullet> bullets = new ArrayList<>();
 	private Boss boss;
 	private AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
 	
@@ -106,7 +108,8 @@ public class GamePlayPage {
 		gc.clearRect(0, 0, 800, 600);
 		gc.drawImage(background, background.getX(), background.getY(),background.getWidth(),background.getHeight());;
 		
-		for (Bullet a :bullets){
+		for (BaseBullet a :bullets){
+			a.move(player);
 			a.render(gc);
 		}
 	

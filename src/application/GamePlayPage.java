@@ -33,7 +33,7 @@ public class GamePlayPage {
 	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
 	private Boss boss;
-	AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("Explosion.wav").toString());
+	AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
 	
 	
 	public static Scene getGamePlayPage() {

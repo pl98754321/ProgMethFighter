@@ -79,6 +79,7 @@ public class SSController{
 		thisStage.setScene(StartPage.getStartPageScene());
 	}
 	public void gameStart() {
+		StartPage.bgSong.stop();
 		Stage thisStage = (Stage) Home.getScene().getWindow();
 		thisStage.setScene(StartCutScene.getStartCutScenePageScene());
 	}

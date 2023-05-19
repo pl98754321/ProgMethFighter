@@ -49,13 +49,13 @@ public class GamePlayPage {
 		
 		this.boss=new Boss(player,350,250);
 		if(SSController.selectedStage()==1) {
-			background =new MapImage(ClassLoader.getSystemResource("theNightmareExamRoom.png").toString(),0,0);
+			background =new MapImage(ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString(),0,0);
 		}
 		else if(SSController.selectedStage()==2) {
-			background =new MapImage(ClassLoader.getSystemResource("theCurseOfProgMeth.png").toString(),0,0);
+			background =new MapImage(ClassLoader.getSystemResource("Map/theCurseOfProgMeth.png").toString(),0,0);
 		}
 		else{
-			background =new MapImage(ClassLoader.getSystemResource("chillbeach.png").toString(),0,0);
+			background =new MapImage(ClassLoader.getSystemResource("Map/chillbeach.png").toString(),0,0);
 		}
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));

@@ -35,7 +35,7 @@ public class StartPage{
 	     root.setAlignment(Pos.CENTER_LEFT);
 
 	     //Set background image
-	     backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening0.png").toString());
+	     backgroundImage = new Image((String) ClassLoader.getSystemResource("opening/Opening0.png").toString());
 	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 	     root.setBackground(new Background(background));
 	     
@@ -48,7 +48,7 @@ public class StartPage{
 				} catch (InterruptedException e) {
 				}
 	    		 Platform.runLater(() -> {
-	    			 backgroundImage = new Image((String) ClassLoader.getSystemResource("Opening"+i+".png").toString());
+	    			 backgroundImage = new Image((String) ClassLoader.getSystemResource("opening/Opening"+i+".png").toString());
 		    	     background = new BackgroundImage(backgroundImage,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
 		    	     root.setBackground(new Background(background));
 	    		 });

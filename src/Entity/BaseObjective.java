@@ -8,21 +8,24 @@ public class BaseObjective {
 	protected int x;
 	protected int y;
 	private int size;
+	private int speed;
 	private Color color;
 	
-	public BaseObjective(int x ,int y,int size) {
+	public BaseObjective(int x ,int y,int size,int speed) {
 		this.setX(x);
 		this.setY(y);
 		this.setSize(size);
+		this.speed = speed;
 	}
 	
 	public void move(int vx, int vy){
 		this.setX(this.getX()+vx);
 		this.setY(this.getY()+vy);
 	}
-	public void move(Player player,int speed) {
+
+	public void move(Player player) {
 		double angle = Math.atan2(-GamePlayPage.background.getY()+player.getY()-this.getY(),-GamePlayPage.background.getX()+player.getX()-this.getX());
-		this.move((int) (Math.cos(angle)*speed),(int) (Math.sin(angle)*speed));
+		this.move((int) (Math.cos(angle)*this.speed),(int) (Math.sin(angle)*this.speed));
 	}
 	public void move(BaseObjective others,int speed) {
 		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
@@ -32,16 +35,12 @@ public class BaseObjective {
 	public double distance(Player p) {
 		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));
 		return dis-this.getSize()/2-p.getSize()/2;
-	} 
-	
-	
+	}
 	
 	public void render(GraphicsContext gc) {
 		gc.setFill(this.getColor());
 		gc.fillOval(GamePlayPage.background.getX()+this.getX()-size/2,GamePlayPage.background.getY()+ this.getY()-size/2, size, size);
 	}
-	
-
 	// Getter setter
 	public int getSize() {
 		return this.size;
@@ -70,5 +69,12 @@ public class BaseObjective {
 	}
 	public Color getColor() {
 		return this.color;
+	}
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 }

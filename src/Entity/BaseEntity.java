@@ -4,8 +4,8 @@ public abstract class BaseEntity extends BaseObjective{
 	private int Hp;
 	private int maxHP;
 	
-	public BaseEntity(int x,int y,int size) {
-		super(x,y,size);
+	public BaseEntity(int x,int y,int size,int speed) {
+		super(x,y,size,speed);
 		this.setMaxHP(100);
 		this.setHp(100);
 	}

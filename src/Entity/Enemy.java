@@ -15,7 +15,7 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 
 	
 	public Enemy(Player p, int x, int y){
-		super(x,y,40);
+		super(x,y,40,2);
 		this.setColor(Color.BLACK);
 		this.setPlayer(p);
 	}
@@ -34,12 +34,12 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		return false;
 	}
 	public void KnockBack(Enemy others) {
-		this.move(others, -10);
+		super.move(others, -10);
 		this.checkCollision();
 	}
 	
 	public void move(Player player) {
-		this.move(player, 2);
+		super.move(player);
 		this.checkCollision();
 	}
 	public void dropItem(ArrayList<BaseItem> items) {

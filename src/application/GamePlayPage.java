@@ -152,16 +152,16 @@ public class GamePlayPage {
 		}
 		
 		if (GamePlayPage.keys.getOrDefault(KeyCode.W, false)){
-			this.player.move(0, -player.SPEED);
+			this.player.move(0, -player.getSpeed());
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.A, false)){
-			this.player.move(-player.SPEED, 0);
+			this.player.move(-player.getSpeed(), 0);
 			}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.S, false)){
-			this.player.move(0, player.SPEED);
+			this.player.move(0, player.getSpeed());
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.D, false)){
-			this.player.move(player.SPEED, 0);
+			this.player.move(player.getSpeed(), 0);
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.E, false)){
 			this.player.iAmAtomic(enemies);;

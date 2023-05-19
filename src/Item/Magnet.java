@@ -14,10 +14,6 @@ public class Magnet extends BaseItem {
 	public void performEffect(Player player) {//let all item on the screen perform!!!
 		for(int i=0;i<GamePlayPage.items.size();i++) {
 			BaseItem item =GamePlayPage.items.get(i);
-			if(!(item instanceof Magnet)) {//if(it is  Magnet ){recursive ?!?!?}
-				item.performEffect(player);
-				}
-			}
-		GamePlayPage.items.clear();
+			item.setIsmagnet(true);
 	}
-}
+}}

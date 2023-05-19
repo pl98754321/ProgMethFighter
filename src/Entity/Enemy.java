@@ -34,20 +34,18 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		return false;
 	}
 	public void KnockBack(Enemy others) {
-		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
-		this.move(-(int) (Math.cos(angle)*10),-(int) (Math.sin(angle)*10));
+		this.move(others, -10);
 		this.checkCollision();
 	}
 	
-	public void move(BaseObjective others) {
-		double angle = Math.atan2(-GamePlayPage.background.getY()+others.getY()-this.getY(),-GamePlayPage.background.getX()+others.getX()-this.getX());
-		this.move((int) (Math.cos(angle)*2),(int) (Math.sin(angle)*2));
+	public void move(Player player) {
+		this.move(player, 2);
 		this.checkCollision();
-
 	}
 	public void dropItem(ArrayList<BaseItem> items) {
+		System.out.print(items.size());
 		if(Math.random()<=0.2) {
-			items.add(new Potion(this.getX()-2,this.getY()));
+			items.add(new Potion(this.getX()-4,this.getY()));
 		}
 		if(Math.random()<=0.2) {
 			items.add(new Magnet(this.getX()+4,this.getY()));			

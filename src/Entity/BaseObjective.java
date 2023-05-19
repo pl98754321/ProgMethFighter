@@ -20,6 +20,14 @@ public class BaseObjective {
 		this.setX(this.getX()+vx);
 		this.setY(this.getY()+vy);
 	}
+	public void move(Player player,int speed) {
+		double angle = Math.atan2(-GamePlayPage.background.getY()+player.getY()-this.getY(),-GamePlayPage.background.getX()+player.getX()-this.getX());
+		this.move((int) (Math.cos(angle)*speed),(int) (Math.sin(angle)*speed));
+	}
+	public void move(BaseObjective others,int speed) {
+		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
+		this.move((int) (Math.cos(angle)*speed),(int) (Math.sin(angle)*speed));
+	}
 	
 	public double distance(Player p) {
 		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));

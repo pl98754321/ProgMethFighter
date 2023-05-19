@@ -110,12 +110,10 @@ public class GamePlayPage {
 	
 		for (int i = 0; i < GamePlayPage.items.size(); i++){
 			BaseItem item = GamePlayPage.items.get(i);
+			item.move(player);
 			item.render(gc);
 			if(item.distance(player)<=0){
 				item.performEffect(player);
-				if(item instanceof Magnet) {
-					break;
-				}
 				GamePlayPage.items.remove(item);
 			}
 		}

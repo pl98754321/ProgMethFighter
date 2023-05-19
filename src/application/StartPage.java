@@ -20,10 +20,10 @@ import javafx.stage.Stage;
 public class StartPage{
 	public VBox root;
 	public Scene scene;
-	Image backgroundImage;
-	BackgroundImage background;
-	int i =1;
-	AudioClip bgSong = new AudioClip(ClassLoader.getSystemResource("audio/openingsound.mp3").toString());
+	private Image backgroundImage;
+	private BackgroundImage background;
+	private int i =1;
+	public static AudioClip bgSong = new AudioClip(ClassLoader.getSystemResource("audio/openingsound.mp3").toString());
 	
 	public static Scene getStartPageScene() {
 		StartPage page = new StartPage();
@@ -35,7 +35,7 @@ public class StartPage{
 		 root = new VBox(10);
 	     root.setPadding(new Insets(20));
 	     root.setAlignment(Pos.CENTER_LEFT);
-	     bgSong.setCycleCount(3);
+	     bgSong.setCycleCount(10);
 	     bgSong.play();
 	     //Set background image
 	     backgroundImage = new Image((String) ClassLoader.getSystemResource("opening/Opening0.png").toString());
@@ -72,24 +72,25 @@ public class StartPage{
 	     startButton.setOnAction(e -> {
 	    	 Stage thisStage = (Stage) (startButton.getScene().getWindow());
 			    try {
-			    	bgSong.stop();
 					thisStage.setScene(SelectPage.getSelectScene());
 					t.interrupt();
 				} catch (IOException e1) {
 				}
 			});
 
-	     Button something = new Button("something");
-	     something.setStyle("-fx-font-size:20");
-	     something.setPrefWidth(120);
-	     something.setTranslateX(150);
-	     something.setTranslateY(30);
-	     something.setOnAction(e -> {
-				System.out.println("something");
+	     Button exit = new Button("Exit");
+	     exit.setStyle("-fx-font-size:20");
+	     exit.setPrefWidth(120);
+	     exit.setTranslateX(150);
+	     exit.setTranslateY(30);
+	     exit.setOnAction(e -> {
+	    	 bgSong.stop();	
+	    	 t.interrupt();
+				Platform.exit();
 			});
-		something.setPrefSize(200, 50);
+		exit.setPrefSize(200, 50);
 	     // Add elements to the layout
-	     root.getChildren().addAll(startButton,something);
+	     root.getChildren().addAll(startButton,exit);
 
 	     // Create the scene and set it on the stage
 	     scene = new Scene(root, 800, 600);

@@ -43,7 +43,6 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		this.checkCollision();
 	}
 	public void dropItem(ArrayList<BaseItem> items) {
-		System.out.print(items.size());
 		if(Math.random()<=0.2) {
 			items.add(new Potion(this.getX()-4,this.getY()));
 		}

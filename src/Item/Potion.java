@@ -16,7 +16,5 @@ public class Potion extends BaseItem {
 	public void performEffect(Player player) {
 		healSound.play();
 		player.setHp(player.getHp()+this.HP);
-	}
-		
-		
+	}	
 }	

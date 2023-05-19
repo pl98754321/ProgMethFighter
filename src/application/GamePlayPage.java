@@ -10,7 +10,6 @@ import Entity.Enemy;
 import Entity.MapImage;
 import Entity.Player;
 import Item.BaseItem;
-import Item.Magnet;
 import StageSelection.SSController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
@@ -36,7 +35,8 @@ public class GamePlayPage {
 	public static ArrayList<Bullet> bullets = new ArrayList<>();
 	private Boss boss;
 	private AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
-	
+	private boolean pause =false;
+	private boolean pauseDetect = false;
 	
 	public static Scene getGamePlayPage() {
 		GamePlayPage page = new GamePlayPage();
@@ -64,7 +64,11 @@ public class GamePlayPage {
 		}
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
-		canvas.setOnMouseClicked(e -> this.player.shoot((int) (e.getX()), (int)(e.getY())));
+		canvas.setOnMouseClicked(e -> {
+			if(!isPause()) {
+				this.player.shoot((int) (e.getX()), (int)(e.getY()));
+			}
+		});
 		scene3 = new Scene(root3, 800, 600);
 		Thread spawner = new Thread(() -> {
 			try {
@@ -96,7 +100,14 @@ public class GamePlayPage {
 					stop();
 				}
 				else{
-					update(gc);
+					if(isPause()) {
+						if (GamePlayPage.keys.getOrDefault(KeyCode.P, false)){
+							resetPause();
+						}
+					}
+					else {
+						update(gc);
+					}
 				}
 			}
 		};
@@ -104,7 +115,7 @@ public class GamePlayPage {
 	}
 	private void update(GraphicsContext gc){
 		gc.clearRect(0, 0, 800, 600);
-		gc.drawImage(background, background.getX(), background.getY(),background.getWidth(),background.getHeight());;
+		gc.drawImage(background, background.getX(), background.getY(),background.getWidth(),background.getHeight());
 		
 		for (Bullet a :bullets){
 			a.render(gc);
@@ -164,8 +175,12 @@ public class GamePlayPage {
 			this.player.move(player.SPEED, 0);
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.E, false)){
-			this.player.iAmAtomic(enemies);;
+			this.player.iAmAtomic(enemies);
 		}
+		if (GamePlayPage.keys.getOrDefault(KeyCode.P, false)){
+			resetPause();
+		}
+		
 			//HP 
 		int hp =this.player.getHp();
 		if(hp>=75) {
@@ -208,4 +223,24 @@ public class GamePlayPage {
 			}
 		}).start();
 	}
+	public boolean isPause() {
+		return pause;
+	}
+
+	public void resetPause() {
+		if(!this.pauseDetect) {
+			this.pause=!(this.isPause());
+			this.setPauseDetect(true);
+			coolDown(1000,() -> this.setPauseDetect(false));
+		}
+	}
+
+	public boolean isPauseDetect() {
+		return pauseDetect;
+	}
+
+	public void setPauseDetect(boolean pauseDetect) {
+		this.pauseDetect = pauseDetect;
+	}
+
 }

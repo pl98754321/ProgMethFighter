@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -35,7 +36,7 @@ public class StartPage{
 		 root = new VBox(10);
 	     root.setPadding(new Insets(20));
 	     root.setAlignment(Pos.CENTER_LEFT);
-	     bgSong.setCycleCount(10);
+	     bgSong.setCycleCount(Timeline.INDEFINITE);
 	     bgSong.play();
 	     //Set background image
 	     backgroundImage = new Image((String) ClassLoader.getSystemResource("opening/Opening0.png").toString());

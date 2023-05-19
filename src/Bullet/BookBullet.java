@@ -13,8 +13,8 @@ public class BookBullet extends BaseBullet{
 		// TODO Auto-generated method stub
 //		double acc = Math.atan2(this.x-player.getX(),this.y-player.getY());
 		double direction = Math.atan2(this.y-player.getY(), this.x-player.getX());
-		this.move(-(int) (Math.cos(direction)*5), 
-				(int) (Math.sin(direction)*5));
+		this.move(-(int) (Math.sin(direction)*5), 
+				(int) (Math.cos(direction)*5));
 	}
 
 }

@@ -86,7 +86,7 @@ public class GamePlayPage {
 			} catch (InterruptedException ex){
 			}
 		});
-		spawner.start();
+		//spawner.start();
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				if(boss.getHp()<=0) {
@@ -150,7 +150,7 @@ public class GamePlayPage {
 		
 		this.player.render(gc);
 		
-		if(player.getLv()>=1) {
+		if(player.getLv()>=10) {
 			this.boss.render(gc);
 			gc.setFill(Color.RED);
 			gc.fillRect(520, 20, (this.boss.getHp()*250/this.boss.getMaxHP()), 30);

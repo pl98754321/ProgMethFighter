@@ -1,13 +1,13 @@
 package StageSelection;
 
-import application.StartCutScene;
-import application.StartPage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import page.StartCutScene;
+import page.StartPage;
 
 public class SSController{
 	@FXML

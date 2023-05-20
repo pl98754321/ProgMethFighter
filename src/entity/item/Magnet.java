@@ -1,11 +1,12 @@
 package entity.item;
 
 import entity.base.BaseItem;
+import entity.base.EffectPlayer;
 import entity.unit.Player;
 import javafx.scene.paint.Color;
 import page.GamePlayPage;
 
-public class Magnet extends BaseItem {
+public class Magnet extends BaseItem implements EffectPlayer{
 	public Magnet(double x, double y) {
 		super(x,y,10);
 		this.setColor(Color.RED);

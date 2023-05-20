@@ -7,8 +7,6 @@ public abstract class BaseSkill {
 	public BaseSkill(String name) {
 		this.name = name;
 	}
-	
-	public abstract void performEffect(Player player);
 
 	public String getName() {
 		return name;

@@ -1,11 +1,12 @@
 package entity.item;
 
 import entity.base.BaseItem;
+import entity.base.EffectPlayer;
 import entity.unit.Player;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 
-public class Exp extends BaseItem {
+public class Exp extends BaseItem implements EffectPlayer{
 	public final int EXP=5;
 	private AudioClip levelUp = new AudioClip(ClassLoader.getSystemResource("audio/lvlUP.mp3").toString()); 
 	

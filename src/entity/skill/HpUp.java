@@ -4,16 +4,17 @@ import entity.base.BaseSkill;
 import entity.base.EffectPlayer;
 import entity.unit.Player;
 
-public class SpeedUp extends BaseSkill implements EffectPlayer{
+public class HpUp extends BaseSkill implements EffectPlayer{
 
-	public SpeedUp() {
-		super("SpeedUp");
+	public HpUp() {
+		super("HpUp");
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void performEffect(Player player) {
-		player.setSpeed(player.getSpeed()+1);
+		player.setMaxHP(player.getMaxHP()+10);
+		player.setHp(player.getHp()+10);
 	}
 
 }

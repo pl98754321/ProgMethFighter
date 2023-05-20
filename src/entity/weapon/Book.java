@@ -8,7 +8,7 @@ public class Book extends BaseWeapon {
 	private boolean shooting = false;
 	private AudioClip shoot = new AudioClip(ClassLoader.getSystemResource("audio/shoot.mp3").toString());
 	public Book() {
-		super(10, 20,10,200);
+		super(10, 2,10,200);
 	}
 	public Book(int attack,int speed,int size,int coolDown) {
 		super(attack,attack,size,coolDown);

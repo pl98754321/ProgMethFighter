@@ -14,7 +14,7 @@ public class BookBullet extends BaseBullet{
 	public void move(Player player) {
 		double direction = Math.atan2(this.y-player.getY()+GamePlayPage.background.getY(), 
 				this.x-player.getX()+GamePlayPage.background.getX());
-		this.move(-Math.sin(direction)*2, Math.cos(direction)*2);
+		this.move(-Math.sin(direction)*this.getSpeed(), Math.cos(direction)*this.getSpeed());
 	}
 	public static void followXPlayer(int vx) {
 		for(int i =0 ;i<GamePlayPage.bullets.size();i++) {

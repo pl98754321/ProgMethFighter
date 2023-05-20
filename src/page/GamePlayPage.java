@@ -10,7 +10,7 @@ import Controller.SSController;
 import entity.MapImage;
 import entity.base.BaseBullet;
 import entity.base.BaseItem;
-import entity.unit.Boss;
+import entity.unit.EnemyBoss;
 import entity.unit.Enemy;
 import entity.unit.EnermySpeedter;
 import entity.unit.Player;
@@ -37,7 +37,7 @@ public class GamePlayPage {
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public static ArrayList<BaseBullet> bullets = new ArrayList<>();
-	private Boss boss;
+	private EnemyBoss boss;
 	private boolean pause =false;
 	private boolean pauseDetect = false;
 	public  static boolean lvlUp=false;
@@ -59,7 +59,7 @@ public class GamePlayPage {
 		root3.getChildren().add(canvas);
 		this.player = new Player(400,  300);
 		
-		this.boss=new Boss(player,350,250);
+		this.boss=new EnemyBoss(player,350,250);
 		if(SSController.selectedStage()==1) {
 			background =new MapImage(ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString(),0,0);
 		}
@@ -105,7 +105,7 @@ public class GamePlayPage {
 						}
 					}
 					else {
-						if(lvlUp) {
+						if((lvlUp) &(player.getHp()>0)) {
 							Stage thisStage = (Stage) scene3.getWindow();
 							try {
 								tempPage=scene3;
@@ -132,19 +132,15 @@ public class GamePlayPage {
 		
 		this.player.render(gc);
 		
-		if(player.getLv()>=5) {
-			this.boss.render(gc);
+		if(player.getLv()>=2) {
+			if (!enemies.contains(boss)) {
+				enemies.add(boss);
+			}
+			boss.render(gc);
 			gc.setFill(Color.RED);
 			gc.fillRect(520, 20, (this.boss.getHp()*250/this.boss.getMaxHP()), 30);
 			gc.setStroke(Color.BLACK);
 			gc.strokeRect(520, 20, 250, 30);
-			for (int j = 0; j < bullets.size(); j++){
-				if (boss.distance(bullets.get(j))<=0){
-					bullets.remove(j);
-					boss.takeDamage(this.player.getAtk());
-					break;
-				}
-			}
 		}
 		
 		if (GamePlayPage.keys.getOrDefault(KeyCode.W, false)){

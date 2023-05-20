@@ -1,27 +1,27 @@
 package entity.base;
 
 public abstract class BaseWeapon {
-	private int attack;
+	private int atk;
 	private int speed;
 	private int size;
 	private int coolDown;
 
-	public BaseWeapon(int attack,int speed,int size,int coolDown) {
-		this.setAttack(attack);
-		this.setSpeed(speed);
+	public BaseWeapon(int size,int speed,int atk,int coolDown) {
 		this.setSize(size);
+		this.setSpeed(speed);
+		this.setAtk(atk);
 		this.setCoolDown(coolDown);
 	}
 	
 	public abstract void shoot(double d, double e,double toX,double toY);
 	
 	//getter setter
-	public int getAttack() {
-		return attack;
+	public int getAtk() {
+		return atk;
 	}
 
-	public void setAttack(int attack) {
-		this.attack = Math.max(0, attack);
+	public void setAtk(int attack) {
+		this.atk = Math.max(0, attack);
 	}
 
 	public int getSpeed() {

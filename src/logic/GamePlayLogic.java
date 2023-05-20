@@ -5,10 +5,12 @@ import java.util.Random;
 
 import entity.base.BaseBullet;
 import entity.base.BaseItem;
+import entity.base.EffectPlayer;
 import entity.item.Exp;
 import entity.item.Magnet;
 import entity.item.Potion;
 import entity.unit.Enemy;
+import entity.unit.EnermyBalance;
 import entity.unit.EnermySpeedter;
 import entity.unit.Player;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,7 +26,7 @@ public class GamePlayLogic {
 				while (true){
 					if (random.nextDouble()>=0.2) {
 					GamePlayPage.enemies.add(
-							new Enemy(player,
+							new EnermyBalance(player,
 									(int) (GamePlayPage.background.getHeight()*random.nextDouble()),
 									(int) (GamePlayPage.background.getWidth()*random.nextDouble())
 									)
@@ -61,25 +63,29 @@ public class GamePlayLogic {
 			item.move(player);
 			item.render(gc);
 			if(item.distance(player)<=0){
-				item.performEffect(player);
+				if (item instanceof EffectPlayer ) {
+					((EffectPlayer) item).performEffect(player);
+				}
 				GamePlayPage.items.remove(item);
 			}
 		}
 	}
 	public static void updateEnemy(GraphicsContext gc,Player player,ArrayList<Enemy> enemies,ArrayList<BaseBullet> bullets,ArrayList<BaseItem> items) {
-	AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
 	for (int i = 0; i < enemies.size(); i++){
-		Enemy e = enemies.get(i);
-		e.render(gc);
+		Enemy enermy = enemies.get(i);
+		enermy.move(player);
+		enermy.render(gc);
 		for (int j = 0; j < bullets.size(); j++){
-			if (e.distance(bullets.get(j))<=0){
-				bullets.remove(j);
-				enemies.remove(i);
-				explosion.play();
-				e.dropItem(items);
-				i++;
+			BaseBullet bullet = bullets.get(j);
+			if (enermy.distance(bullet)<=0){
+				bullet.attack(enermy);
+				enermy.attack(bullet);
 				break;
 			}
+		}
+		if (enermy.distance(player) <= 0){
+			enermy.attack(player);
+			player.attack(enermy);
 		}
 	}
 	}

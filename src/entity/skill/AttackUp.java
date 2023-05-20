@@ -1,10 +1,10 @@
 package entity.skill;
 
 import entity.base.BaseSkill;
-import entity.base.EffectPlayer;
-import entity.unit.Player;
+import entity.base.BaseWeapon;
+import entity.base.EffectWeapon;
 
-public class AttackUp extends BaseSkill implements EffectPlayer{
+public class AttackUp extends BaseSkill implements EffectWeapon{
 
 	public AttackUp() {
 		super("AttackUp");
@@ -12,8 +12,8 @@ public class AttackUp extends BaseSkill implements EffectPlayer{
 	}
 
 	@Override
-	public void performEffect(Player player) {
-		player.setAtk(player.getAtk()+5);
+	public void performEffect(BaseWeapon weapon) {
+		weapon.setAtk(weapon.getAtk()+5);
 	}
 
 }

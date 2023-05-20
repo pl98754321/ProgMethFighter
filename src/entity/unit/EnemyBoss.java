@@ -5,16 +5,13 @@ import page.GamePlayPage;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class Boss extends Enemy{
+public class EnemyBoss extends Enemy{
 	private boolean damage = false;
 	private Image boss= new Image(ClassLoader.getSystemResource("bossPic.png").toString());
 	
-	public Boss(Player p, int x, int y) {
-		super(p, x, y);
-		this.setSize(100);
-		this.setMaxHP(1000);
-		this.setColor(Color.LIGHTGREEN);
-		this.setHp(1000);
+	public EnemyBoss(Player p, int x, int y) {
+		super(p, x, y,100,3,1000,5,Color.LIGHTGREEN);
+		this.setInvincibleTime(150);
 	}
 	
 	public void takeDamage(int dmg){
@@ -23,7 +20,9 @@ public class Boss extends Enemy{
 		damage = true;
 		GamePlayPage.coolDown(150, () -> damage = false);
 	}
-	public void draw(GraphicsContext gc){
-		gc.drawImage(boss, GamePlayPage.background.getX()+x-getSize()/2,GamePlayPage.background.getY()+ y-getSize()/2,100,141.43);
+	@Override
+	public void render(GraphicsContext gc){
+//		super.render(gc);
+		gc.drawImage(boss, GamePlayPage.background.getX()+this.getX()-getSize()/2,GamePlayPage.background.getY()+ this.getY()-getSize()/2,100,141.43);
 	}
 }

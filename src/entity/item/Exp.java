@@ -25,7 +25,6 @@ public class Exp extends BaseItem implements EffectPlayer{
 			player.setAtk(player.getAtk()+5);
 			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
 			player.setNextLv((int)(player.getNextLv()*1.1));
-			player.levelUp();
 			GamePlayPage.lvlUp=true;
 		}
 	}	

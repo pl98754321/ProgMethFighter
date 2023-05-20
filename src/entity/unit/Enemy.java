@@ -4,26 +4,21 @@ import java.util.ArrayList;
 
 import entity.base.BaseEntity;
 import entity.base.BaseItem;
-import entity.base.BaseObjective;
-import entity.base.KnockBackAble;
 import entity.item.Exp;
 import entity.item.Magnet;
 import entity.item.Potion;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import page.GamePlayPage;
 
-public class Enemy extends BaseEntity implements KnockBackAble{
+public class Enemy extends BaseEntity{
 	private Player player;
+	private AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
 
-	
-	public Enemy(Player p, int x, int y){
-		super(x,y,40,2);
-		this.setColor(Color.BLACK);
-		this.setPlayer(p);
-	}
-	public Enemy(Player p, int x, int y, int size,int speed ,Color color){
-		super(x,y,size,speed);
+
+	public Enemy(Player p, int x, int y, int size,int speed ,int hp,int atk,Color color){
+		super(x,y,size,speed,hp,atk);
 		this.setColor(color);
 		this.setPlayer(p);
 	}
@@ -41,7 +36,7 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		}
 		return false;
 	}
-	public void KnockBack(Enemy others) {
+	public void KnockBack(BaseEntity others) {
 		super.move(others, -10);
 		this.checkCollision();
 	}
@@ -49,6 +44,13 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 	public void move(Player player) {
 		super.move(player);
 		this.checkCollision();
+	}
+	
+	@Override
+	public void died() {
+		GamePlayPage.enemies.remove(this);
+		this.dropItem(GamePlayPage.items);
+		this.explosion.play();
 	}
 	public void dropItem(ArrayList<BaseItem> items) {
 		if(Math.random()<=0.2) {
@@ -58,25 +60,6 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 			items.add(new Magnet(this.getX()+4,this.getY()));			
 		}
 		items.add(new Exp(this.getX(),this.getY()));
-	}
-
-	public void render(GraphicsContext gc){
-		if(this instanceof Boss) {
-			((Boss) this).draw(gc);
-		}
-		else {
-			super.render(gc);
-		}
-		if (this.distance(player) <= 0){
-			this.player.takeDamage(5);
-			GamePlayPage.enemies.remove(this);
-		} else {
-			this.move(this.player);
-		}
-	}
-	public double distance(BaseObjective others) {
-		double dis = Math.sqrt(Math.pow(+x-others.getX(), 2)+Math.pow(+y-others.getY(), 2));
-		return dis-this.getSize()/2-others.getSize()/2;
 	}
 	
 	public Player getPlayer() {

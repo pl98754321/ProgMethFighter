@@ -11,7 +11,7 @@ public class Book extends BaseWeapon {
 		super(10, 3,10,200);
 	}
 	public Book(int attack,int speed,int size,int coolDown) {
-		super(attack,attack,size,coolDown);
+		super(attack,speed,size,coolDown);
 	}
 	
 	@Override
@@ -20,7 +20,7 @@ public class Book extends BaseWeapon {
 		if (!shooting) {
 			shooting = true;
 			GamePlayPage.coolDown(this.getCoolDown(), () -> this.shooting = false);
-			BookBullet b = new BookBullet(currentX, currentY-100,this.getSize(),this.getSpeed(),50);
+			BookBullet b = new BookBullet(currentX, currentY-100,this.getSize(),this.getSpeed(),this.getAtk());
 			shoot.play();
 			GamePlayPage.bullets.add(b);
 		}

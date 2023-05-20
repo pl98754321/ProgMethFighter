@@ -51,13 +51,12 @@ public class OptionController {
     		"Bsize", new BulletSizeUp(),
     		"Bspeed", new BulletSpeedUp(),
     		"Hp", new HpUp(),
-    		"spd",new SpeedUp()
+    		"spd+",new SpeedUp()
     		);
 	
 	public void intialize() {
 		Selected=0;
 		Collections.shuffle(name);
-		System.out.println(name);
 		left.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(0)+".png").toString())));
         center.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(1)+".png").toString())));
         right.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(2)+".png").toString())));
@@ -77,8 +76,6 @@ public class OptionController {
 	}
 	public void confirm() {
 		BaseSkill skill = mapSkill.get(name.get(Selected));
-		System.out.println(skill.getName());
-		System.out.println(name);
 		if (skill instanceof  EffectPlayer) {
 			((EffectPlayer) skill).performEffect(GamePlayPage.player);
 		}
@@ -89,7 +86,6 @@ public class OptionController {
 		else {
 			System.out.println("Enermy :: " + name.get(Selected));
 		}
-		System.out.println("Skill :: " + name.get(Selected));
 	}
 	
 }

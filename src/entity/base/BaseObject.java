@@ -5,14 +5,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import page.GamePlayPage;
 
-public class BaseObjective {
-	protected double x;
-	protected double y;
+public class BaseObject {
+	private double x;
+	private double y;
 	private int size;
 	private int speed;
 	private Color color;
 	
-	public BaseObjective(double d ,double e,int size,int speed) {
+	public BaseObject(double d ,double e,int size,int speed) {
 		this.setX(d);
 		this.setY(e);
 		this.setSize(size);
@@ -30,14 +30,18 @@ public class BaseObjective {
 		double angle = Math.atan2(-GamePlayPage.background.getY()+player.getY()-this.getY(),-GamePlayPage.background.getX()+player.getX()-this.getX());
 		this.move((int) (Math.cos(angle)*this.speed),(int) (Math.sin(angle)*this.speed));
 	}
-	public void move(BaseObjective others,int speed) {
+	public void move(BaseObject others,int speed) {
 		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
 		this.move((int) (Math.cos(angle)*speed),(int) (Math.sin(angle)*speed));
 	}
 	
 	public double distance(Player p) {
-		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.x, 2)+Math.pow(GamePlayPage.background.getY()+y-p.y, 2));
+		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.getX(), 2)+Math.pow(GamePlayPage.background.getY()+y-p.getY(), 2));
 		return dis-this.getSize()/2-p.getSize()/2;
+	}
+	public double distance(BaseObject others) {
+		double dis = Math.sqrt(Math.pow(this.getX()-others.getX(), 2)+Math.pow(this.getY()-others.getY(), 2));
+		return dis-this.getSize()/2-others.getSize()/2;
 	}
 	
 	public void render(GraphicsContext gc) {

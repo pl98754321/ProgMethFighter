@@ -16,6 +16,6 @@ public class Magnet extends BaseItem implements EffectPlayer{
 	public void performEffect(Player player) {//let all item on the screen perform!!!
 		for(int i=0;i<GamePlayPage.items.size();i++) {
 			BaseItem item =GamePlayPage.items.get(i);
-			item.setIsmagnet(true);
+			item.setisMagnet(true);
 	}
 }}

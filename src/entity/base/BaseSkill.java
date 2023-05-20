@@ -3,7 +3,7 @@ package entity.base;
 import entity.unit.Player;
 
 public abstract class BaseSkill {
-	String name;
+	private String name;
 	public BaseSkill(String name) {
 		this.name = name;
 	}

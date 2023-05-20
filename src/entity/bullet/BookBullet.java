@@ -1,19 +1,19 @@
 package entity.bullet;
 
 import entity.base.BaseBullet;
-import entity.base.BaseObjective;
+import entity.base.BaseObject;
 import entity.unit.Player;
 import page.GamePlayPage;
 
 public class BookBullet extends BaseBullet{
-	public BookBullet(double x, double y, int size, int speed,int r) {
-		super(-GamePlayPage.background.getX()+x, -GamePlayPage.background.getY()+y, size, speed);
+	public BookBullet(double x, double y, int size, int speed,int attack) {
+		super(-GamePlayPage.background.getX()+x, -GamePlayPage.background.getY()+y, size, speed,attack);
 	}
 
 	@Override
 	public void move(Player player) {
-		double direction = Math.atan2(this.y-player.getY()+GamePlayPage.background.getY(), 
-				this.x-player.getX()+GamePlayPage.background.getX());
+		double direction = Math.atan2(this.getY()-player.getY()+GamePlayPage.background.getY(), 
+				this.getX()-player.getX()+GamePlayPage.background.getX());
 		this.move(-Math.sin(direction)*this.getSpeed(), Math.cos(direction)*this.getSpeed());
 	}
 	public static void followXPlayer(int vx) {

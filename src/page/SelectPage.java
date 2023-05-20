@@ -34,9 +34,8 @@ public class SelectPage {
 					myController.slideright();	
 					break;
 				case S:
-					StartPage.bgSong.stop();
 					Stage thisStage = (Stage) ((Scene) e.getSource()).getWindow();
-					thisStage.setScene(StartCutScene.getStartCutScenePageScene());
+					thisStage.setScene(StartCutScene.getStartCutScenePageScene(SSController.selectedStage()-1));
 					break;	
 				default:
 					break;

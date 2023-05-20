@@ -81,7 +81,7 @@ public class SSController{
 	public void gameStart() {
 		StartPage.bgSong.stop();
 		Stage thisStage = (Stage) Home.getScene().getWindow();
-		thisStage.setScene(StartCutScene.getStartCutScenePageScene());
+		thisStage.setScene(StartCutScene.getStartCutScenePageScene(SelectedStage));
 	}
 	public static int selectedStage() {
 		return SelectedStage;

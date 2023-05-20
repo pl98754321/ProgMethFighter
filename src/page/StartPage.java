@@ -68,18 +68,19 @@ public class StartPage{
 	     Button storyButton = new Button("Story Mode");
 	     storyButton.setStyle("-fx-font-size:20");
 	     storyButton.setTranslateX(150);
-	     storyButton.setTranslateY(20);
+	     storyButton.setTranslateY(30);
 	     storyButton.setPrefSize(200, 50);
 	     storyButton.setOnAction(e -> {
+	    	 GamePlayPage.isStoryMode=true;
 	    	 Stage thisStage = (Stage) (storyButton.getScene().getWindow());
-			    thisStage.setScene(StartCutScene.getStartCutScenePageScene());
+			    thisStage.setScene(StartCutScene.getStartCutScenePageScene(0));
 				t.interrupt();
 			});
 	     
 	     Button startButton = new Button("Start Game");
 	     startButton.setStyle("-fx-font-size:20");
 	     startButton.setTranslateX(150);
-	     startButton.setTranslateY(20);
+	     startButton.setTranslateY(40);
 	     startButton.setPrefSize(200, 50);
 	     startButton.setOnAction(e -> {
 	    	 Stage thisStage = (Stage) (startButton.getScene().getWindow());
@@ -94,7 +95,7 @@ public class StartPage{
 	     exit.setStyle("-fx-font-size:20");
 	     exit.setPrefWidth(120);
 	     exit.setTranslateX(150);
-	     exit.setTranslateY(30);
+	     exit.setTranslateY(50);
 	     exit.setOnAction(e -> {
 	    	 bgSong.stop();	
 	    	 t.interrupt();

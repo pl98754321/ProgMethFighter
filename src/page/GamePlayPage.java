@@ -43,10 +43,14 @@ public class GamePlayPage {
 	public  static boolean lvlUp=false;
 	public static Scene tempPage;
 	public static boolean isback = false;
+	public static boolean isStoryMode = false;
+	public static boolean toNextstage=false;
+	
 	
 	public static Scene getGamePlayPage() {
 		GamePlayPage page = new GamePlayPage();
 		page.initializeGamePlayPage();
+		toNextstage=false;
 		return page.scene3;
 	}
 	public Scene getScene() {return tempPage;}
@@ -82,10 +86,34 @@ public class GamePlayPage {
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				if(boss.getHp()<=0) {
-					Stage thisStage = (Stage) scene3.getWindow();
-					thisStage.setScene(ResultPage.getResultPage(1));
-					spawner.interrupt();
-					stop();
+					if(!isStoryMode) {
+						Stage thisStage = (Stage) scene3.getWindow();
+						thisStage.setScene(ResultPage.getResultPage(1));
+						spawner.interrupt();
+						stop();
+					}
+					else {
+						if(!toNextstage) {
+							if(StartCutScene.currentStage==2) {
+								Stage thisStage = (Stage) scene3.getWindow();
+								thisStage.setScene(ResultPage.getResultPage(1));
+								spawner.interrupt();
+								stop();
+							}
+							else {
+								toNextstage=true;
+								Stage thisStage = (Stage) scene3.getWindow();
+								enemies.clear();
+								bullets.clear();
+								keys.clear();
+								spawner.interrupt();
+								SSController.SelectedStage+=1;
+								StartCutScene.currentStage+=1;
+								thisStage.setScene(StartCutScene.getStartCutScenePageScene(StartCutScene.currentStage));
+								stop();
+								}
+						}
+					}
 				}
 				else if(player.getHp()==0) {
 					Stage thisStage = (Stage) scene3.getWindow();
@@ -132,7 +160,7 @@ public class GamePlayPage {
 		
 		this.player.render(gc);
 		
-		if(player.getLv()>=2) {
+		if(player.getLv()>=15) {
 			if (!enemies.contains(boss)) {
 				enemies.add(boss);
 			}

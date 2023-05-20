@@ -22,6 +22,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import logic.GamePlayLogic;
 import javafx.scene.media.AudioClip;
 
 public class GamePlayPage {
@@ -71,35 +72,8 @@ public class GamePlayPage {
 				this.player.shoot((int) (e.getX()), (int)(e.getY()));
 			}
 		});
-		scene3 = new Scene(root3, 800, 600);
-		Thread spawner = new Thread(() -> {
-			try {
-				Random random = new Random();
-				while (true){
-					if (random.nextDouble()>=0.2) {
-					GamePlayPage.enemies.add(
-							new Enemy(this.player,
-									(int) (GamePlayPage.background.getHeight()*random.nextDouble()),
-									(int) (GamePlayPage.background.getWidth()*random.nextDouble())
-									)
-							);}
-					else {
-						GamePlayPage.enemies.add(
-								new EnermySpeedter(this.player,
-										(int) (GamePlayPage.background.getHeight()*random.nextDouble()),
-										(int) (GamePlayPage.background.getWidth()*random.nextDouble())
-										)
-								);
-					}
-					Thread.sleep(300);
-					if(player.getHp()<=0) {
-						Thread.currentThread().interrupt();
-						return;
-					}
-				}
-			} catch (InterruptedException ex){
-			}
-		});
+		scene3 = new Scene(root3, 800, 600);		
+		Thread spawner = GamePlayLogic.getSpawner(this.player);
 		spawner.start();
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
@@ -133,34 +107,9 @@ public class GamePlayPage {
 		gc.clearRect(0, 0, 800, 600);
 		gc.drawImage(background, background.getX(), background.getY(),background.getWidth(),background.getHeight());
 		
-		for (BaseBullet a :bullets){
-			a.move(player);
-			a.render(gc);
-		}
-	
-		for (int i = 0; i < GamePlayPage.items.size(); i++){
-			BaseItem item = GamePlayPage.items.get(i);
-			item.move(player);
-			item.render(gc);
-			if(item.distance(player)<=0){
-				item.performEffect(player);
-				GamePlayPage.items.remove(item);
-			}
-		}
-		for (int i = 0; i < enemies.size(); i++){
-			Enemy e = enemies.get(i);
-			e.render(gc);
-			for (int j = 0; j < bullets.size(); j++){
-				if (e.distance(bullets.get(j))<=0){
-					bullets.remove(j);
-					enemies.remove(i);
-					explosion.play();
-					e.dropItem(items);
-					i++;
-					break;
-				}
-			}
-		}
+		GamePlayLogic.updateBullet(gc,player,bullets);
+		GamePlayLogic.updateItems(gc,player,items);
+		GamePlayLogic.updateEnemy(gc,player,enemies,bullets,items);
 		
 		this.player.render(gc);
 		

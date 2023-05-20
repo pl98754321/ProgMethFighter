@@ -6,6 +6,7 @@ import Controller.OptionController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class OptionPage {
 	public FXMLLoader loader;
@@ -36,6 +37,9 @@ public class OptionPage {
 					break;
 				case S:
 					myController.confirm();
+					Stage thisStage = (Stage) scene.getWindow();
+					thisStage.setScene(GamePlayPage.tempPage);
+					GamePlayPage.isback=true;
 					break;	
 				default:
 					break;

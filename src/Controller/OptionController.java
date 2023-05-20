@@ -52,6 +52,7 @@ public class OptionController {
     		);
 	
 	public void intialize() {
+		Selected=0;
 		Collections.shuffle(name);
 		right.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(0)+".png").toString())));
 		left.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(1)+".png").toString())));

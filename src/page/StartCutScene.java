@@ -39,7 +39,7 @@ public class StartCutScene {
 		nameStage.setFill(Color.WHITE);
 		nameStage.setFont(Font.font(50));
 		
-		Text ready = new Text("Ready");
+		Text ready = new Text("ในระหว่างการสอบ ปีศาจ ProgMeth ได้บุกเข้ามา");
 		ready.setFill(Color.WHITE);
 		ready.setFont(Font.font(30));
 		

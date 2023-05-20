@@ -6,7 +6,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class EnemyBoss extends Enemy{
-	private boolean damage = false;
 	private Image boss= new Image(ClassLoader.getSystemResource("bossPic.png").toString());
 	
 	public EnemyBoss(Player p, int x, int y) {
@@ -14,12 +13,6 @@ public class EnemyBoss extends Enemy{
 		this.setInvincibleTime(150);
 	}
 	
-	public void takeDamage(int dmg){
-		if (damage) return;
-		this.setHp(this.getHp()-dmg);
-		damage = true;
-		GamePlayPage.coolDown(150, () -> damage = false);
-	}
 	@Override
 	public void render(GraphicsContext gc){
 //		super.render(gc);

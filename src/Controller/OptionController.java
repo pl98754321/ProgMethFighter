@@ -1,24 +1,65 @@
 package Controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
+
+import entity.base.BaseSkill;
+import entity.base.EffectPlayer;
+import entity.base.EffectWeapon;
+import entity.skill.ChangeWeapon;
+import entity.skill.HpUp;
+import entity.skill.SpeedUp;
+import entity.skill.AttackSpeedUp;
+import entity.skill.AttackUp;
+import entity.skill.BulletSizeUp;
+import entity.skill.BulletSpeedUp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
+import page.GamePlayPage;
 
 
 public class OptionController {
 	@FXML
 	private Rectangle selected;
 	@FXML
-	private ImageView left = new ImageView(new Image((String) (ClassLoader.getSystemResource("optionCard/atk+.png").toString())));
+	private ImageView left = new ImageView(new Image((String) (ClassLoader.getSystemResource("optionCard/atk+.png").toString())));;
 	@FXML
-	private ImageView right = new ImageView(new Image((String) (ClassLoader.getSystemResource("optionCard/barrier.png").toString())));
+	private ImageView right = new ImageView(new Image((String) (ClassLoader.getSystemResource("optionCard/Hp.png").toString())));;
 	@FXML
-	private ImageView  center =new ImageView( new Image((String) (ClassLoader.getSystemResource("optionCard/Bspeed.png").toString())));
+	private ImageView center = new ImageView(new Image((String) (ClassLoader.getSystemResource("optionCard/spd+.png").toString())));;
 	@FXML
 	private Button Confirm;
 	public static int Selected = 0;
+	private ArrayList<String> name = new ArrayList<String>(Arrays.asList(
+			"atk+", 
+			"atkSpeed", 
+			"barrier", 
+			"Bsize", 
+			"Bspeed",
+			"Hp",
+			"spd+"));
+    private Map<String, BaseSkill> mapSkill = Map.of(
+    		"atk+", new AttackUp() , 
+    		"atkSpeed",new AttackSpeedUp() , 
+    		"barrier", new ChangeWeapon(),
+    		"Bsize", new BulletSizeUp(),
+    		"Bspeed", new BulletSpeedUp(),
+    		"Hp", new HpUp(),
+    		"spd",new SpeedUp()
+    		
+    		);
+	
+	public void intialize() {
+		Collections.shuffle(name);
+		right.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(0)+".png").toString())));
+		left.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(1)+".png").toString())));
+        center.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(2)+".png").toString())));
+	}
 	
 	public void toLeft() {
 		if(Selected>0) {

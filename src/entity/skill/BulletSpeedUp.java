@@ -6,8 +6,8 @@ import entity.base.EffectWeapon;
 
 public class BulletSpeedUp extends BaseSkill implements EffectWeapon{
 
-	public BulletSpeedUp(String name) {
-		super(name);
+	public BulletSpeedUp() {
+		super("BulletSpeedUp");
 		// TODO Auto-generated constructor stub
 	}
 

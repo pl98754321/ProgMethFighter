@@ -14,7 +14,6 @@ public class AttackUp extends BaseSkill implements EffectPlayer{
 	@Override
 	public void performEffect(Player player) {
 		player.setAtk(player.getAtk()+5);
-		
 	}
 
 }

@@ -12,17 +12,17 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.OptionController">
    <children>
       <Rectangle fx:id="selected" arcHeight="5.0" arcWidth="5.0" fill="RED" height="310.0" layoutX="45.0" layoutY="129.0" stroke="BLACK" strokeType="INSIDE" width="210.0" />
-      <ImageView fitHeight="300.0" fitWidth="200.0" layoutX="50.0" layoutY="134.0">
+      <ImageView fx:id="left" fitHeight="300.0" fitWidth="200.0" layoutX="50.0" layoutY="134.0">
          <image>
             <Image url="@optionCard/atk+.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="200.0" layoutX="300.0" layoutY="134.0">
+      <ImageView fx:id="center" fitHeight="300.0" fitWidth="200.0" layoutX="300.0" layoutY="134.0">
          <image>
             <Image url="@optionCard/barrier.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="200.0" layoutX="550.0" layoutY="134.0">
+      <ImageView fx:id="right" fitHeight="300.0" fitWidth="200.0" layoutX="550.0" layoutY="134.0">
          <image>
             <Image url="@optionCard/Bspeed.png" />
          </image>

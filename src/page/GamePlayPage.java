@@ -37,7 +37,6 @@ public class GamePlayPage {
 	public static ArrayList<BaseItem> items = new ArrayList<>();
 	public static ArrayList<BaseBullet> bullets = new ArrayList<>();
 	private Boss boss;
-	private AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
 	private boolean pause =false;
 	private boolean pauseDetect = false;
 	
@@ -46,6 +45,7 @@ public class GamePlayPage {
 		page.initializeGamePlayPage();
 		return page.scene3;
 	}
+	public Scene getScene() {return this.scene3;}
 	
 	public void initializeGamePlayPage(){
 		root3 = new StackPane();
@@ -207,6 +207,12 @@ public class GamePlayPage {
 
 	public void setPauseDetect(boolean pauseDetect) {
 		this.pauseDetect = pauseDetect;
+	}
+	public Player getPlayer() {
+		return player;
+	}
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 }

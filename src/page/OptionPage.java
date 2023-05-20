@@ -24,6 +24,7 @@ public class OptionPage {
 		root2 = loader.load();
 		scene = new Scene(root2,800,600);
 		myController = loader.getController();
+		myController.intialize();
 		scene.setOnKeyPressed(e -> {
 			switch(e.getCode()) {
 				case A:

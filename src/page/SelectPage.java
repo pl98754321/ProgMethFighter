@@ -1,7 +1,8 @@
 package page;
 
 import java.io.IOException;
-import StageSelection.SSController;
+
+import Controller.SSController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

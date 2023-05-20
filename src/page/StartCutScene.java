@@ -1,6 +1,6 @@
 package page;
 
-import StageSelection.SSController;
+import Controller.SSController;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

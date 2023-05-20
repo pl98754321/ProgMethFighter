@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import StageSelection.SSController;
+import Controller.SSController;
 import entity.MapImage;
 import entity.base.BaseBullet;
 import entity.base.BaseItem;

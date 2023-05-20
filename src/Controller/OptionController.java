@@ -74,6 +74,16 @@ public class OptionController {
 		}
 	}
 	public void confirm() {
+		BaseSkill skill = mapSkill.get(name.get(Selected));
+		if (skill instanceof  EffectPlayer) {
+			((EffectPlayer) skill).performEffect(GamePlayPage.player);
+		}
+		else if (skill instanceof  EffectWeapon) {
+			((EffectWeapon) skill).performEffect(GamePlayPage.player.getWeapon());
+		}
+		else {
+			System.out.println("Enermy");
+		}
 		System.out.println("ok");
 	}
 	

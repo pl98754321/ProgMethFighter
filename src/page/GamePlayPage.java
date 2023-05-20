@@ -29,9 +29,9 @@ public class GamePlayPage {
 	public StackPane root3;
 	public Canvas canvas;
 	public Scene scene3;
-	private Player player;
 	public static MapImage background;
 	private Image UtiImage = new Image(ClassLoader.getSystemResource("halo.png").toString());
+	public static Player player;
 	public static Map<KeyCode, Boolean> keys = new HashMap<>();
 	public static ArrayList<Enemy> enemies = new ArrayList<>();
 	public static ArrayList<BaseItem> items = new ArrayList<>();

@@ -8,6 +8,7 @@ import java.util.Hashtable;
 import entity.base.BaseEntity;
 import entity.base.BaseSkill;
 import entity.base.BaseWeapon;
+import entity.base.EffectWeapon;
 import entity.bullet.BookBullet;
 import entity.skill.SpeedUp;
 import entity.weapon.Book;
@@ -24,7 +25,7 @@ public class Player extends BaseEntity {
 	private int Lv;
 	private int atk; 
 	private AudioClip hit  =new AudioClip(ClassLoader.getSystemResource("audio/PlayerHit.mp3").toString());
-	private ArrayList<BaseSkill> skills; 
+	private ArrayList<EffectWeapon> skillsWeapon = new ArrayList<EffectWeapon>(); 
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill
 	private boolean damage = false;
@@ -146,24 +147,10 @@ public class Player extends BaseEntity {
 	}
 	
 	public void levelUp() {
-		this.setWeapon(new GunDagger());
-		(new SpeedUp()).performEffect(this);;
-	}
-	public int getCurrentexp() {
-		return currentexp;
+//		this.setWeapon(new GunDagger());
+//		(new SpeedUp()).performEffect(this);;
 	}
 
-	public void setCurrentexp(int currentexp) {
-		this.currentexp = currentexp;
-	}
-
-	public void addSkill(int index) {
-        Dictionary<Integer, BaseSkill> dict= new Hashtable<>();
-        dict.put(1, new SpeedUp());
-        dict.put(1, new SpeedUp());
-		this.skills.add(dict.get(index));
-	}
-	
 	public void render(GraphicsContext gc) {
 		gc.setFill(this.getColor());
 		gc.fillOval(this.getX()-25, this.getY()-25, 50, 50);
@@ -206,12 +193,21 @@ public class Player extends BaseEntity {
 		this.atk = atk;
 	}
 
-	public ArrayList<BaseSkill> getSkills() {
-		return skills;
+	
+	public ArrayList<EffectWeapon> getSkillsWeapon() {
+		return skillsWeapon;
 	}
 
-	public void setSkills(ArrayList<BaseSkill> skills) {
-		this.skills = skills;
+	public void setSkillsWeapon(ArrayList<EffectWeapon> skillsWeapon) {
+		this.skillsWeapon = skillsWeapon;
+	}
+
+	public int getCurrentexp() {
+		return currentexp;
+	}
+
+	public void setCurrentexp(int currentexp) {
+		this.currentexp = currentexp;
 	}
 
 	public BaseWeapon getWeapon() {

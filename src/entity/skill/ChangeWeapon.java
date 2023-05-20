@@ -11,7 +11,7 @@ import entity.weapon.Gun;
 public class ChangeWeapon extends BaseSkill implements EffectPlayer{
 
 	public ChangeWeapon() {
-		super("AttackSpeedUp");
+		super("ChangeWeapon");
 		// TODO Auto-generated constructor stub
 	}
 
@@ -24,6 +24,13 @@ public class ChangeWeapon extends BaseSkill implements EffectPlayer{
 		}
 		else {
 			player.setWeapon(new Gun());
+		}
+		this.addSkill(player);
+	}
+	
+	public void addSkill(Player player) {
+		for (EffectWeapon i : player.getSkillsWeapon()) {
+			i.performEffect(player.getWeapon());
 		}
 	}
 	

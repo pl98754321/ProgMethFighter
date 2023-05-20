@@ -8,7 +8,7 @@ public class Gun extends BaseWeapon {
 	private boolean shooting = false;
 	private AudioClip shoot = new AudioClip(ClassLoader.getSystemResource("audio/shoot.mp3").toString());
 	public Gun() {
-		super(10, 2,10,200);
+		super(10, 10,20,200);
 	}
 	public Gun(int attack,int speed,int size,int coolDown) {
 		super(attack,attack,size,coolDown);

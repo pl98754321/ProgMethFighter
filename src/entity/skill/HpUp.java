@@ -13,8 +13,8 @@ public class HpUp extends BaseSkill implements EffectPlayer{
 
 	@Override
 	public void performEffect(Player player) {
-		player.setMaxHP(player.getMaxHP()+10);
-		player.setHp(player.getHp()+10);
+		player.setMaxHP(player.getMaxHP()+20);
+		player.setHp(player.getHp()+20);
 	}
 
 }

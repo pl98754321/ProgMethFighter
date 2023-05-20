@@ -14,7 +14,7 @@ public class BulletSpeedUp extends BaseSkill implements EffectWeapon{
 	@Override
 	public void performEffect(BaseWeapon weapon) {
 		// TODO Auto-generated method stub
-		weapon.setSpeed((int)(weapon.getCoolDown()*1.3));
+		weapon.setSpeed((int)(weapon.getSpeed()*1.5));
 	}
 	
 }

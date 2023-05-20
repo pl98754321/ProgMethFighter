@@ -6,9 +6,12 @@ import java.util.Collections;
 import java.util.Map;
 
 import entity.base.BaseSkill;
+import entity.base.EffectPlayer;
+import entity.base.EffectWeapon;
 import entity.skill.ChangeWeapon;
 import entity.skill.HpUp;
 import entity.skill.SpeedUp;
+import entity.unit.Player;
 import entity.skill.AttackSpeedUp;
 import entity.skill.AttackUp;
 import entity.skill.BulletSizeUp;
@@ -18,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
+import page.GamePlayPage;
 
 
 public class OptionController {
@@ -48,15 +52,15 @@ public class OptionController {
     		"Bspeed", new BulletSpeedUp(),
     		"Hp", new HpUp(),
     		"spd",new SpeedUp()
-    		
     		);
 	
 	public void intialize() {
 		Selected=0;
 		Collections.shuffle(name);
-		right.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(0)+".png").toString())));
-		left.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(1)+".png").toString())));
-        center.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(2)+".png").toString())));
+		System.out.println(name);
+		left.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(0)+".png").toString())));
+        center.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(1)+".png").toString())));
+        right.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(2)+".png").toString())));
 	}
 	
 	public void toLeft() {
@@ -73,16 +77,19 @@ public class OptionController {
 	}
 	public void confirm() {
 		BaseSkill skill = mapSkill.get(name.get(Selected));
+		System.out.println(skill.getName());
+		System.out.println(name);
 		if (skill instanceof  EffectPlayer) {
 			((EffectPlayer) skill).performEffect(GamePlayPage.player);
 		}
 		else if (skill instanceof  EffectWeapon) {
+			GamePlayPage.player.getSkillsWeapon().add((EffectWeapon) skill);
 			((EffectWeapon) skill).performEffect(GamePlayPage.player.getWeapon());
 		}
 		else {
-			System.out.println("Enermy");
+			System.out.println("Enermy :: " + name.get(Selected));
 		}
-		System.out.println("ok");
+		System.out.println("Skill :: " + name.get(Selected));
 	}
 	
 }

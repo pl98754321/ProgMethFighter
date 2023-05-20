@@ -180,12 +180,12 @@ public class GamePlayPage {
 		else {
 			gc.setFill(Color.RED);
 		}
-		gc.fillRect(30, 20, this.player.getHp()*250/100, 30);
+		gc.fillRect(30, 20, this.player.getHp()*250/player.getMaxHP(), 30);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 20, 250, 30);
 		
 		gc.setFill(Color.BLACK);
-		gc.fillText("HP : "+player.getHp()+" / "+100,290 ,50);
+		gc.fillText("HP : "+player.getHp()+" / "+player.getMaxHP(),290 ,50);
 		//EXP
 		gc.setFill(Color.LIGHTBLUE);
 		gc.fillRect(30, 50, this.player.getCurrentExp()*200/player.getNextLv(), 10);

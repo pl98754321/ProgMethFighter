@@ -14,7 +14,7 @@ public class BulletSizeUp extends BaseSkill implements EffectWeapon{
 	@Override
 	public void performEffect(BaseWeapon weapon) {
 		// TODO Auto-generated method stub
-		weapon.setSize((int)(weapon.getCoolDown()*1.3));
+		weapon.setSize((int)(weapon.getSize()*1.5));
 	}
 	
 }

@@ -22,6 +22,11 @@ public class Enemy extends BaseEntity implements KnockBackAble{
 		this.setColor(Color.BLACK);
 		this.setPlayer(p);
 	}
+	public Enemy(Player p, int x, int y, int size,int speed ,Color color){
+		super(x,y,size,speed);
+		this.setColor(color);
+		this.setPlayer(p);
+	}
 	
 	private boolean checkCollision(){
 		for (int i = 0; i < GamePlayPage.enemies.size(); i++){

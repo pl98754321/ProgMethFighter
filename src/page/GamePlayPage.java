@@ -11,6 +11,7 @@ import entity.base.BaseBullet;
 import entity.base.BaseItem;
 import entity.unit.Boss;
 import entity.unit.Enemy;
+import entity.unit.EnermySpeedter;
 import entity.unit.Player;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
@@ -75,8 +76,22 @@ public class GamePlayPage {
 			try {
 				Random random = new Random();
 				while (true){
-					GamePlayPage.enemies.add(new Enemy(this.player,(int) (GamePlayPage.background.getHeight()*random.nextDouble()),(int) (GamePlayPage.background.getWidth()*random.nextDouble())));
-					Thread.sleep(500);
+					if (random.nextDouble()>=0.2) {
+					GamePlayPage.enemies.add(
+							new Enemy(this.player,
+									(int) (GamePlayPage.background.getHeight()*random.nextDouble()),
+									(int) (GamePlayPage.background.getWidth()*random.nextDouble())
+									)
+							);}
+					else {
+						GamePlayPage.enemies.add(
+								new EnermySpeedter(this.player,
+										(int) (GamePlayPage.background.getHeight()*random.nextDouble()),
+										(int) (GamePlayPage.background.getWidth()*random.nextDouble())
+										)
+								);
+					}
+					Thread.sleep(300);
 					if(player.getHp()<=0) {
 						Thread.currentThread().interrupt();
 						return;

@@ -15,7 +15,6 @@ public class EnemyBoss extends Enemy{
 	
 	@Override
 	public void render(GraphicsContext gc){
-//		super.render(gc);
 		gc.drawImage(boss, GamePlayPage.background.getX()+this.getX()-getSize()/2,GamePlayPage.background.getY()+ this.getY()-getSize()/2,100,141.43);
 	}
 }

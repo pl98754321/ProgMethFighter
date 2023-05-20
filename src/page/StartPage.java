@@ -65,6 +65,17 @@ public class StartPage{
 //	     Image logoImage = new Image("logo.png");
 //	     ImageView logoImageView = new ImageView(logoImage);
 
+	     Button storyButton = new Button("Story Mode");
+	     storyButton.setStyle("-fx-font-size:20");
+	     storyButton.setTranslateX(150);
+	     storyButton.setTranslateY(20);
+	     storyButton.setPrefSize(200, 50);
+	     storyButton.setOnAction(e -> {
+	    	 Stage thisStage = (Stage) (storyButton.getScene().getWindow());
+			    thisStage.setScene(StartCutScene.getStartCutScenePageScene());
+				t.interrupt();
+			});
+	     
 	     Button startButton = new Button("Start Game");
 	     startButton.setStyle("-fx-font-size:20");
 	     startButton.setTranslateX(150);
@@ -91,7 +102,7 @@ public class StartPage{
 			});
 		exit.setPrefSize(200, 50);
 	     // Add elements to the layout
-	     root.getChildren().addAll(startButton,exit);
+	     root.getChildren().addAll(storyButton,startButton,exit);
 
 	     // Create the scene and set it on the stage
 	     scene = new Scene(root, 800, 600);

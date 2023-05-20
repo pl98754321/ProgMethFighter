@@ -14,6 +14,7 @@ public class OptionPage {
 	public OptionController myController;
 	
 	public static Scene getOptionScene() throws IOException {
+		GamePlayPage.lvlUp=false;
 		OptionPage page = new OptionPage();
 		page.initializeOptionPage();
 		return page.scene;

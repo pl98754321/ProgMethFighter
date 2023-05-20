@@ -6,8 +6,6 @@ import java.util.Collections;
 import java.util.Map;
 
 import entity.base.BaseSkill;
-import entity.base.EffectPlayer;
-import entity.base.EffectWeapon;
 import entity.skill.ChangeWeapon;
 import entity.skill.HpUp;
 import entity.skill.SpeedUp;
@@ -20,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
-import page.GamePlayPage;
 
 
 public class OptionController {
@@ -55,6 +52,7 @@ public class OptionController {
     		);
 	
 	public void intialize() {
+		Selected=0;
 		Collections.shuffle(name);
 		right.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(0)+".png").toString())));
 		left.setImage(new Image((String) (ClassLoader.getSystemResource("optionCard/"+name.get(1)+".png").toString())));

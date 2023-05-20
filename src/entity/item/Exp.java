@@ -5,6 +5,7 @@ import entity.base.EffectPlayer;
 import entity.unit.Player;
 import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
+import page.GamePlayPage;
 
 public class Exp extends BaseItem implements EffectPlayer{
 	public final int EXP=5;
@@ -25,6 +26,7 @@ public class Exp extends BaseItem implements EffectPlayer{
 			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
 			player.setNextLv((int)(player.getNextLv()*1.1));
 			player.levelUp();
+			GamePlayPage.lvlUp=true;
 		}
 	}	
 }

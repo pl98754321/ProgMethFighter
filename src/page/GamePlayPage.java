@@ -1,5 +1,6 @@
 package page;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,13 +40,16 @@ public class GamePlayPage {
 	private Boss boss;
 	private boolean pause =false;
 	private boolean pauseDetect = false;
+	public  static boolean lvlUp=false;
+	public static Scene tempPage;
+	public static boolean isback = false;
 	
 	public static Scene getGamePlayPage() {
 		GamePlayPage page = new GamePlayPage();
 		page.initializeGamePlayPage();
 		return page.scene3;
 	}
-	public Scene getScene() {return this.scene3;}
+	public Scene getScene() {return tempPage;}
 	
 	public void initializeGamePlayPage(){
 		root3 = new StackPane();
@@ -94,9 +98,24 @@ public class GamePlayPage {
 						if (GamePlayPage.keys.getOrDefault(KeyCode.P, false)){
 							resetPause();
 						}
+						else if(isback) {
+							isback=false;
+							keys.clear();
+							resetPause();
+						}
 					}
 					else {
-						update(gc);
+						if(lvlUp) {
+							Stage thisStage = (Stage) scene3.getWindow();
+							try {
+								tempPage=scene3;
+								thisStage.setScene(OptionPage.getOptionScene());
+								resetPause();
+							} catch (IOException e) {}
+						}
+						else {
+							update(gc);
+							}
 					}
 				}
 			}

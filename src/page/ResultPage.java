@@ -2,6 +2,7 @@ package page;
 
 import java.io.IOException;
 
+import Controller.SSController;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -29,6 +30,8 @@ public class ResultPage {
 	}
 	public void initializeResultPage(int result){
 		root4 = new GridPane();
+		SSController.SelectedStage = 1;
+		StartCutScene.currentStage = 0;
 		root4.setBackground(Background.fill(Color.GRAY));
 		root4.setAlignment(Pos.CENTER);
 		root4.setHgap(15);
@@ -64,8 +67,14 @@ public class ResultPage {
 				Stage thisStage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 				thisStage.setScene(StartPage.getStartPageScene());
 				});
+			
 			root4.add(resultText, 0, 0,2,1);
-			root4.add(restart,0,1);
+			if(!GamePlayPage.isStoryMode) {
+				root4.add(restart,0,1);
+			}
+			if(GamePlayPage.isStoryMode) {
+				menu.setTranslateX(35);
+			}
 			root4.add(menu,1,1);
 			scene4 =new Scene(root4,800,600);
 		}

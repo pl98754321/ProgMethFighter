@@ -91,6 +91,8 @@ public class GamePlayPage {
 					else {
 						if(!toNextstage) {
 							if(StartCutScene.currentStage==2) {
+								SSController.SelectedStage = 1;
+								StartCutScene.currentStage=0;
 								Stage thisStage = (Stage) scene3.getWindow();
 								thisStage.setScene(ResultPage.getResultPage(1));
 								spawner.interrupt();
@@ -156,7 +158,7 @@ public class GamePlayPage {
 		
 		GamePlayPage.player.render(gc);
 		
-		if(player.getLv()>=15) {
+		if(player.getLv()>=1) {
 			if (!enemies.contains(boss)) {
 				enemies.add(boss);
 			}

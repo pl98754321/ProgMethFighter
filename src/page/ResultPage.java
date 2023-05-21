@@ -73,7 +73,7 @@ public class ResultPage {
 				root4.add(restart,0,1);
 			}
 			if(GamePlayPage.isStoryMode) {
-				menu.setTranslateX(35);
+				menu.setTranslateX(40);
 			}
 			root4.add(menu,1,1);
 			scene4 =new Scene(root4,800,600);

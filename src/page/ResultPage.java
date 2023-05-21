@@ -25,7 +25,7 @@ public class ResultPage {
 	
 	public static Scene getResultPage(int result) {
 		ResultPage page = new ResultPage();
-		page.initializeResultPage(result);
+		page.initializeResultPage(result);//lets goooooo
 		return page.scene4;
 	}
 	public void initializeResultPage(int result){

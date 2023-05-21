@@ -3,9 +3,7 @@ package entity.weapon;
 import entity.base.BaseBullet;
 import entity.base.BaseWeapon;
 import entity.bullet.GunBullet;
-import javafx.scene.media.AudioClip;
-import logic.Utility;
-import page.GamePlayPage;
+
 public class Gun extends BaseWeapon {
 	public Gun(int size,int speed,int attack,int coolDown) {
 		super(size,speed,attack,coolDown);

@@ -3,7 +3,6 @@ package entity.base;
 import entity.unit.Enemy;
 import javafx.scene.paint.Color;
 import logic.Utility;
-import page.GamePlayPage;
 
 public abstract class BaseEntity extends BaseObject {
 	private int Hp;

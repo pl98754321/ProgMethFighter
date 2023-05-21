@@ -1,6 +1,5 @@
 package entity.base;
 
-import entity.bullet.BookBullet;
 import javafx.scene.media.AudioClip;
 import logic.Utility;
 import page.GamePlayPage;

@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class StartCutScene {
+public class StartCutPage {
 	public StackPane root;
 	public Scene scene;
 	public Text nameStage;
@@ -28,7 +28,7 @@ public class StartCutScene {
 			"หลังจากทุกอย่างจบลง คุณไปเที่ยวกับเพื่อนๆ \nแต่เหมือนปีศาจProgMethอยากจะเล่นกับคุณด้วย ไปเล่นกับเค้าสิ XD"));
 
 	public static Scene getStartCutScenePageScene(int index) {
-		StartCutScene page = new StartCutScene();
+		StartCutPage page = new StartCutPage();
 		page.initializeStartCutScenePage(index);
 		return page.scene;
 	}

@@ -39,7 +39,7 @@ public class SelectPage {
 				case S:
 					if(this.canClick) {
 						Stage thisStage = (Stage) ((Scene) e.getSource()).getWindow();
-						thisStage.setScene(StartCutScene.getStartCutScenePageScene(SSController.selectedStage()-1));
+						thisStage.setScene(StartCutPage.getStartCutScenePageScene(SSController.selectedStage()-1));
 						this.canClick = false;
 						break;	
 					}

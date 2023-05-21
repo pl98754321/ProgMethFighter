@@ -75,6 +75,8 @@ public class SSController{
 		}
 }
 	public void goHome() {
+		SSController.SelectedStage = 1;
+		StartCutScene.currentStage =0;
 		Stage thisStage = (Stage) Home.getScene().getWindow();
 		thisStage.setScene(StartPage.getStartPageScene());
 	}

@@ -36,10 +36,10 @@ public class SelectPage {
 				case D:
 					myController.slideright();	
 					break;
-				case S:
+				case F:
 					if(this.canClick) {
 						Stage thisStage = (Stage) ((Scene) e.getSource()).getWindow();
-						thisStage.setScene(StartCutPage.getStartCutScenePageScene(SSController.selectedStage()-1));
+						thisStage.setScene(StartCutScene.getStartCutScenePageScene(SSController.selectedStage()-1));
 						this.canClick = false;
 						break;	
 					}

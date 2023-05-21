@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import page.StartCutPage;
+import page.StartCutScene;
 import page.StartPage;
 
 public class SSController{
@@ -81,7 +81,7 @@ public class SSController{
 	public void gameStart() {
 		StartPage.bgSong.stop();
 		Stage thisStage = (Stage) Home.getScene().getWindow();
-		thisStage.setScene(StartCutPage.getStartCutScenePageScene(SelectedStage));
+		thisStage.setScene(StartCutScene.getStartCutScenePageScene(SelectedStage));
 	}
 	public static int selectedStage() {
 		return SelectedStage;

@@ -39,7 +39,7 @@
             <Font size="31.0" />
          </font>
       </Text>
-      <Button fx:id="Confirm" layoutX="373.0" layoutY="495.0" mnemonicParsing="false" onAction="#gameStart" text="Confirm (S)" />
+      <Button fx:id="Confirm" layoutX="373.0" layoutY="495.0" mnemonicParsing="false" onAction="#gameStart" text="Confirm (F)" />
       <ImageView fx:id="Home" fitHeight="50.0" fitWidth="50.0" layoutX="44.0" layoutY="37.0" onMouseClicked="#goHome">
          <image>
             <Image url="@HomeButton.png" />

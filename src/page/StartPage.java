@@ -73,7 +73,7 @@ public class StartPage{
 	     storyButton.setOnAction(e -> {
 	    	 GamePlayPage.isStoryMode=true;
 	    	 Stage thisStage = (Stage) (storyButton.getScene().getWindow());
-			    thisStage.setScene(StartCutPage.getStartCutScenePageScene(0));
+			    thisStage.setScene(StartCutScene.getStartCutScenePageScene(0));
 				t.interrupt();
 			});
 	     

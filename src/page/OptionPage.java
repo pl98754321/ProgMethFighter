@@ -37,7 +37,7 @@ public class OptionPage {
 					case D:
 						myController.toRight();	
 						break;
-					case S:
+					case F:
 						myController.confirm();
 						Stage thisStage = (Stage) scene.getWindow();
 						thisStage.setScene(GamePlayPage.tempPage);

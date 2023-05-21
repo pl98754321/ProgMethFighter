@@ -95,7 +95,7 @@ public class GamePlayLogic {
 		}
 	}
 	public static void updateBoss(GraphicsContext gc,Player player,ArrayList<Enemy> enemies,EnemyBoss boss) {
-		if(player.getLv()>=10) {
+		if(player.getLv()>=15) {
 			if (!enemies.contains(boss)) {
 				enemies.add(boss);
 			}

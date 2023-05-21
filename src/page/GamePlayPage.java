@@ -97,9 +97,9 @@ public class GamePlayPage {
 					}
 					else {
 						if(!toNextstage) {
-							if(StartCutPage.currentStage==2) {
+							if(StartCutScene.currentStage==2) {
 								SSController.SelectedStage = 1;
-								StartCutPage.currentStage=0;
+								StartCutScene.currentStage=0;
 								Stage thisStage = (Stage) scene3.getWindow();
 								thisStage.setScene(ResultPage.getResultPage(1));
 								spawner.interrupt();
@@ -114,8 +114,8 @@ public class GamePlayPage {
 								items.clear();
 								spawner.interrupt();
 								SSController.SelectedStage+=1;
-								StartCutPage.currentStage+=1;
-								thisStage.setScene(StartCutPage.getStartCutScenePageScene(StartCutPage.currentStage));
+								StartCutScene.currentStage+=1;
+								thisStage.setScene(StartCutScene.getStartCutScenePageScene(StartCutScene.currentStage));
 								stop();
 								}
 						}

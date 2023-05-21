@@ -11,7 +11,6 @@ import entity.base.EffectWeapon;
 import entity.skill.ChangeWeapon;
 import entity.skill.HpUp;
 import entity.skill.SpeedUp;
-import entity.unit.Player;
 import entity.skill.AttackSpeedUp;
 import entity.skill.AttackUp;
 import entity.skill.BulletSizeUp;

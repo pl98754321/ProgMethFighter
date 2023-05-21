@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import page.OptionPage;
 import page.StartPage;
 
 public class MainApplication extends Application {

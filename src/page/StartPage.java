@@ -83,6 +83,7 @@ public class StartPage{
 	     startButton.setTranslateY(40);
 	     startButton.setPrefSize(200, 50);
 	     startButton.setOnAction(e -> {
+	    	 GamePlayPage.isStoryMode=false;
 	    	 Stage thisStage = (Stage) (startButton.getScene().getWindow());
 			    try {
 					thisStage.setScene(SelectPage.getSelectScene());

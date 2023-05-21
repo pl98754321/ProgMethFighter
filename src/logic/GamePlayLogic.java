@@ -6,9 +6,6 @@ import java.util.Random;
 import entity.base.BaseBullet;
 import entity.base.BaseItem;
 import entity.base.EffectPlayer;
-import entity.item.Exp;
-import entity.item.Magnet;
-import entity.item.Potion;
 import entity.unit.Enemy;
 import entity.unit.EnemyBoss;
 import entity.unit.EnermyBalance;
@@ -16,8 +13,6 @@ import entity.unit.EnermySpeedter;
 import entity.unit.EnermyTanker;
 import entity.unit.Player;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.media.AudioClip;
-import javafx.scene.paint.Color;
 import page.GamePlayPage;
 
 public class GamePlayLogic {

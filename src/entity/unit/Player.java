@@ -18,6 +18,7 @@ import entity.weapon.GunDagger;
 import entity.weapon.GunNormal;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import logic.Utility;
 import page.GamePlayPage;
 import javafx.scene.media.AudioClip;
 
@@ -55,7 +56,7 @@ public class Player extends BaseEntity {
 				e.dropItem(GamePlayPage.items);
 			}
 			this.setUltiReady(false);
-			GamePlayPage.coolDown(5000, () -> this.setUltiReady(true));//perform ultimate skill  with cooldown 5 sec (not balance)
+			Utility.coolDown(5000, () -> this.setUltiReady(true));//perform ultimate skill  with cooldown 5 sec (not balance)
 			Enemys.clear();
 		}
 	}
@@ -134,6 +135,7 @@ public class Player extends BaseEntity {
 		gc.setFill(this.getColor());
 		gc.fillOval(this.getX()-25, this.getY()-25, 50, 50);
 	}
+	
 	public void setX(double x) {
 		super.setX(Math.max(25, Math.min(775, x)));
 	}

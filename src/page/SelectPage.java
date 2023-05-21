@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import logic.Utility;
 
 public class SelectPage {
 	public FXMLLoader loader;
@@ -25,7 +26,7 @@ public class SelectPage {
 		loader = new FXMLLoader(ClassLoader.getSystemResource("SSFXML.fxml"));
 		root2 = loader.load();
 		scene2 = new Scene(root2,800,600);
-		GamePlayPage.coolDown(500, ()-> this.canClick = true);
+		Utility.coolDown(500, ()-> this.canClick = true);
 		myController = loader.getController();
 		scene2.setOnKeyPressed(e -> {
 			switch(e.getCode()) {

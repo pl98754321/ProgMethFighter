@@ -1,10 +1,17 @@
 package entity.base;
 
+import entity.bullet.BookBullet;
+import javafx.scene.media.AudioClip;
+import logic.Utility;
+import page.GamePlayPage;
+
 public abstract class BaseWeapon {
 	private int atk;
 	private int speed;
 	private int size;
 	private int coolDown;
+	private boolean shooting = false;
+	private AudioClip shoot = new AudioClip(ClassLoader.getSystemResource("audio/shoot.mp3").toString());
 
 	public BaseWeapon(int size,int speed,int atk,int coolDown) {
 		this.setSize(size);
@@ -13,8 +20,18 @@ public abstract class BaseWeapon {
 		this.setCoolDown(coolDown);
 	}
 	
-	public abstract void shoot(double d, double e,double toX,double toY);
+	public abstract BaseBullet weaponBullet(double currentX, double currentY,double toX,double toY);
 	
+	public void shoot(double currentX, double currentY, double toX, double toY) {
+		// TODO Auto-generated method stub
+		if (!shooting) {
+			shooting = true;
+			Utility.coolDown(this.getCoolDown(), () -> this.shooting = false);
+			BaseBullet b = weaponBullet(currentX,currentY,toX,toY);
+			shoot.play();
+			GamePlayPage.bullets.add(b);
+		}
+	}
 	//getter setter
 	public int getAtk() {
 		return atk;

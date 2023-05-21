@@ -24,6 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.GamePlayLogic;
+import logic.Utility;
 import javafx.scene.media.AudioClip;
 
 public class GamePlayPage {
@@ -189,21 +190,11 @@ public class GamePlayPage {
 			gc.drawImage(UtiImage,30,70,50,50);
 		}
 	}
-	public static void coolDown(long time, Runnable r){
-		new Thread(() -> {
-			try {
-				Thread.sleep(time);
-				r.run();
-			} catch (InterruptedException ex){
-			}
-		}).start();
-	}
-
 	public void resetPause() {
 		if(!this.pauseDetect) {
 			this.pause=!(this.isPause());
 			this.setPauseDetect(true);
-			coolDown(100,() -> this.setPauseDetect(false));
+			Utility.coolDown(100,() -> this.setPauseDetect(false));
 		}
 	}
 	

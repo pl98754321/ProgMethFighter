@@ -26,15 +26,15 @@ public class Enemy extends BaseEntity{
 			Enemy e = GamePlayPage.enemies.get(i);
 			if (e != this){
 				if (this.distance(e) <=0){
-					e.KnockBack(this);
-					this.KnockBack(e);
+					e.knockBack(this);
+					this.knockBack(e);
 					return true;
 				}
 			}
 		}
 		return false;
 	}
-	public void KnockBack(BaseEntity others) {
+	public void knockBack(BaseEntity others) {
 		super.move(others, -10);
 		this.checkCollision();
 	}

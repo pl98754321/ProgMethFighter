@@ -35,7 +35,7 @@ public abstract class BaseEntity extends BaseObject {
 	public void attack(BaseEntity others) {
 		others.takeDamage(this.getAtk());
 		if (others instanceof Enemy) {
-			((Enemy) others).KnockBack(this);
+			((Enemy) others).knockBack(this);
 		}
 	}
 

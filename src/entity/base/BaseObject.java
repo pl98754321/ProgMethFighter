@@ -28,8 +28,10 @@ public class BaseObject {
 	}
 
 	public void move(Player player) {
-		double angle = Math.atan2(-GamePlayPage.background.getY()+player.getY()-this.getY(),-GamePlayPage.background.getX()+player.getX()-this.getX());
-		this.move((int) (Math.cos(angle)*this.speed),(int) (Math.sin(angle)*this.speed));
+		if (this.distance(player)>=0) {
+			double angle = Math.atan2(-GamePlayPage.background.getY()+player.getY()-this.getY(),-GamePlayPage.background.getX()+player.getX()-this.getX());
+			this.move((int) (Math.cos(angle)*this.speed),(int) (Math.sin(angle)*this.speed));
+			}
 	}
 	public void move(BaseObject others,int speed) {
 		double angle = Math.atan2(others.getY()-this.getY(), others.getX()-this.getX());
@@ -37,7 +39,8 @@ public class BaseObject {
 	}
 	
 	public double distance(Player p) {
-		double dis = Math.sqrt(Math.pow(GamePlayPage.background.getX()+x-p.getX(), 2)+Math.pow(GamePlayPage.background.getY()+y-p.getY(), 2));
+		double dis = Math.sqrt(
+				Math.pow(GamePlayPage.background.getX()+x-p.getX(), 2)+Math.pow(GamePlayPage.background.getY()+y-p.getY(), 2));
 		return dis-this.getSize()/2-p.getSize()/2;
 	}
 	public double distance(BaseObject others) {

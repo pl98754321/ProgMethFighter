@@ -1,6 +1,7 @@
 package Controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -81,9 +82,8 @@ public class SSController{
 		thisStage.setScene(StartPage.getStartPageScene());
 	}
 	public void gameStart() {
-		StartPage.bgSong.stop();
-		Stage thisStage = (Stage) Home.getScene().getWindow();
-		thisStage.setScene(StartCutScene.getStartCutScenePageScene(SelectedStage));
+		Stage thisStage = (Stage) (Confirm.getScene().getWindow());
+		thisStage.setScene(StartCutScene.getStartCutScenePageScene(SSController.selectedStage()-1));
 	}
 	public static int selectedStage() {
 		return SelectedStage;

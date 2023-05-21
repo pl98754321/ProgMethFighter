@@ -49,7 +49,7 @@ public class GamePlayPage {
 		return page.scene3;
 	}
 
-	public Scene getScene() {
+	public static Scene getScene() {
 		return tempPage;
 	}
 

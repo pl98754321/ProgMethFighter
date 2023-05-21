@@ -31,10 +31,5 @@
             <Font size="34.0" />
          </font>
       </Text>
-      <Button fx:id="confirm" layoutX="356.0" layoutY="481.0" mnemonicParsing="false" onAction="#confirm" text="Confirm">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

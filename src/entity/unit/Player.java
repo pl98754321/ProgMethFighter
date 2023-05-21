@@ -16,7 +16,7 @@ import javafx.scene.media.AudioClip;
 public class Player extends BaseEntity {
 	private int currentexp=0;
 	private int Lv;
-	private AudioClip hit  =new AudioClip(ClassLoader.getSystemResource("audio/PlayerHit.mp3").toString());
+	private AudioClip hit  =new AudioClip(ClassLoader.getSystemResource("audio/PlayerHIt.mp3").toString());
 	private ArrayList<EffectWeapon> skillsWeapon = new ArrayList<EffectWeapon>(); 
 	private BaseWeapon weapon;
 	private boolean ultiReady=true; //check player can use ultimate skill

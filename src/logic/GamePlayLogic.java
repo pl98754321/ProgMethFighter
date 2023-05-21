@@ -13,6 +13,7 @@ import entity.unit.EnermySpeedter;
 import entity.unit.EnermyTanker;
 import entity.unit.Player;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import page.GamePlayPage;
 
 public class GamePlayLogic {
@@ -21,14 +22,14 @@ public class GamePlayLogic {
 			try {
 				Random random = new Random();
 				while (true){
-					if (random.nextDouble()>=0.7) {
+					if (random.nextDouble()>=0.4) {
 					GamePlayPage.enemies.add(
 							new EnermyBalance(player,
 									(int) (GamePlayPage.background.getHeight()*random.nextDouble()),
 									(int) (GamePlayPage.background.getWidth()*random.nextDouble())
 									)
 							);}
-					else if (random.nextDouble()>=0.6) {
+					else if (random.nextDouble()>=0.2) {
 					GamePlayPage.enemies.add(
 							new EnermySpeedter(player,
 									(int) (GamePlayPage.background.getHeight()*random.nextDouble()),

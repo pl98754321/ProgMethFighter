@@ -32,5 +32,4 @@ public class BookBullet extends BaseBullet{
 			}
 		}
 	}
-
 }

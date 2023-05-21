@@ -18,11 +18,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.GamePlayLogic;
 import logic.Utility;
-import javafx.scene.media.AudioClip;
 
 public class GamePlayPage {
 	public StackPane root3;
@@ -113,6 +111,7 @@ public class GamePlayPage {
 								enemies.clear();
 								bullets.clear();
 								keys.clear();
+								items.clear();
 								spawner.interrupt();
 								SSController.SelectedStage+=1;
 								StartCutScene.currentStage+=1;

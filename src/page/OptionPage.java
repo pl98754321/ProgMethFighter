@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import logic.Utility;
 
 public class OptionPage {
 	public FXMLLoader loader;
@@ -25,25 +26,28 @@ public class OptionPage {
 		loader = new FXMLLoader(ClassLoader.getSystemResource("optionPage.fxml"));
 		root2 = loader.load();
 		scene = new Scene(root2,800,600);
-		myController = loader.getController();
-		myController.intialize();
-		scene.setOnKeyPressed(e -> {
-			switch(e.getCode()) {
-				case A:
-					myController.toLeft();
-					break;
-				case D:
-					myController.toRight();	
-					break;
-				case S:
-					myController.confirm();
-					Stage thisStage = (Stage) scene.getWindow();
-					thisStage.setScene(GamePlayPage.tempPage);
-					GamePlayPage.isback=true;
-					break;	
-				default:
-					break;
-				}
-			});
+		Utility.coolDown(300, () -> {
+			myController = loader.getController();
+			myController.intialize();
+			scene.setOnKeyPressed(e -> {
+				switch(e.getCode()) {
+					case A:
+						myController.toLeft();
+						break;
+					case D:
+						myController.toRight();	
+						break;
+					case S:
+						myController.confirm();
+						Stage thisStage = (Stage) scene.getWindow();
+						thisStage.setScene(GamePlayPage.tempPage);
+						GamePlayPage.isback=true;
+						break;	
+					default:
+						break;
+					}
+				});
+		});
+		
 	}
 }

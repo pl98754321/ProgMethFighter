@@ -13,6 +13,7 @@ public class SelectPage {
 	public Parent root2;
 	public Scene scene2;
 	public SSController myController;
+	private boolean canClick = false;
 	
 	public static Scene getSelectScene() throws IOException {
 		SelectPage page = new SelectPage();
@@ -24,6 +25,7 @@ public class SelectPage {
 		loader = new FXMLLoader(ClassLoader.getSystemResource("SSFXML.fxml"));
 		root2 = loader.load();
 		scene2 = new Scene(root2,800,600);
+		GamePlayPage.coolDown(500, ()-> this.canClick = true);
 		myController = loader.getController();
 		scene2.setOnKeyPressed(e -> {
 			switch(e.getCode()) {
@@ -34,9 +36,12 @@ public class SelectPage {
 					myController.slideright();	
 					break;
 				case S:
-					Stage thisStage = (Stage) ((Scene) e.getSource()).getWindow();
-					thisStage.setScene(StartCutScene.getStartCutScenePageScene(SSController.selectedStage()-1));
-					break;	
+					if(this.canClick) {
+						Stage thisStage = (Stage) ((Scene) e.getSource()).getWindow();
+						thisStage.setScene(StartCutScene.getStartCutScenePageScene(SSController.selectedStage()-1));
+						this.canClick = false;
+						break;	
+					}
 				default:
 					break;
 				}

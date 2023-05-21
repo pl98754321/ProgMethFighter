@@ -61,9 +61,10 @@ public class GamePlayPage {
 		canvas.setFocusTraversable(true);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root3.getChildren().add(canvas);
-		this.player = new Player(400,  300);
 		
+		GamePlayPage.player = new Player(400,  300);
 		this.boss=new EnemyBoss(player,350,250);
+		
 		if(SSController.selectedStage()==1) {
 			background =new MapImage(ClassLoader.getSystemResource("Map/theNightmareExamRoom.png").toString(),0,0);
 		}
@@ -73,16 +74,19 @@ public class GamePlayPage {
 		else{
 			background =new MapImage(ClassLoader.getSystemResource("Map/chillbeach.png").toString(),0,0);
 		}
+		
 		canvas.setOnKeyPressed(e -> GamePlayPage.keys.put(e.getCode(), true));
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> {
 			if(!isPause()) {
-				this.player.shoot((int) (e.getX()), (int)(e.getY()));
+				GamePlayPage.player.shoot((int) (e.getX()), (int)(e.getY()));
 			}
 		});
+		
 		scene3 = new Scene(root3, 800, 600);		
-		Thread spawner = GamePlayLogic.getSpawner(this.player);
+		Thread spawner = GamePlayLogic.getSpawner(GamePlayPage.player);
 		spawner.start();
+		
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
 				if(boss.getHp()<=0) {
@@ -132,19 +136,18 @@ public class GamePlayPage {
 							resetPause();
 						}
 					}
-					else {
-						if((lvlUp) &(player.getHp()>0)) {
-							Stage thisStage = (Stage) scene3.getWindow();
-							try {
-								tempPage=scene3;
-								thisStage.setScene(OptionPage.getOptionScene());
-								resetPause();
-							} catch (IOException e) {}
-						}
-						else {
-							update(gc);
-							}
+					else if((lvlUp) &(player.getHp()>0)) {
+						Stage thisStage = (Stage) scene3.getWindow();
+						try {
+							tempPage=scene3;
+							thisStage.setScene(OptionPage.getOptionScene());
+							resetPause();
+						} catch (IOException e) {}
 					}
+					else {
+						update(gc);
+					}
+					
 				}
 			}
 		};
@@ -157,67 +160,30 @@ public class GamePlayPage {
 		GamePlayLogic.updateBullet(gc,player,bullets);
 		GamePlayLogic.updateItems(gc,player,items);
 		GamePlayLogic.updateEnemy(gc,player,enemies,bullets,items);
+		GamePlayLogic.updateBoss(gc,player,enemies,boss);
 		
-		this.player.render(gc);
-		
-		if(player.getLv()>=15) {
-			if (!enemies.contains(boss)) {
-				enemies.add(boss);
-			}
-			boss.render(gc);
-			gc.setFill(Color.RED);
-			gc.fillRect(520, 20, (this.boss.getHp()*250/this.boss.getMaxHP()), 30);
-			gc.setStroke(Color.BLACK);
-			gc.strokeRect(520, 20, 250, 30);
-		}
+		GamePlayPage.player.render(gc);
+		GamePlayLogic.updateHp(gc,player);
+		GamePlayLogic.updateExp(gc, player);
 		
 		if (GamePlayPage.keys.getOrDefault(KeyCode.W, false)){
-			this.player.move(0, -player.getSpeed());
+			GamePlayPage.player.move(0, -player.getSpeed());
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.A, false)){
-			this.player.move(-player.getSpeed(), 0);
+			GamePlayPage.player.move(-player.getSpeed(), 0);
 			}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.S, false)){
-			this.player.move(0, player.getSpeed());
+			GamePlayPage.player.move(0, player.getSpeed());
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.D, false)){
-			this.player.move(player.getSpeed(), 0);
+			GamePlayPage.player.move(player.getSpeed(), 0);
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.E, false)){
-			this.player.iAmAtomic(enemies);
+			GamePlayPage.player.iAmAtomic(enemies);
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.P, false)){
 			resetPause();
 		}
-		
-			//HP 
-		int hp =this.player.getHp();
-		if(hp>=75) {
-			gc.setFill(Color.FORESTGREEN);
-		}
-		else if(hp>=50) {
-			gc.setFill(Color.YELLOW);
-		}
-		else if(hp>=25) {
-			gc.setFill(Color.ORANGE);
-		}
-		else {
-			gc.setFill(Color.RED);
-		}
-		gc.fillRect(30, 20, this.player.getHp()*250/player.getMaxHP(), 30);
-		gc.setStroke(Color.BLACK);
-		gc.strokeRect(30, 20, 250, 30);
-		
-		gc.setFill(Color.BLACK);
-		gc.fillText("HP : "+player.getHp()+" / "+player.getMaxHP(),290 ,50);
-		//EXP
-		gc.setFill(Color.LIGHTBLUE);
-		gc.fillRect(30, 50, this.player.getCurrentExp()*200/player.getNextLv(), 10);
-		gc.setStroke(Color.BLACK);
-		gc.strokeRect(30, 50, 200, 10);
-		
-		gc.setFill(Color.BLACK);
-		gc.fillText("Lv : "+player.getLv()+" EXP : "+player.getCurrentExp()+"/"+player.getNextLv(),240 ,60);
 	
 		if(player.isUltiReady()) {
 			gc.drawImage(UtiImage,30,70,50,50);
@@ -232,9 +198,6 @@ public class GamePlayPage {
 			}
 		}).start();
 	}
-	public boolean isPause() {
-		return pause;
-	}
 
 	public void resetPause() {
 		if(!this.pauseDetect) {
@@ -242,6 +205,10 @@ public class GamePlayPage {
 			this.setPauseDetect(true);
 			coolDown(100,() -> this.setPauseDetect(false));
 		}
+	}
+	
+	public boolean isPause() {
+		return pause;
 	}
 
 	public boolean isPauseDetect() {
@@ -255,7 +222,7 @@ public class GamePlayPage {
 		return player;
 	}
 	public void setPlayer(Player player) {
-		this.player = player;
+		GamePlayPage.player = player;
 	}
 
 }

@@ -9,7 +9,7 @@ public class EnemyBoss extends Enemy{
 	private Image boss= new Image(ClassLoader.getSystemResource("bossPic.png").toString());
 	
 	public EnemyBoss(Player p, int x, int y) {
-		super(p, x, y,100,3,1000,5,Color.LIGHTGREEN);
+		super(p, x, y,100,3,Color.LIGHTGREEN,1000,5);
 		this.setInvincibleTime(150);
 	}
 	

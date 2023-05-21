@@ -12,8 +12,7 @@ public class Exp extends BaseItem implements EffectPlayer{
 	private AudioClip levelUp = new AudioClip(ClassLoader.getSystemResource("audio/lvlUP.mp3").toString()); 
 	
 	public Exp(double x, double y) {
-		super(x,y,10);
-		this.setColor(Color.YELLOW);
+		super(x,y,10,Color.YELLOW);
 	}
 
 	@Override
@@ -21,10 +20,8 @@ public class Exp extends BaseItem implements EffectPlayer{
 		player.setCurrentExp(player.getCurrentExp()+this.EXP);//add player EXP
 		if(player.getCurrentExp()>=player.getNextLv()) {//player level up
 			player.setLv(player.getLv()+1);
-			levelUp.play();
-			player.setAtk(player.getAtk()+5);
 			player.setCurrentExp(player.getCurrentExp()-player.getNextLv());
-			player.setNextLv((int)(player.getNextLv()*1.1));
+			levelUp.play();
 			GamePlayPage.lvlUp=true;
 		}
 	}	

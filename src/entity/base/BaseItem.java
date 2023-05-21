@@ -1,11 +1,12 @@
 package entity.base;
 
 import entity.unit.Player;
+import javafx.scene.paint.Color;
 
 public class BaseItem extends BaseObject{	
 	private boolean isMagnet;
-	public BaseItem(double x,double y,int size) {
-		super(x,y,size,10);
+	public BaseItem(double x,double y,int size,Color color) {
+		super(x,y,size,10,color);
 		this.isMagnet = false;
 	}
 	

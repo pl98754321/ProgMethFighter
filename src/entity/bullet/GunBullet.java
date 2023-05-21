@@ -10,8 +10,7 @@ public class GunBullet extends BaseBullet{
 	private double direction;
 	
 	public GunBullet(double x, double y,int size,int speed,int atk,double direction){
-		super(-GamePlayPage.background.getX()+x, -GamePlayPage.background.getY()+y,size,speed,atk);
-		this.setColor(Color.BLACK);
+		super(-GamePlayPage.background.getX()+x, -GamePlayPage.background.getY()+y,size,speed,Color.BLACK,atk);
 		this.direction = direction;
 	}
 	

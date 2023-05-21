@@ -10,8 +10,7 @@ public class Potion extends BaseItem implements EffectPlayer{
 	private int HP=5;
 	private AudioClip healSound = new AudioClip(ClassLoader.getSystemResource("audio/heal.mp3").toString()); 
 	public Potion(double x, double y) {
-		super(x,y,10);
-		this.setColor(Color.LIGHTBLUE);
+		super(x,y,10,Color.LIGHTBLUE);
 	}
 
 	@Override

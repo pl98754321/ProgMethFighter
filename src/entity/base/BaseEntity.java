@@ -1,7 +1,7 @@
 package entity.base;
 
 import entity.unit.Enemy;
-import entity.unit.Player;
+import javafx.scene.paint.Color;
 import page.GamePlayPage;
 
 public abstract class BaseEntity extends BaseObject{
@@ -11,8 +11,8 @@ public abstract class BaseEntity extends BaseObject{
 	private boolean isDamagable = true;
 	private int invincibleTime = 0;
 
-	public BaseEntity(double x,double y,int size,int speed,int hp,int atk) {
-		super(x,y,size,speed);
+	public BaseEntity(double x,double y,int size,int speed,Color color,int hp,int atk) {
+		super(x,y,size,speed,color);
 		if (hp<=1) {hp = 1;}
 		this.setMaxHP(hp);
 		this.setHp(hp);
@@ -31,6 +31,9 @@ public abstract class BaseEntity extends BaseObject{
 
 	public void attack(BaseEntity others) {
 		others.takeDamage(this.getAtk());
+		if (others instanceof Enemy) {
+			((Enemy) others).KnockBack(this);
+		}
 	}
 	
 	// getter setter
@@ -53,16 +56,16 @@ public abstract class BaseEntity extends BaseObject{
 	public void setAtk(int attack) {
 		this.atk = attack;
 	}
-	public int getInvincibleTime() {
-		return invincibleTime;
-	}
-
 	public boolean isDamagable() {
 		return isDamagable;
 	}
 
 	public void setDamagable(boolean isDamagable) {
 		this.isDamagable = isDamagable;
+	}
+	
+	public int getInvincibleTime() {
+		return invincibleTime;
 	}
 
 	public void setInvincibleTime(int invincibleTime) {

@@ -8,8 +8,7 @@ import page.GamePlayPage;
 
 public class Magnet extends BaseItem implements EffectPlayer{
 	public Magnet(double x, double y) {
-		super(x,y,10);
-		this.setColor(Color.RED);
+		super(x,y,10,Color.RED);
 	}
 
 	@Override

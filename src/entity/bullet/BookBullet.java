@@ -1,13 +1,13 @@
 package entity.bullet;
 
+import javafx.scene.paint.Color;
 import entity.base.BaseBullet;
-import entity.base.BaseObject;
 import entity.unit.Player;
 import page.GamePlayPage;
 
 public class BookBullet extends BaseBullet{
 	public BookBullet(double x, double y, int size, int speed,int attack) {
-		super(-GamePlayPage.background.getX()+x, -GamePlayPage.background.getY()+y, size, speed,attack);
+		super(-GamePlayPage.background.getX()+x, -GamePlayPage.background.getY()+y, size, speed,Color.BLACK,attack);
 	}
 
 	@Override

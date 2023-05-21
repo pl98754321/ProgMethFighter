@@ -17,9 +17,8 @@ public class Enemy extends BaseEntity{
 	private AudioClip explosion = new AudioClip(ClassLoader.getSystemResource("audio/Explosion.wav").toString());
 
 
-	public Enemy(Player p, int x, int y, int size,int speed ,int hp,int atk,Color color){
-		super(x,y,size,speed,hp,atk);
-		this.setColor(color);
+	public Enemy(Player p, int x, int y, int size,int speed ,Color color,int hp,int atk){
+		super(x,y,size,speed,color,hp,atk);
 		this.setPlayer(p);
 	}
 	

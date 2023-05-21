@@ -12,11 +12,12 @@ public class BaseObject {
 	private int speed;
 	private Color color;
 	
-	public BaseObject(double d ,double e,int size,int speed) {
+	public BaseObject(double d ,double e,int size,int speed, Color color) {
 		this.setX(d);
 		this.setY(e);
 		this.setSize(size);
-		this.speed = speed;
+		this.setSpeed(speed);
+		this.setColor(color);
 	}
 	public void move(double vx, double vy){
 		this.setX(this.getX()+vx);

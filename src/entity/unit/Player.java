@@ -2,19 +2,10 @@ package entity.unit;
 
 
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-
 import entity.base.BaseEntity;
-import entity.base.BaseObject;
-import entity.base.BaseSkill;
 import entity.base.BaseWeapon;
 import entity.base.EffectWeapon;
 import entity.bullet.BookBullet;
-import entity.skill.SpeedUp;
-import entity.weapon.Book;
-import entity.weapon.Gun;
-import entity.weapon.GunDagger;
 import entity.weapon.GunNormal;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;

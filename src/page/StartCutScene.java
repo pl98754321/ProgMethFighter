@@ -22,7 +22,7 @@ public class StartCutScene {
 	public Text nameStage;
 	public VBox container;
 	public static int currentStage=0;
-	private ArrayList<String> lores = new ArrayList(Arrays.asList(
+	private ArrayList<String> lores = new ArrayList<>(Arrays.asList(
 			"ในระหว่างการสอบ ปีศาจ ProgMeth ได้บุกเข้ามา\nเหล่าผู้กล้าเอ๋ย จงกำดาบต่อสู้เพื่ออิสรภาพเอาชีวิตรอดไปปั่น Project ซะ",
 			"คุณได้ไล่ตามปีศาจProgMeth ที่หนีไปจนถึงวงเวทย์กับดักที่วางไว้\nคุณโดนสาปให้อ่อนแอลง จงรวบรวมพลังไปต่อกรอีกครั้งเพื่อจบทุกสิ่ง",
 			"หลังจากทุกอย่างจบลง คุณไปเที่ยวกับเพื่อนๆ \nแต่เหมือนปีศาจProgMethอยากจะเล่นกับคุณด้วย ไปเล่นกับเค้าสิ XD"

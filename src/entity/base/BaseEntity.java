@@ -1,7 +1,5 @@
 package entity.base;
 
-import entity.unit.Enemy;
-import entity.unit.Player;
 import page.GamePlayPage;
 
 public abstract class BaseEntity extends BaseObject{

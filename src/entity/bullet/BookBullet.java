@@ -1,7 +1,6 @@
 package entity.bullet;
 
 import entity.base.BaseBullet;
-import entity.base.BaseObject;
 import entity.unit.Player;
 import page.GamePlayPage;
 

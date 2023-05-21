@@ -4,15 +4,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
-
 import Controller.SSController;
 import entity.MapImage;
 import entity.base.BaseBullet;
 import entity.base.BaseItem;
 import entity.unit.EnemyBoss;
 import entity.unit.Enemy;
-import entity.unit.EnermySpeedter;
 import entity.unit.Player;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
@@ -24,7 +21,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import logic.GamePlayLogic;
-import javafx.scene.media.AudioClip;
 
 public class GamePlayPage {
 	public StackPane root3;
@@ -61,7 +57,7 @@ public class GamePlayPage {
 		canvas.setFocusTraversable(true);
 		GraphicsContext gc = canvas.getGraphicsContext2D();
 		root3.getChildren().add(canvas);
-		this.player = new Player(400,  300);
+		GamePlayPage.player = new Player(400,  300);
 		
 		this.boss=new EnemyBoss(player,350,250);
 		if(SSController.selectedStage()==1) {
@@ -77,11 +73,11 @@ public class GamePlayPage {
 		canvas.setOnKeyReleased(e -> GamePlayPage.keys.put(e.getCode(), false));
 		canvas.setOnMouseClicked(e -> {
 			if(!isPause()) {
-				this.player.shoot((int) (e.getX()), (int)(e.getY()));
+				GamePlayPage.player.shoot((int) (e.getX()), (int)(e.getY()));
 			}
 		});
 		scene3 = new Scene(root3, 800, 600);		
-		Thread spawner = GamePlayLogic.getSpawner(this.player);
+		Thread spawner = GamePlayLogic.getSpawner(GamePlayPage.player);
 		spawner.start();
 		AnimationTimer animation = new AnimationTimer() {
 			public void handle(long now) {
@@ -158,7 +154,7 @@ public class GamePlayPage {
 		GamePlayLogic.updateItems(gc,player,items);
 		GamePlayLogic.updateEnemy(gc,player,enemies,bullets,items);
 		
-		this.player.render(gc);
+		GamePlayPage.player.render(gc);
 		
 		if(player.getLv()>=15) {
 			if (!enemies.contains(boss)) {
@@ -172,26 +168,26 @@ public class GamePlayPage {
 		}
 		
 		if (GamePlayPage.keys.getOrDefault(KeyCode.W, false)){
-			this.player.move(0, -player.getSpeed());
+			GamePlayPage.player.move(0, -player.getSpeed());
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.A, false)){
-			this.player.move(-player.getSpeed(), 0);
+			GamePlayPage.player.move(-player.getSpeed(), 0);
 			}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.S, false)){
-			this.player.move(0, player.getSpeed());
+			GamePlayPage.player.move(0, player.getSpeed());
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.D, false)){
-			this.player.move(player.getSpeed(), 0);
+			GamePlayPage.player.move(player.getSpeed(), 0);
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.E, false)){
-			this.player.iAmAtomic(enemies);
+			GamePlayPage.player.iAmAtomic(enemies);
 		}
 		if (GamePlayPage.keys.getOrDefault(KeyCode.P, false)){
 			resetPause();
 		}
 		
 			//HP 
-		int hp =this.player.getHp();
+		int hp =GamePlayPage.player.getHp();
 		if(hp>=75) {
 			gc.setFill(Color.FORESTGREEN);
 		}
@@ -204,7 +200,7 @@ public class GamePlayPage {
 		else {
 			gc.setFill(Color.RED);
 		}
-		gc.fillRect(30, 20, this.player.getHp()*250/player.getMaxHP(), 30);
+		gc.fillRect(30, 20, GamePlayPage.player.getHp()*250/player.getMaxHP(), 30);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 20, 250, 30);
 		
@@ -212,7 +208,7 @@ public class GamePlayPage {
 		gc.fillText("HP : "+player.getHp()+" / "+player.getMaxHP(),290 ,50);
 		//EXP
 		gc.setFill(Color.LIGHTBLUE);
-		gc.fillRect(30, 50, this.player.getCurrentExp()*200/player.getNextLv(), 10);
+		gc.fillRect(30, 50, GamePlayPage.player.getCurrentExp()*200/player.getNextLv(), 10);
 		gc.setStroke(Color.BLACK);
 		gc.strokeRect(30, 50, 200, 10);
 		
@@ -255,7 +251,7 @@ public class GamePlayPage {
 		return player;
 	}
 	public void setPlayer(Player player) {
-		this.player = player;
+		GamePlayPage.player = player;
 	}
 
 }

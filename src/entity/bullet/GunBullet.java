@@ -2,7 +2,6 @@ package entity.bullet;
 
 import entity.base.BaseBullet;
 import entity.unit.Player;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import page.GamePlayPage;
 

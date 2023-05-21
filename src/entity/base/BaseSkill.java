@@ -1,6 +1,5 @@
 package entity.base;
 
-import entity.unit.Player;
 
 public abstract class BaseSkill {
 	private String name;
